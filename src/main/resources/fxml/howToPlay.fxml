@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HowToPlayController">
+   <children>
+      <Text layoutX="153.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" wrappingWidth="294.13671875">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Text>
+      <Text layoutX="161.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interact with objects and people by clicking on them" />
+      <Text layoutX="41.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Once you have clicked on a person communicate with them using the text box in the bottom right" />
+      <Text layoutX="164.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have two minutes to figure out who the thief is" />
+      <Text layoutX="77.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="after the 2 minutes you have 10 seconds to guess. click on who you think the thief is" />
+      <Button fx:id="continueButton" layoutX="246.0" layoutY="236.0" mnemonicParsing="false" onAction="#onContinuePressed" text="Press to continue" />
+   </children>
+</Pane>

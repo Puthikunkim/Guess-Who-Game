@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
  * clicking on a rectangle and making a guess.
  */
 public interface GameState {
+  /** Handles logic for when switching to this GameState */
+  void onSwitchTo();
 
   /**
    * Handles the event when a rectangle is clicked.

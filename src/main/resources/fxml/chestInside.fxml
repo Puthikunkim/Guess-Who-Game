@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ChestController">
+   <children>
+      <ImageView fx:id="hintImage" fitHeight="150.0" fitWidth="311.0" layoutX="176.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/SnowAndWater.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="hintRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff83" height="156.0" layoutX="176.0" layoutY="169.0" onMouseClicked="#handleRectangleClick" stroke="BLACK" strokeType="INSIDE" width="189.0" />
+      <ImageView fx:id="rubbishImage4" fitHeight="298.0" fitWidth="321.0" layoutX="249.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Rubbish.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rubbishRect4" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff83" height="263.0" layoutX="249.0" layoutY="99.0" onMouseClicked="#handleRectangleClick" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+      <ImageView fx:id="rubbishImage3" fitHeight="298.0" fitWidth="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Rubbish.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rubbishRect3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff83" height="263.0" onMouseClicked="#handleRectangleClick" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+      <ImageView fx:id="rubbishImage2" fitHeight="298.0" fitWidth="321.0" layoutX="44.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Rubbish.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rubbishRect2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff83" height="263.0" layoutX="44.0" layoutY="136.0" onMouseClicked="#handleRectangleClick" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+      <ImageView fx:id="rubbishImage1" fitHeight="298.0" fitWidth="321.0" layoutX="249.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Rubbish.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rubbishRect1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff83" height="263.0" layoutX="249.0" layoutY="14.0" onMouseClicked="#handleRectangleClick" stroke="BLACK" strokeType="INSIDE" width="321.0" />
+   </children>
+</Pane>

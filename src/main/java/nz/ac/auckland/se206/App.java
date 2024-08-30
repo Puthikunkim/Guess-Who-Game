@@ -3,14 +3,11 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import nz.ac.auckland.se206.controllers.ChatController;
-import nz.ac.auckland.se206.speech.FreeTextToSpeech;
+import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -47,28 +44,8 @@ public class App extends Application {
    * @return the root node of the FXML file
    * @throws IOException if the FXML file is not found
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
+  public static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
-  }
-
-  /**
-   * Opens the chat view and sets the profession in the chat controller.
-   *
-   * @param event the mouse event that triggered the method
-   * @param profession the profession to set in the chat controller
-   * @throws IOException if the FXML file is not found
-   */
-  public static void openChat(MouseEvent event, String profession) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
-    Parent root = loader.load();
-
-    ChatController chatController = loader.getController();
-    chatController.setProfession(profession);
-
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
   }
 
   /**
@@ -79,15 +56,18 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("room");
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    stage.setOnCloseRequest(event -> handleWindowClose(event));
-    root.requestFocus();
+    SceneManager.start(stage);
   }
 
-  private void handleWindowClose(WindowEvent event) {
-    FreeTextToSpeech.deallocateSynthesizer();
+  /**
+   * This method is invoked when the application is closed. It closes the Timer Thread if it exists
+   * for a clean exit.
+   */
+  @Override
+  public void stop() {
+    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
+    if (roomController.getTimer() != null) {
+      roomController.getTimer().cancel();
+    }
   }
 }

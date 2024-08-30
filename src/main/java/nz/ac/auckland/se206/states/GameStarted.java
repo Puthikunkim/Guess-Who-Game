@@ -2,9 +2,11 @@ package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.App;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.speech.TextToSpeech;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * The GameStarted state of the game. Handles the initial interactions when the game starts,
@@ -23,6 +25,17 @@ public class GameStarted implements GameState {
     this.context = context;
   }
 
+  /** when game is started start the timer in RoomController. */
+  @Override
+  public void onSwitchTo() {
+    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
+    roomController.getTimerLabel().setText("SECONDS REMAINING : " + 120);
+    roomController.startTimer();
+    context.playSound("Intro");
+    roomController.appendChatMessage(
+        new ChatMessage("Narrator", "2 minutes to find the thief who stole your diamonds"));
+  }
+
   /**
    * Handles the event when a rectangle is clicked. Depending on the clicked rectangle, it either
    * provides an introduction or transitions to the chat view.
@@ -35,14 +48,14 @@ public class GameStarted implements GameState {
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
     // Transition to chat view or provide an introduction based on the clicked rectangle
     switch (rectangleId) {
-      case "rectCashier":
-        TextToSpeech.speak("Welcome to my cafe!");
-        return;
-      case "rectWaitress":
-        TextToSpeech.speak("Hi, let me know when you are ready to order!");
+      case "rectChest":
+        SceneManager.switchRoot(AppUi.CHEST_ROOM);
         return;
     }
-    App.openChat(event, context.getProfession(rectangleId));
+
+    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
+    roomController.setPerson(context.getPerson(rectangleId));
+    context.setTalkedToPeople(true);
   }
 
   /**
@@ -53,7 +66,19 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {
-    TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
+    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
+    if (!context.getChestChecked()) {
+      context.playSound("NoEvidence");
+      roomController.appendChatMessage(
+          new ChatMessage("Narrator", "Please find evidence before guessing someone"));
+      return;
+    } else if (!context.getTalkedToPeople()) {
+      context.playSound("HaventTalked");
+      roomController.appendChatMessage(
+          new ChatMessage("Narrator", "Please talk to the suspect/s before guessing"));
+      return;
+    }
+
     context.setState(context.getGuessingState());
   }
 }

@@ -1,19 +1,20 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.se206.states.GameOver;
 import nz.ac.auckland.se206.states.GameStarted;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Guessing;
-import org.yaml.snakeyaml.Yaml;
 
 /**
  * Context class for managing the state of the game. Handles transitions between different game
@@ -21,53 +22,113 @@ import org.yaml.snakeyaml.Yaml;
  */
 public class GameStateContext {
 
-  private final String rectIdToGuess;
-  private final String professionToGuess;
-  private final Map<String, String> rectanglesToProfession;
+  private final Person personThiefToGuess;
+  private final Map<String, Person> rectanglesToPerson;
   private final GameStarted gameStartedState;
   private final Guessing guessingState;
   private final GameOver gameOverState;
   private GameState gameState;
+  private boolean chestChecked = false;
+  private boolean talkedToPeople = false;
+  private boolean guessed = false;
+  private MediaPlayer reusedMediaPlayer;
 
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
+    // Init game states for refrence later
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
-
     gameState = gameStartedState; // Initial state
-    Map<String, Object> obj = null;
-    Yaml yaml = new Yaml();
-    try (InputStream inputStream =
-        GameStateContext.class.getClassLoader().getResourceAsStream("data/professions.yaml")) {
-      if (inputStream == null) {
-        throw new IllegalStateException("File not found!");
-      }
-      obj = yaml.load(inputStream);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
 
-    @SuppressWarnings("unchecked")
-    List<String> professions = (List<String>) obj.get("professions");
-
+    // Randomly chose thief out of the 3 possible
     Random random = new Random();
-    Set<String> randomProfessions = new HashSet<>();
-    while (randomProfessions.size() < 3) {
-      String profession = professions.get(random.nextInt(professions.size()));
-      randomProfessions.add(profession);
+    random.setSeed(System.currentTimeMillis());
+    int randThiefInt = random.nextInt(3);
+
+    // Create array list that stores what index the thief is and what index isnt
+    ArrayList<Boolean> thief = new ArrayList<>();
+    thief.add(false);
+    thief.add(false);
+    thief.add(false);
+    thief.set(randThiefInt, true);
+    // Then take that random choice and put into a map corresponding to each rectID for ez refrence
+    // later
+    Person bob =
+        new Person(
+            "Bob",
+            thief.get(0),
+            Voice.GOOGLE_EN_AU_STANDARD_B,
+            "there are cookie crumbs in the chest",
+            new Image("images/Crumbs.png"));
+    Person skinnyBob =
+        new Person(
+            "Skinny Bob",
+            thief.get(1),
+            Voice.GOOGLE_EN_AU_STANDARD_A,
+            "there is wheat seeds left in the chest",
+            new Image("images/WheatSeeds.png"));
+    Person snowmanBob =
+        new Person(
+            "Snowman Bob",
+            thief.get(2),
+            Voice.GOOGLE_EN_AU_STANDARD_C,
+            "there is water and snowflakes left in the chest",
+            new Image("images/SnowAndWater.png"));
+    rectanglesToPerson = new HashMap<>();
+    rectanglesToPerson.put("rectPerson1", bob);
+    rectanglesToPerson.put("rectPerson2", skinnyBob);
+    rectanglesToPerson.put("rectPerson3", snowmanBob);
+
+    // Set which rectPerson is the thief for guess checking later
+    personThiefToGuess = rectanglesToPerson.get("rectPerson" + (randThiefInt + 1));
+  }
+
+  /**
+   * sets ChestChecked to boolean.
+   *
+   * @param chestChecked boolean
+   */
+  public void setChestChecked(boolean chestChecked) {
+    this.chestChecked = chestChecked;
+  }
+
+  public boolean getChestChecked() {
+    return chestChecked;
+  }
+
+  public void setTalkedToPeople(boolean talkedToPeople) {
+    this.talkedToPeople = talkedToPeople;
+  }
+
+  public boolean getTalkedToPeople() {
+    return talkedToPeople;
+  }
+
+  public void setGuessed(boolean guessed) {
+    this.guessed = guessed;
+  }
+
+  public boolean getGuessed() {
+    return guessed;
+  }
+
+  /**
+   * plays given sound file
+   *
+   * @param sound_File_path format "file_name.mp3"
+   */
+  public void playSound(String soundFileName) {
+    try {
+      Media newSound =
+          new Media(App.class.getResource("/sounds/" + soundFileName + ".mp3").toURI().toString());
+      // reusedMediaPlayer.stop();
+      reusedMediaPlayer = new MediaPlayer(newSound);
+      reusedMediaPlayer.play();
+    } catch (URISyntaxException e) {
+      System.out.println(soundFileName);
+      System.out.println(e.getStackTrace());
     }
-
-    String[] randomProfessionsArray = randomProfessions.toArray(new String[3]);
-    rectanglesToProfession = new HashMap<>();
-    rectanglesToProfession.put("rectPerson1", randomProfessionsArray[0]);
-    rectanglesToProfession.put("rectPerson2", randomProfessionsArray[1]);
-    rectanglesToProfession.put("rectPerson3", randomProfessionsArray[2]);
-
-    int randomNumber = random.nextInt(3);
-    rectIdToGuess =
-        randomNumber == 0 ? "rectPerson1" : ((randomNumber == 1) ? "rectPerson2" : "rectPerson3");
-    professionToGuess = rectanglesToProfession.get(rectIdToGuess);
   }
 
   /**
@@ -77,6 +138,16 @@ public class GameStateContext {
    */
   public void setState(GameState state) {
     this.gameState = state;
+    gameState.onSwitchTo();
+  }
+
+  /**
+   * gets Current GameState.
+   *
+   * @return GameState
+   */
+  public GameState getState() {
+    return gameState;
   }
 
   /**
@@ -107,31 +178,22 @@ public class GameStateContext {
   }
 
   /**
-   * Gets the profession to be guessed.
-   *
-   * @return the profession to guess
-   */
-  public String getProfessionToGuess() {
-    return professionToGuess;
-  }
-
-  /**
    * Gets the ID of the rectangle to be guessed.
    *
    * @return the rectangle ID to guess
    */
-  public String getRectIdToGuess() {
-    return rectIdToGuess;
+  public Person getPersonToGuess() {
+    return personThiefToGuess;
   }
 
   /**
-   * Gets the profession associated with a specific rectangle ID.
+   * Gets the person associated with a specific rectangle ID.
    *
    * @param rectangleId the rectangle ID
    * @return the profession associated with the rectangle ID
    */
-  public String getProfession(String rectangleId) {
-    return rectanglesToProfession.get(rectangleId);
+  public Person getPerson(String rectangleId) {
+    return rectanglesToPerson.get(rectangleId);
   }
 
   /**
