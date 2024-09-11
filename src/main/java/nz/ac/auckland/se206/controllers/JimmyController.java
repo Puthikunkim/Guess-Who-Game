@@ -28,7 +28,8 @@ public class JimmyController extends Controller {
 
   private ChatCompletionRequest
       chatCompletionRequestChild; // Chat completion requests for each suspect
-  private boolean childStarted = false;
+  private boolean jimmyStarted = false;
+  private boolean jimmyChatted = false;
 
   @FXML private Button crimeScene;
 
@@ -63,8 +64,8 @@ public class JimmyController extends Controller {
    *
    * @param profession the profession to set
    */
-  public void setProfession(String profession) {
-    if (profession.equals("Child") && !childStarted) {
+  public void startChat() {
+    if (!jimmyStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
         chatCompletionRequestChild =
@@ -74,6 +75,7 @@ public class JimmyController extends Controller {
                 .setTopP(0.5)
                 .setMaxTokens(100);
         runGpt(new ChatMessage("system", getSystemPrompt()));
+        jimmyStarted = true;
       } catch (ApiProxyException e) {
         e.printStackTrace();
       }
@@ -148,7 +150,11 @@ public class JimmyController extends Controller {
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    jimmyChatted = true;
     String message = txtInput.getText().trim();
+    if (message.isEmpty()) {
+      return;
+    }
     txtInput.clear();
     // Create a ChatMessage object with the user's message, append it to the chat area and get a
     // response from the GPT model

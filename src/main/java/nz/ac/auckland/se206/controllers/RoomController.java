@@ -127,7 +127,10 @@ public class RoomController extends Controller {
    */
   @FXML
   private void handleJimmyClick(ActionEvent event) throws IOException {
+    JimmyController jimmyController =
+        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
+    jimmyController.startChat();
   }
 
   /**
