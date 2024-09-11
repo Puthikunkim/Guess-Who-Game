@@ -8,6 +8,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
@@ -35,9 +36,20 @@ public class BusinessmanController extends Controller {
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
 
+  @FXML private Label lblResponse;
+
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
+
+  /**
+   * Initializes the room view. If it's the first time initialization, it will provide instructions
+   * via text-to-speech.
+   */
+  @FXML
+  public void initialize() {
+    lblResponse.setVisible(false);
+  }
 
   /**
    * Handles the switch button click event to jimmy's scene.
@@ -139,6 +151,8 @@ public class BusinessmanController extends Controller {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    lblResponse.setVisible(true);
+    lblResponse.setText("Mr. Harrison is responding...");
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -156,6 +170,7 @@ public class BusinessmanController extends Controller {
               Platform.runLater(
                   () -> {
                     appendChatMessage(result.getChatMessage());
+                    lblResponse.setVisible(false);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();

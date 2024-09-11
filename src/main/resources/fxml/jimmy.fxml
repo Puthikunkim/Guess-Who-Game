@@ -25,5 +25,10 @@
       <Button fx:id="crimeScene" layoutX="90.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="89.0" text="Crime Scene" />
       <Button fx:id="btnGrandma" layoutX="227.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="89.0" text="Grandma" />
       <Button fx:id="btnBusinessman" layoutX="350.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="89.0" text="Businessman" />
+      <Label fx:id="lblResponse" layoutX="634.0" layoutY="451.0" prefHeight="16.0" prefWidth="168.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
