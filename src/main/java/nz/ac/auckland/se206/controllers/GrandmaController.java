@@ -42,6 +42,8 @@ public class GrandmaController extends Controller {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
 
+  private boolean canSwitch = true; // Boolean to track if the user can switch suspects
+
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
@@ -153,6 +155,7 @@ public class GrandmaController extends Controller {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     lblResponse.setVisible(true);
     lblResponse.setText("Granny Smith is responding...");
+    canSwitch = false;
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -170,6 +173,7 @@ public class GrandmaController extends Controller {
                   () -> {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
+                    canSwitch = true;
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -196,7 +200,7 @@ public class GrandmaController extends Controller {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
+    if (message.isEmpty() || !canSwitch) {
       return;
     }
     txtInput.clear();
