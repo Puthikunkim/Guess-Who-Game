@@ -50,7 +50,9 @@ public class RoomController extends Controller {
   @FXML private TextField txtInput; //
 
   // chat-room
-  @FXML private Button jimmy;
+  @FXML private Button btnJimmy;
+  @FXML private Button btnGrandma;
+  @FXML private Button btnBusinessman;
 
   private boolean timerStarted = false; //
   private ChatCompletionRequest chatCompletionRequest; //
@@ -131,6 +133,34 @@ public class RoomController extends Controller {
         (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
     jimmyController.startChat();
+  }
+
+  /**
+   * Handles the switch button click event to grandma's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleGrandmaClick(ActionEvent event) throws IOException {
+    GrandmaController grandmaController =
+        (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
+    SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
+    grandmaController.startChat();
+  }
+
+  /**
+   * Handles the switch button click event to grandma's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleBusinessmanClick(ActionEvent event) throws IOException {
+    BusinessmanController businessmanController =
+        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
+    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
+    businessmanController.startChat();
   }
 
   /**

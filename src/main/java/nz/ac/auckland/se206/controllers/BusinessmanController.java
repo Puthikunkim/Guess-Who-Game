@@ -24,16 +24,16 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
-public class JimmyController extends Controller {
+public class BusinessmanController extends Controller {
 
   private ChatCompletionRequest
-      chatCompletionRequestChild; // Chat completion requests for each suspect
-  private boolean jimmyStarted = false;
-  private boolean jimmyChatted = false;
+      chatCompletionRequestBusinessman; // Chat completion requests for each suspect
+  private boolean businessmanStarted = false;
+  private boolean businessmanChatted = false;
 
   @FXML private Button crimeScene;
+  @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
-  @FXML private Button btnBusinessman;
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
@@ -51,6 +51,20 @@ public class JimmyController extends Controller {
   }
 
   /**
+   * Handles the switch button click event to jimmy's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleJimmyClick(ActionEvent event) throws IOException {
+    JimmyController jimmyController =
+        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
+    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
+    jimmyController.startChat();
+  }
+
+  /**
    * Handles the switch button click event to grandma's scene.
    *
    * @param event the action event triggered by clicking the guess button
@@ -65,20 +79,6 @@ public class JimmyController extends Controller {
   }
 
   /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleBusinessmanClick(ActionEvent event) throws IOException {
-    BusinessmanController businessmanController =
-        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
-    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
-    businessmanController.startChat();
-  }
-
-  /**
    * Generates the system prompt based on who the suspect is.
    *
    * @return the system prompt string
@@ -86,7 +86,7 @@ public class JimmyController extends Controller {
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("profession", "not thief");
-    return PromptEngineering.getPrompt("jimmy.txt", map);
+    return PromptEngineering.getPrompt("businessman.txt", map);
   }
 
   /**
@@ -95,17 +95,17 @@ public class JimmyController extends Controller {
    * @param profession the profession to set
    */
   public void startChat() {
-    if (!jimmyStarted) {
+    if (!businessmanStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
-        chatCompletionRequestChild =
+        chatCompletionRequestBusinessman =
             new ChatCompletionRequest(config)
                 .setN(1)
                 .setTemperature(0.2)
                 .setTopP(0.5)
                 .setMaxTokens(100);
         runGpt(new ChatMessage("system", getSystemPrompt()));
-        jimmyStarted = true;
+        businessmanStarted = true;
       } catch (ApiProxyException e) {
         e.printStackTrace();
       }
@@ -127,7 +127,7 @@ public class JimmyController extends Controller {
     // Append the assistant chat message to the relevant chat area for the suspect with the name of
     // the suspect.
     if (msg.getRole().equals("assistant")) {
-      txtaChat1.appendText("Jimmy" + ": " + msg.getContent() + "\n\n");
+      txtaChat1.appendText("Businessman" + ": " + msg.getContent() + "\n\n");
     }
   }
 
@@ -145,11 +145,12 @@ public class JimmyController extends Controller {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            chatCompletionRequestChild.addMessage(msg);
+            chatCompletionRequestBusinessman.addMessage(msg);
             try {
-              ChatCompletionResult chatCompletionResult = chatCompletionRequestChild.execute();
+              ChatCompletionResult chatCompletionResult =
+                  chatCompletionRequestBusinessman.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequestChild.addMessage(result.getChatMessage());
+              chatCompletionRequestBusinessman.addMessage(result.getChatMessage());
 
               // Update the UI on the JavaFX Application Thread
               Platform.runLater(
@@ -185,7 +186,7 @@ public class JimmyController extends Controller {
       return;
     }
     txtInput.clear();
-    jimmyChatted = true;
+    businessmanChatted = true;
     // Create a ChatMessage object with the user's message, append it to the chat area and get a
     // response from the GPT model
     ChatMessage msg = new ChatMessage("user", message);
