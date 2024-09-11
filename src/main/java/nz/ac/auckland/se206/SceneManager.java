@@ -17,6 +17,7 @@ public class SceneManager {
     HOW_TO_PLAY,
     MAIN_ROOM,
     CHEST_ROOM,
+    JIMMY_ROOM,
   }
 
   private static Scene scene;
@@ -39,6 +40,9 @@ public class SceneManager {
     SceneManager.addUi(AppUi.HOW_TO_PLAY, "howToPlay");
     SceneManager.addUi(AppUi.MAIN_ROOM, "room");
     SceneManager.addUi(AppUi.CHEST_ROOM, "chestInside");
+
+    // chat-room
+    SceneManager.addUi(AppUi.JIMMY_ROOM, "jimmy");
 
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);

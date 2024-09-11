@@ -24,6 +24,8 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.Person;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -46,6 +48,9 @@ public class RoomController extends Controller {
   @FXML private Rectangle rectPerson3;
   @FXML private TextArea txtaChat; //
   @FXML private TextField txtInput; //
+
+  // chat-room
+  @FXML private Button jimmy;
 
   private boolean timerStarted = false; //
   private ChatCompletionRequest chatCompletionRequest; //
@@ -110,6 +115,19 @@ public class RoomController extends Controller {
   private void handleRectangleClick(MouseEvent event) throws IOException {
     Rectangle clickedRectangle = (Rectangle) event.getSource();
     context.handleRectangleClick(event, clickedRectangle.getId());
+  }
+
+  // chat-room
+
+  /**
+   * Handles the switch button click event to jimmy's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleJimmyClick(ActionEvent event) throws IOException {
+    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
   }
 
   /**
