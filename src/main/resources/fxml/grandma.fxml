@@ -22,13 +22,14 @@
       <TextArea fx:id="txtaChat1" editable="false" layoutX="825.0" layoutY="67.0" prefHeight="468.0" prefWidth="334.0" wrapText="true" />
       <TextField fx:id="txtInput" layoutX="827.0" layoutY="548.0" prefHeight="26.0" prefWidth="276.0" />
       <Button fx:id="btnSend" layoutX="1116.0" layoutY="549.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
-      <Button fx:id="crimeScene" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
-      <Button fx:id="btnJimmy" layoutX="25.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnBusinessman" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnCrimeScene" layoutX="25.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
+      <Button fx:id="btnJimmy" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnBusinessman" layoutX="400.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
       <Label fx:id="lblResponse" layoutX="624.0" layoutY="441.0" prefHeight="16.0" prefWidth="168.0" wrapText="true">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
+      <Button fx:id="btnGrandma" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
    </children>
 </Pane>

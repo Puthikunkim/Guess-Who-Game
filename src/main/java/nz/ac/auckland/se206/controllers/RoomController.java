@@ -50,6 +50,7 @@ public class RoomController extends Controller {
   @FXML private TextField txtInput; //
 
   // chat-room
+  @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
@@ -67,6 +68,7 @@ public class RoomController extends Controller {
     if (!timerStarted) {
       context.setState(context.getGameStartedState());
     }
+    btnCrimeScene.setDisable(true);
   }
 
   /** Starts 120 Timer for investigation, goes from 0 to -10 for guessing time */

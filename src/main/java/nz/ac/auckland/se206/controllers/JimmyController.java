@@ -32,7 +32,8 @@ public class JimmyController extends Controller {
   private boolean jimmyStarted = false;
   private boolean jimmyChatted = false;
 
-  @FXML private Button crimeScene;
+  @FXML private Button btnCrimeScene;
+  @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
 
@@ -51,6 +52,12 @@ public class JimmyController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
+  }
+
+  /** when switched to disable button */
+  @Override
+  public void onSwitchTo() {
+    btnJimmy.setDisable(true);
   }
 
   /**
@@ -156,6 +163,7 @@ public class JimmyController extends Controller {
     lblResponse.setVisible(true);
     lblResponse.setText("Jimmy is responding...");
     canSwitch = false;
+    enableButtons(canSwitch);
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -174,6 +182,7 @@ public class JimmyController extends Controller {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
                     canSwitch = true;
+                    enableButtons(canSwitch);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -188,6 +197,13 @@ public class JimmyController extends Controller {
     backgroundThread.start();
 
     return null;
+  }
+
+  private void enableButtons(boolean enable) {
+    btnCrimeScene.setDisable(!enable);
+    btnGrandma.setDisable(!enable);
+    btnBusinessman.setDisable(!enable);
+    btnSend.setDisable(!enable);
   }
 
   /**
