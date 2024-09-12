@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.Person;
 import nz.ac.auckland.se206.SceneManager;
@@ -27,16 +26,7 @@ public class GameOver implements GameState {
   }
 
   /** When Switched to disable everything and set GAME OVER */
-  public void onSwitchTo() {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.getTimerLabel().setText("GAME OVER");
-    roomController.getTimer().cancel();
-    if (!context.getGuessed()) {
-      context.playSound("GAMEOVER_NOGUESS");
-      roomController.appendChatMessage(
-          new ChatMessage("Narrator", "GAME OVER : YOU DID NOT GUESS"));
-    }
-  }
+  public void onSwitchTo() {}
 
   /**
    * Handles the event when a rectangle is clicked. Informs the player that the game is over and
@@ -54,15 +44,6 @@ public class GameOver implements GameState {
     Person clickedPerson = context.getPerson(rectangleId);
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.playSound("Thief" + context.getPersonToGuess().getName());
-    if (clickedPerson.getIsThief()) {
-      roomController.appendChatMessage(
-          new ChatMessage(
-              "Narrator", "Game is over, " + clickedPerson.getName() + " is the thief"));
-    } else {
-      roomController.appendChatMessage(
-          new ChatMessage(
-              "Narrator", "Game is over, " + clickedPerson.getName() + " is not the thief"));
-    }
   }
 
   /**
@@ -74,6 +55,17 @@ public class GameOver implements GameState {
   @Override
   public void handleGuessClick() throws IOException {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.appendChatMessage(new ChatMessage("Narrator", "GAME IS OVER"));
+  }
+
+  /** Does nothing as the game is over and no further actions can be taken. */
+  @Override
+  public void startTimer() {
+    // Do nothing
+  }
+
+  /** Does nothing as the game is over and no further actions can be taken. */
+  @Override
+  public void stopTimer() {
+    // Do nothing
   }
 }

@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -53,8 +52,6 @@
          </font>
       </Label>
       <TextArea fx:id="txtaChat" editable="false" layoutX="825.0" layoutY="67.0" prefHeight="468.0" prefWidth="334.0" wrapText="true" />
-      <TextField fx:id="txtInput" layoutX="827.0" layoutY="548.0" prefHeight="26.0" prefWidth="276.0" />
-      <Button fx:id="btnSend" layoutX="1116.0" layoutY="549.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
       <Label fx:id="timerLabel" layoutX="325.0" layoutY="98.0" text="YOU HAVE {} Seconds left" />
       <Button fx:id="btnJimmy" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="btnGrandma" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />

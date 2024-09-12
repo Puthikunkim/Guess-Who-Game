@@ -1,8 +1,10 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -15,6 +17,9 @@ import nz.ac.auckland.se206.controllers.RoomController;
 public class GameStarted implements GameState {
 
   private final GameStateContext context;
+
+  private Timer timer; // Timer for the current state
+  private int timeRemaining;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
@@ -29,11 +34,54 @@ public class GameStarted implements GameState {
   @Override
   public void onSwitchTo() {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.getTimerLabel().setText("SECONDS REMAINING : " + 120);
-    roomController.startTimer();
-    context.playSound("Intro");
-    roomController.appendChatMessage(
-        new ChatMessage("Narrator", "2 minutes to find the thief who stole your diamonds"));
+  }
+
+  /** Starts the timer for the game. */
+  @Override
+  public void startTimer() {
+    timeRemaining = 121; // 2 minutes in seconds
+    timer = new Timer(); // Create a new timer
+    // Schedule a task to run every second
+    timer.scheduleAtFixedRate(
+        new TimerTask() {
+          @Override
+          public void run() {
+            Platform.runLater(
+                () -> {
+                  if (timeRemaining >= 0) {
+                    updateTimerDisplay(); // Update the timer UI
+                    timeRemaining--; // Decrement the time remaining
+                  } else { // If the time is up
+                    timer.cancel(); // Cancel the timer
+                    timerExpired(); // Handle the timer expiration
+                  }
+                }); // Run the task on the JavaFX application thread
+          }
+        },
+        0,
+        1000); // Run every second
+  }
+
+  /** Stops the timer for the current game state. */
+  @Override
+  public void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+    }
+  }
+
+  /** Updates the timer UI to show the time remaining in the game. */
+  private void updateTimerDisplay() {
+    // Convert the time remaining to minutes and seconds
+    int minutes = timeRemaining / 60;
+    int seconds = timeRemaining % 60;
+    String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
+    SceneManager.checkTimer(timeString); // Update the timer UI
+  }
+
+  /** Handles the event when the timer expires. Transitions to the guessing state. */
+  private void timerExpired() {
+    context.setState(context.getGuessingState());
   }
 
   /**
@@ -54,7 +102,6 @@ public class GameStarted implements GameState {
     }
 
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.setPerson(context.getPerson(rectangleId));
     context.setTalkedToPeople(true);
   }
 
@@ -67,18 +114,6 @@ public class GameStarted implements GameState {
   @Override
   public void handleGuessClick() throws IOException {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    if (!context.getChestChecked()) {
-      context.playSound("NoEvidence");
-      roomController.appendChatMessage(
-          new ChatMessage("Narrator", "Please find evidence before guessing someone"));
-      return;
-    } else if (!context.getTalkedToPeople()) {
-      context.playSound("HaventTalked");
-      roomController.appendChatMessage(
-          new ChatMessage("Narrator", "Please talk to the suspect/s before guessing"));
-      return;
-    }
-
     context.setState(context.getGuessingState());
   }
 }

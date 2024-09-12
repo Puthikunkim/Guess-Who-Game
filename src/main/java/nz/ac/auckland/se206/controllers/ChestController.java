@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -64,8 +63,6 @@ public class ChestController extends Controller {
 
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.playSound("Chest" + context.getPersonToGuess().getName());
-    roomController.appendChatMessage(
-        new ChatMessage("Narrator", context.getPersonToGuess().getChestMessage()));
     context.setChestChecked(true);
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }

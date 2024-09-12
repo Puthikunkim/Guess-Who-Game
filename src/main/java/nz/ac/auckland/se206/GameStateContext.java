@@ -40,6 +40,7 @@ public class GameStateContext {
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
     gameState = gameStartedState; // Initial state
+    gameState.startTimer(); // Start the timer for the initial state
 
     // Randomly chose thief out of the 3 possible
     Random random = new Random();
@@ -137,7 +138,9 @@ public class GameStateContext {
    * @param state the new state to set
    */
   public void setState(GameState state) {
+    gameState.stopTimer(); // Stop the timer for the current state
     this.gameState = state;
+    gameState.startTimer(); // Start the timer for the new state
     gameState.onSwitchTo();
   }
 

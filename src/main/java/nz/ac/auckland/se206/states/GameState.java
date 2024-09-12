@@ -26,4 +26,10 @@ public interface GameState {
    * @throws IOException if there is an I/O error
    */
   void handleGuessClick() throws IOException;
+
+  /** Starts the timer for the game state. */
+  void startTimer();
+
+  /** Stops the timer for the game state. */
+  void stopTimer();
 }

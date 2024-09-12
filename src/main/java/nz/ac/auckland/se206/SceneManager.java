@@ -7,7 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.BusinessmanController;
 import nz.ac.auckland.se206.controllers.Controller;
+import nz.ac.auckland.se206.controllers.GrandmaController;
+import nz.ac.auckland.se206.controllers.JimmyController;
+import nz.ac.auckland.se206.controllers.RoomController;
 
 public class SceneManager {
 
@@ -111,5 +115,18 @@ public class SceneManager {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  // timer
+  public static void checkTimer(String timeString) {
+    RoomController roomController = (RoomController) getController(AppUi.MAIN_ROOM);
+    JimmyController jimmyController = (JimmyController) getController(AppUi.JIMMY_ROOM);
+    GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
+    BusinessmanController businessmanController =
+        (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+    roomController.updateTimer(timeString);
+    jimmyController.updateTimer(timeString);
+    grandmaController.updateTimer(timeString);
+    businessmanController.updateTimer(timeString);
   }
 }
