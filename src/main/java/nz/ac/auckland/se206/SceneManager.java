@@ -19,7 +19,8 @@ public class SceneManager {
     CHEST_ROOM,
     JIMMY_ROOM,
     GRANDMA_ROOM,
-    BUSINESSMAN_ROOM
+    BUSINESSMAN_ROOM,
+    GUESSING_ROOM
   }
 
   private static Scene scene;
@@ -47,6 +48,9 @@ public class SceneManager {
     SceneManager.addUi(AppUi.JIMMY_ROOM, "jimmy");
     SceneManager.addUi(AppUi.GRANDMA_ROOM, "grandma");
     SceneManager.addUi(AppUi.BUSINESSMAN_ROOM, "businessman");
+
+    // guessing-room
+    SceneManager.addUi(AppUi.GUESSING_ROOM, "guessing");
 
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);

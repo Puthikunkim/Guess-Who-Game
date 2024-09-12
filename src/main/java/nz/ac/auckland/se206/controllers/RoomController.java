@@ -173,6 +173,10 @@ public class RoomController extends Controller {
    */
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
+    GuessingController guessingController =
+        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
+    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
+    guessingController.startChat();
     context.handleGuessClick();
   }
 
