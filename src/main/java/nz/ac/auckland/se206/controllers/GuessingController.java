@@ -50,15 +50,27 @@ public class GuessingController extends Controller {
   }
 
   public void makeGuessBusinessman() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
     guessAccuracy = true;
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
   }
 
   public void makeGuessGrandma() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
     guessAccuracy = false;
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
   }
 
   public void makeGuessJimmy() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
     guessAccuracy = false;
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
   }
 
   /**
