@@ -110,7 +110,7 @@ public class GuessingController extends Controller {
     // Append the assistant chat message to the relevant chat area for the suspect with the name of
     // the suspect.
     if (msg.getRole().equals("assistant")) {
-      txtaChat1.appendText("Guess" + ": " + msg.getContent() + "\n\n");
+      txtaChat1.appendText("Game" + ": " + msg.getContent() + "\n\n");
     }
   }
 

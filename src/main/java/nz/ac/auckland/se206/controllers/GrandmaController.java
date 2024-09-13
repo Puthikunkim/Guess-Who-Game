@@ -17,6 +17,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
@@ -26,6 +27,8 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  * chat with customers and guess their profession.
  */
 public class GrandmaController extends Controller {
+
+  private static GameStateContext context = new GameStateContext();
 
   private ChatCompletionRequest
       chatCompletionRequestGrandma; // Chat completion requests for each suspect
@@ -226,5 +229,20 @@ public class GrandmaController extends Controller {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
+  }
+
+  /**
+   * Handles the guess button click event.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void handleGuessClick(ActionEvent event) throws IOException {
+    GuessingController guessingController =
+        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
+    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
+    guessingController.startChat();
+    context.handleGuessClick();
   }
 }
