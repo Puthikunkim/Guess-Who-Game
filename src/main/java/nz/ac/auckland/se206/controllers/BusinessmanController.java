@@ -33,12 +33,13 @@ public class BusinessmanController extends Controller {
   private ChatCompletionRequest
       chatCompletionRequestBusinessman; // Chat completion requests for each suspect
   private boolean businessmanStarted = false;
-  private boolean businessmanChatted = false;
+  public static boolean businessmanChatted = false;
 
   @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
+  @FXML private Button btnMakeGuess;
 
   @FXML private Label lblResponse;
 
@@ -55,12 +56,18 @@ public class BusinessmanController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
+    btnMakeGuess.setDisable(true);
   }
 
   /** when switched to disable button */
   @Override
   public void onSwitchTo() {
     btnBusinessman.setDisable(true);
+    if (BusinessmanController.businessmanChatted == true
+        && GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true) {
+      btnMakeGuess.setDisable(false);
+    }
   }
 
   /**
@@ -230,6 +237,11 @@ public class BusinessmanController extends Controller {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
+    if (BusinessmanController.businessmanChatted == true
+        && GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true) {
+      btnMakeGuess.setDisable(false);
+    }
   }
 
   /**

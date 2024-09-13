@@ -69,6 +69,12 @@ public class RoomController extends Controller {
       context.setState(context.getGameStartedState());
     }
     btnCrimeScene.setDisable(true);
+    btnGuess.setDisable(true);
+    if (BusinessmanController.businessmanChatted == true
+        && GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true) {
+      btnGuess.setDisable(false);
+    }
   }
 
   /** Starts 120 Timer for investigation, goes from 0 to -10 for guessing time */

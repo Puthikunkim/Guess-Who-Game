@@ -47,6 +47,7 @@ public class GuessingController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
+    btnSend.setDisable(true);
   }
 
   public void makeGuessBusinessman() {
@@ -55,6 +56,7 @@ public class GuessingController extends Controller {
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
   public void makeGuessGrandma() {
@@ -63,6 +65,7 @@ public class GuessingController extends Controller {
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
   public void makeGuessJimmy() {
@@ -71,6 +74,7 @@ public class GuessingController extends Controller {
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
   /**
