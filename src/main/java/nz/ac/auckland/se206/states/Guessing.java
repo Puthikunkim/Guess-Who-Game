@@ -44,7 +44,7 @@ public class Guessing implements GameState {
   /** Starts the timer for the game state. */
   @Override
   public void startTimer() {
-    timeRemaining = 10; // 10 seconds
+    timeRemaining = 60; // 10 seconds
     timer = new Timer(); // Create a new timer
     // Schedule a task to run every second
     timer.scheduleAtFixedRate(

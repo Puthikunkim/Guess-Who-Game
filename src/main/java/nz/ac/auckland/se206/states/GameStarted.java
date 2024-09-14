@@ -39,7 +39,7 @@ public class GameStarted implements GameState {
   /** Starts the timer for the game. */
   @Override
   public void startTimer() {
-    timeRemaining = 121; // 2 minutes in seconds
+    timeRemaining = 300; // 2 minutes in seconds
     timer = new Timer(); // Create a new timer
     // Schedule a task to run every second
     timer.scheduleAtFixedRate(
