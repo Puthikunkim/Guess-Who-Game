@@ -31,5 +31,6 @@
          </font>
       </Label>
       <Button fx:id="btnGrandma" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Label fx:id="timerLabel" layoutX="335.0" layoutY="108.0" text="YOU HAVE {} Seconds left" />
    </children>
 </Pane>

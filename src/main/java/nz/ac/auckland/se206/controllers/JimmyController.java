@@ -38,6 +38,7 @@ public class JimmyController extends Controller {
   @FXML private Button btnBusinessman;
 
   @FXML private Label lblResponse;
+  @FXML private Label timerLabel; //
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
@@ -52,12 +53,23 @@ public class JimmyController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
+    startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
+                 // time
   }
 
   /** when switched to disable button */
   @Override
   public void onSwitchTo() {
     btnJimmy.setDisable(true);
+  }
+
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText("Time Remaining: " + timeString);
   }
 
   /**
