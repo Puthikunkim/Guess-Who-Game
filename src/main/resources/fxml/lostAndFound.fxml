@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LostAndFoundController">
+   <children>
+      <ImageView fx:id="cufflink" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="109.0" onMousePressed="#onCufflinkClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Cufflink.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="thingToDrag" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="126.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/ThingToDrag.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
