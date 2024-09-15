@@ -48,6 +48,7 @@ public class BusinessmanController extends Controller {
   @FXML private Button btnSend;
 
   private boolean canSwitch = true; // Boolean to track if the user can switch suspects
+  private boolean canGuess = false;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -67,6 +68,7 @@ public class BusinessmanController extends Controller {
         && GrandmaController.grandmaChatted == true
         && JimmyController.jimmyChatted == true) {
       btnMakeGuess.setDisable(false);
+      canGuess = true;
     }
   }
 
@@ -173,7 +175,7 @@ public class BusinessmanController extends Controller {
     lblResponse.setVisible(true);
     lblResponse.setText("Mr. Harrison is responding...");
     canSwitch = false;
-    enableButtons(canSwitch);
+    enableButtons(canSwitch, canGuess);
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -193,7 +195,7 @@ public class BusinessmanController extends Controller {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
                     canSwitch = true;
-                    enableButtons(canSwitch);
+                    enableButtons(canSwitch, canGuess);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -210,11 +212,14 @@ public class BusinessmanController extends Controller {
     return null;
   }
 
-  private void enableButtons(boolean enable) {
+  private void enableButtons(boolean enable, boolean canGuess) {
     btnCrimeScene.setDisable(!enable);
     btnGrandma.setDisable(!enable);
     btnJimmy.setDisable(!enable);
     btnSend.setDisable(!enable);
+    if (canGuess == true) {
+      btnMakeGuess.setDisable(!enable);
+    }
   }
 
   /**
@@ -232,16 +237,17 @@ public class BusinessmanController extends Controller {
     }
     txtInput.clear();
     businessmanChatted = true;
+    if (BusinessmanController.businessmanChatted == true
+        && GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true) {
+      btnMakeGuess.setDisable(false);
+      canGuess = true;
+    }
     // Create a ChatMessage object with the user's message, append it to the chat area and get a
     // response from the GPT model
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
-      btnMakeGuess.setDisable(false);
-    }
   }
 
   /**
