@@ -17,39 +17,28 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
-public class GrandmaController extends Controller {
-
-  private static GameStateContext context = new GameStateContext();
+public class GuessingController extends Controller {
 
   private ChatCompletionRequest
-      chatCompletionRequestGrandma; // Chat completion requests for each suspect
-  private boolean grandmaStarted = false;
-  public static boolean grandmaChatted = false;
+      chatCompletionRequestGuessing; // Chat completion requests for each suspect
+  private boolean guessingStarted = false;
+  private boolean guessAccuracy = false;
 
-  @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
-  @FXML private Button btnMakeGuess;
 
   @FXML private Label lblResponse;
-  @FXML private Label timerLabel; //
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
-
-  private boolean canSwitch = true; // Boolean to track if the user can switch suspects
-  private boolean canGuess = false;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -58,69 +47,34 @@ public class GrandmaController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
-    btnMakeGuess.setDisable(true);
-    startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
-                 // time
+    btnSend.setDisable(true);
   }
 
-  /** when switched to disable button */
-  @Override
-  public void onSwitchTo() {
+  public void makeGuessBusinessman() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
+    guessAccuracy = true;
+    btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
-      btnMakeGuess.setDisable(false);
-      canGuess = true;
-    }
+    btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    timerLabel.setText("Time Remaining: " + timeString);
+  public void makeGuessGrandma() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
+    guessAccuracy = false;
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
-  /**
-   * Handles the switch button click event to jimmy's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleCrimeSceneClick(ActionEvent event) throws IOException {
-    SceneManager.switchRoot(AppUi.MAIN_ROOM);
-  }
-
-  /**
-   * Handles the switch button click event to jimmy's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleJimmyClick(ActionEvent event) throws IOException {
-    JimmyController jimmyController =
-        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
-    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
-    jimmyController.startChat();
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleBusinessmanClick(ActionEvent event) throws IOException {
-    BusinessmanController businessmanController =
-        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
-    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
-    businessmanController.startChat();
+  public void makeGuessJimmy() {
+    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
+    guessAccuracy = false;
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
+    btnSend.setDisable(false);
   }
 
   /**
@@ -131,7 +85,7 @@ public class GrandmaController extends Controller {
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("profession", "not thief");
-    return PromptEngineering.getPrompt("grandma.txt", map);
+    return PromptEngineering.getPrompt("guessing.txt", map);
   }
 
   /**
@@ -140,17 +94,17 @@ public class GrandmaController extends Controller {
    * @param profession the profession to set
    */
   public void startChat() {
-    if (!grandmaStarted) {
+    if (!guessingStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
-        chatCompletionRequestGrandma =
+        chatCompletionRequestGuessing =
             new ChatCompletionRequest(config)
                 .setN(1)
                 .setTemperature(0.2)
                 .setTopP(0.5)
                 .setMaxTokens(100);
         runGpt(new ChatMessage("system", getSystemPrompt()));
-        grandmaStarted = true;
+        guessingStarted = true;
       } catch (ApiProxyException e) {
         e.printStackTrace();
       }
@@ -172,7 +126,7 @@ public class GrandmaController extends Controller {
     // Append the assistant chat message to the relevant chat area for the suspect with the name of
     // the suspect.
     if (msg.getRole().equals("assistant")) {
-      txtaChat1.appendText("Grandma" + ": " + msg.getContent() + "\n\n");
+      txtaChat1.appendText("Game" + ": " + msg.getContent() + "\n\n");
     }
   }
 
@@ -185,28 +139,24 @@ public class GrandmaController extends Controller {
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     lblResponse.setVisible(true);
-    lblResponse.setText("Granny Smith is responding...");
-    canSwitch = false;
-    enableButtons(canSwitch, canGuess);
+    lblResponse.setText("Please wait...");
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            chatCompletionRequestGrandma.addMessage(msg);
+            chatCompletionRequestGuessing.addMessage(msg);
             try {
-              ChatCompletionResult chatCompletionResult = chatCompletionRequestGrandma.execute();
+              ChatCompletionResult chatCompletionResult = chatCompletionRequestGuessing.execute();
               Choice result = chatCompletionResult.getChoices().iterator().next();
-              chatCompletionRequestGrandma.addMessage(result.getChatMessage());
+              chatCompletionRequestGuessing.addMessage(result.getChatMessage());
 
               // Update the UI on the JavaFX Application Thread
               Platform.runLater(
                   () -> {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
-                    canSwitch = true;
-                    enableButtons(canSwitch, canGuess);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -223,16 +173,6 @@ public class GrandmaController extends Controller {
     return null;
   }
 
-  private void enableButtons(boolean enable, boolean canGuess) {
-    btnCrimeScene.setDisable(!enable);
-    btnJimmy.setDisable(!enable);
-    btnBusinessman.setDisable(!enable);
-    btnSend.setDisable(!enable);
-    if (canGuess) {
-      btnMakeGuess.setDisable(!enable);
-    }
-  }
-
   /**
    * Sends a message to the GPT model.
    *
@@ -243,36 +183,14 @@ public class GrandmaController extends Controller {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
-    if (message.isEmpty() || !canSwitch) {
+    if (message.isEmpty()) {
       return;
     }
     txtInput.clear();
-    grandmaChatted = true;
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
-      btnMakeGuess.setDisable(false);
-      canGuess = true;
-    }
     // Create a ChatMessage object with the user's message, append it to the chat area and get a
     // response from the GPT model
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
-  }
-
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    GuessingController guessingController =
-        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
-    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
-    guessingController.startChat();
-    context.handleGuessClick();
   }
 }

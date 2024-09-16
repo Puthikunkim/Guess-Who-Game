@@ -40,6 +40,12 @@ public class RoomController extends Controller {
   @Override
   public void onSwitchTo() {
     btnCrimeScene.setDisable(true);
+    btnGuess.setDisable(true);
+    if (BusinessmanController.businessmanChatted == true
+        && GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true) {
+      btnGuess.setDisable(false);
+    }
   }
 
   /**
@@ -115,6 +121,10 @@ public class RoomController extends Controller {
    */
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
+    GuessingController guessingController =
+        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
+    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
+    guessingController.startChat();
     context.handleGuessClick();
   }
 

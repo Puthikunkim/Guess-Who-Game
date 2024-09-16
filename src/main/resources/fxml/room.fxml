@@ -40,7 +40,7 @@
             <Font size="38.0" />
          </font>
       </Label>
-      <Button fx:id="btnGuess" layoutX="525.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make a Guess" />
+      <Button fx:id="btnGuess" layoutX="525.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
       <Label layoutX="84.0" layoutY="67.0" prefHeight="31.0" prefWidth="618.0" text="Chat with the three villagers, and guess who is the diamond thief ">
          <font>
             <Font size="21.0" />
