@@ -63,7 +63,7 @@ public class SceneManager {
     SceneManager.addUi(AppUi.RECEIPT_ROOM, "receipt");
 
     // Set initial room to MainMenu.fxml
-    Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);
+    Parent mainRoom = SceneManager.getRoot(AppUi.RECEIPT_ROOM);
     scene = new Scene(mainRoom);
     stage.setScene(scene);
     stage.show();
