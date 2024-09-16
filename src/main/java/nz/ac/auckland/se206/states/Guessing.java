@@ -1,8 +1,10 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.Person;
 import nz.ac.auckland.se206.SceneManager;
@@ -16,6 +18,9 @@ import nz.ac.auckland.se206.controllers.RoomController;
 public class Guessing implements GameState {
 
   private final GameStateContext context;
+
+  private Timer timer; // Timer for the current state
+  private int timeRemaining;
 
   /**
    * Constructs a new Guessing state with the given game state context.
@@ -33,13 +38,58 @@ public class Guessing implements GameState {
   @Override
   public void onSwitchTo() {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.guessingMode();
-    roomController.getTimerLabel().setText("GUESSING TIME LEFT : " + 10);
-    roomController.setInvestigatingTime(0);
-    roomController.appendChatMessage(
-        new ChatMessage("Narrator", "10 Seconds to Guesssss The Thieeef"));
-    context.playSound("10SecondsToGuess");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
+  }
+
+  /** Starts the timer for the game state. */
+  @Override
+  public void startTimer() {
+    timeRemaining = 60; // 10 seconds
+    timer = new Timer(); // Create a new timer
+    // Schedule a task to run every second
+    timer.scheduleAtFixedRate(
+        new TimerTask() {
+          @Override
+          public void run() {
+            Platform.runLater(
+                () -> {
+                  if (timeRemaining >= 0) {
+                    updateTimerDisplay(); // Update the timer UI
+                    timeRemaining--; // Decrement the time remaining
+                  } else {
+                    timer.cancel(); // Stop the timer
+                    timerExpired(); // Handle the timer expiration
+                  }
+                }); // Run the task on the JavaFX aaplication thread
+          }
+        },
+        0,
+        1000); // Run every second
+  }
+
+  /** Stops the timer for the game state. */
+  @Override
+  public void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+    }
+  }
+
+  /** Updates the timer UI to show the time remaining for the player to make a guess. */
+  private void updateTimerDisplay() {
+    // Convert the time remaining to minutes and seconds
+    int minutes = timeRemaining / 60;
+    int seconds = timeRemaining % 60;
+    String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
+    SceneManager.checkTimer(timeString); // Update the timer UI
+  }
+
+  /**
+   * Handles the event when the timer expires. Notifies the player that the time is up and the game
+   * is over and transitions to the game over state.
+   */
+  private void timerExpired() {
+    context.setState(context.getGameOverState());
   }
 
   /**
@@ -54,26 +104,8 @@ public class Guessing implements GameState {
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
 
-    // Cannot accuse the chest
-    if (rectangleId.equals("rectChest")) {
-      roomController.appendChatMessage(
-          new ChatMessage("Narrator", "Please accuse one of the people not the chest"));
-      return;
-    }
-
     // Checks if player guessed correctly, displays appropiate message
     Person clickedPerson = context.getPerson(rectangleId);
-    if (clickedPerson.getIsThief()) {
-      context.playSound("Correct" + clickedPerson.getName());
-      roomController.appendChatMessage(
-          new ChatMessage(
-              "Narrator", "Correct! You won! " + clickedPerson.getName() + " is the thief"));
-    } else {
-      context.playSound("Incorrect" + clickedPerson.getName());
-      roomController.appendChatMessage(
-          new ChatMessage(
-              "Narrator", "You lost! " + clickedPerson.getName() + " is not the thief"));
-    }
     context.setGuessed(true);
     context.setState(context.getGameOverState());
   }
@@ -87,6 +119,5 @@ public class Guessing implements GameState {
   @Override
   public void handleGuessClick() throws IOException {
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    roomController.appendChatMessage(new ChatMessage("Narrator", "You are already guessing"));
   }
 }

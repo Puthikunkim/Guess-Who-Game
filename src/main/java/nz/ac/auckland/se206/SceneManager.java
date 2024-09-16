@@ -7,7 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.BusinessmanController;
 import nz.ac.auckland.se206.controllers.Controller;
+import nz.ac.auckland.se206.controllers.GrandmaController;
+import nz.ac.auckland.se206.controllers.JimmyController;
+import nz.ac.auckland.se206.controllers.RoomController;
 
 public class SceneManager {
 
@@ -20,7 +24,10 @@ public class SceneManager {
     JIMMY_ROOM,
     GRANDMA_ROOM,
     BUSINESSMAN_ROOM,
-    GUESSING_ROOM
+    GUESSING_ROOM,
+    SECURITY_CAMERA_ROOM,
+    LOST_FOUND_ROOM,
+    RECEIPT_ROOM,
   }
 
   private static Scene scene;
@@ -51,6 +58,9 @@ public class SceneManager {
 
     // guessing-room
     SceneManager.addUi(AppUi.GUESSING_ROOM, "guessing");
+    SceneManager.addUi(AppUi.SECURITY_CAMERA_ROOM, "securityCamera");
+    SceneManager.addUi(AppUi.LOST_FOUND_ROOM, "lostAndFound");
+    SceneManager.addUi(AppUi.RECEIPT_ROOM, "receipt");
 
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);
@@ -115,5 +125,18 @@ public class SceneManager {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  // timer
+  public static void checkTimer(String timeString) {
+    RoomController roomController = (RoomController) getController(AppUi.MAIN_ROOM);
+    JimmyController jimmyController = (JimmyController) getController(AppUi.JIMMY_ROOM);
+    GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
+    BusinessmanController businessmanController =
+        (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+    roomController.updateTimer(timeString);
+    jimmyController.updateTimer(timeString);
+    grandmaController.updateTimer(timeString);
+    businessmanController.updateTimer(timeString);
   }
 }

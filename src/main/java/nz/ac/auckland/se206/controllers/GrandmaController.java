@@ -42,6 +42,7 @@ public class GrandmaController extends Controller {
   @FXML private Button btnMakeGuess;
 
   @FXML private Label lblResponse;
+  @FXML private Label timerLabel; //
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
@@ -58,6 +59,8 @@ public class GrandmaController extends Controller {
   public void initialize() {
     lblResponse.setVisible(false);
     btnMakeGuess.setDisable(true);
+    startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
+                 // time
   }
 
   /** when switched to disable button */
@@ -70,6 +73,15 @@ public class GrandmaController extends Controller {
       btnMakeGuess.setDisable(false);
       canGuess = true;
     }
+  }
+
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText("Time Remaining: " + timeString);
   }
 
   /**

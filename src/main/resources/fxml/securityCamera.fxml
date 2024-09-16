@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SecurityCameraController">
+   <children>
+      <Button fx:id="Time18" layoutX="36.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="18:00" />
+      <Button fx:id="Time19" layoutX="95.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="19:00" />
+      <Button fx:id="Time20" layoutX="155.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="20:00" />
+      <Button fx:id="Time21" layoutX="216.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="21:00" />
+      <Button fx:id="Time22" layoutX="274.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="22:00" />
+      <Button fx:id="Time23" layoutX="335.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="23:00" />
+      <Button fx:id="Time00" layoutX="397.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="00:00" />
+      <Button fx:id="Time01" layoutX="457.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="01:00" />
+      <Button fx:id="Time02" layoutX="519.0" layoutY="333.0" mnemonicParsing="false" onAction="#onDuringTimeClick" text="02:00" />
+      <Button fx:id="Time03" layoutX="214.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="03:00" />
+      <Button fx:id="Time04" layoutX="273.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="04:00" />
+      <Button fx:id="Time05" layoutX="333.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="05:00" />
+      <Text layoutX="247.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Should Not See This" />
+      <ImageView fx:id="cameraDisplayImage" fitHeight="240.0" fitWidth="390.0" layoutX="105.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/BeforeTheftCamera.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -32,5 +32,6 @@
       </Label>
       <Button fx:id="btnJimmy" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="btnMakeGuess" layoutX="526.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <Label fx:id="timerLabel" layoutX="301.0" layoutY="97.0" text="YOU HAVE {} Seconds left" />
    </children>
 </Pane>
