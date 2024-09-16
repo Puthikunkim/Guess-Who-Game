@@ -23,7 +23,10 @@ public class SceneManager {
     CHEST_ROOM,
     JIMMY_ROOM,
     GRANDMA_ROOM,
-    BUSINESSMAN_ROOM
+    BUSINESSMAN_ROOM,
+    SECURITY_CAMERA_ROOM,
+    LOST_FOUND_ROOM,
+    RECEIPT_ROOM,
   }
 
   private static Scene scene;
@@ -52,6 +55,10 @@ public class SceneManager {
     SceneManager.addUi(AppUi.GRANDMA_ROOM, "grandma");
     SceneManager.addUi(AppUi.BUSINESSMAN_ROOM, "businessman");
 
+    // Clues
+    SceneManager.addUi(AppUi.SECURITY_CAMERA_ROOM, "securityCamera");
+    SceneManager.addUi(AppUi.LOST_FOUND_ROOM, "lostAndFound");
+    SceneManager.addUi(AppUi.RECEIPT_ROOM, "receipt");
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);
     scene = new Scene(mainRoom);
