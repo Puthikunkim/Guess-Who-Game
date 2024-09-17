@@ -61,6 +61,21 @@ public class JimmyController extends Controller {
     btnMakeGuess.setDisable(true);
     startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
     // time
+    // Add event handler for pressing Enter in txtInput
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              try {
+                onSendMessage(new ActionEvent()); // Trigger the send message method
+              } catch (ApiProxyException | IOException e) {
+                e.printStackTrace();
+              }
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   /** when switched to disable button */
@@ -93,6 +108,7 @@ public class JimmyController extends Controller {
   @FXML
   private void handleCrimeSceneClick(ActionEvent event) throws IOException {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
+    txtaChat1.clear();
   }
 
   /**
@@ -107,6 +123,7 @@ public class JimmyController extends Controller {
         (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
     SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
     grandmaController.startChat();
+    txtaChat1.clear();
   }
 
   /**
@@ -121,6 +138,7 @@ public class JimmyController extends Controller {
         (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
     SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
     businessmanController.startChat();
+    txtaChat1.clear();
   }
 
   /**

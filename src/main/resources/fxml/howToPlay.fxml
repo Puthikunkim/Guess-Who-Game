@@ -9,29 +9,44 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="600.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HowToPlayController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="206.0" layoutY="398.0" stroke="WHITE" strokeType="INSIDE" width="188.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="193.0" layoutX="7.0" layoutY="187.0" stroke="WHITE" strokeType="INSIDE" width="600.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="141.0" layoutY="91.0" stroke="WHITE" strokeType="INSIDE" width="346.0" />
-      <Text fill="WHITE" layoutX="156.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" wrappingWidth="321.13671875">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="193.0" layoutX="20.0" layoutY="186.0" stroke="WHITE" strokeType="INSIDE" width="557.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="134.0" layoutY="90.0" stroke="WHITE" strokeType="INSIDE" width="346.0" />
+      <Text fill="WHITE" layoutX="149.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" wrappingWidth="321.13671875">
          <font>
             <Font name="System Bold" size="53.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="127.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interact with objects and people by clicking on them">
+      <Text fill="WHITE" layoutX="159.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Interact with objects by clicking on them">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="7.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Once you have clicked on a person communicate with them using the text box in the bottom right">
+      <Text fill="WHITE" layoutX="149.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Navigate through the game using the menu">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="139.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have 5 minutes to figure out who the thief is">
+      <Text fill="WHITE" layoutX="132.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You have 5 minutes to figure out who the thief is">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="31.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="after the 5 minutes you have 10 seconds to guess. click on who you think the thief is">
+      <Text fill="WHITE" layoutX="111.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You must chat will all 3 suspects and find at least 1 clue">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
       <Button fx:id="continueButton" layoutX="224.0" layoutY="410.0" mnemonicParsing="false" onAction="#onContinuePressed" prefHeight="59.0" prefWidth="150.0" text="Press to continue" />
+      <Text fill="WHITE" layoutX="170.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Figure out who the thief of the vase is">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="237.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Setting: Museum">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="42.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You will then have 1 minute to guess who the thief is and explain your guess">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
