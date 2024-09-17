@@ -68,6 +68,7 @@ public class SceneManager {
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();
+    switchRoot(AppUi.RECEIPT_ROOM);
   }
 
   /**
