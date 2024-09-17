@@ -60,7 +60,7 @@ public class JimmyController extends Controller {
     lblResponse.setVisible(false);
     btnMakeGuess.setDisable(true);
     startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
-                 // time
+    // time
   }
 
   /** when switched to disable button */
@@ -81,7 +81,7 @@ public class JimmyController extends Controller {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
-    timerLabel.setText("Time Remaining: " + timeString);
+    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
   /**

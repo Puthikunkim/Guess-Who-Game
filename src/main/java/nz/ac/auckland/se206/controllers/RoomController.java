@@ -54,7 +54,7 @@ public class RoomController extends Controller {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
-    timerLabel.setText("Time Remaining: " + timeString);
+    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
   /**

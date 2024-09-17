@@ -4,34 +4,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BusinessmanController">
+<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BusinessmanController">
    <children>
-      <Label layoutX="316.0" layoutY="42.0" text="Businessman">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblProfession" layoutX="848.0" layoutY="23.0" prefHeight="37.0" prefWidth="289.0" wrapText="true">
+      <Label fx:id="lblProfession" layoutX="781.0" layoutY="123.0" prefHeight="37.0" prefWidth="289.0" wrapText="true">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtaChat1" editable="false" layoutX="825.0" layoutY="67.0" prefHeight="468.0" prefWidth="334.0" wrapText="true" />
-      <TextField fx:id="txtInput" layoutX="827.0" layoutY="548.0" prefHeight="26.0" prefWidth="276.0" />
-      <Button fx:id="btnSend" layoutX="1116.0" layoutY="549.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
-      <Button fx:id="btnCrimeScene" layoutX="25.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
-      <Button fx:id="btnJimmy" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnGrandma" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
-      <Label fx:id="lblResponse" layoutX="634.0" layoutY="451.0" prefHeight="16.0" prefWidth="168.0" wrapText="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <TextArea fx:id="txtaChat1" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
+      <TextField fx:id="txtInput" layoutX="617.0" layoutY="523.0" prefHeight="63.0" prefWidth="242.0" />
+      <Button fx:id="btnSend" layoutX="865.0" layoutY="536.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="37.0" prefWidth="119.0" text="Send" />
+      <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
+      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="btnBusinessman" layoutX="400.0" layoutY="540.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
-      <Button fx:id="btnMakeGuess" layoutX="526.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
-      <Label fx:id="timerLabel" layoutX="335.0" layoutY="108.0" text="YOU HAVE {} Seconds left" />
+      <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnMakeGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <ImageView fitHeight="636.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/businessman_room.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblProfession1" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblProfession11" layoutX="897.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Ellipse layoutX="161.0" layoutY="575.0" opacity="0.36" radiusX="161.0" radiusY="295.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="413.0" fitWidth="323.0" layoutX="-6.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/businessman.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
