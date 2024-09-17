@@ -31,7 +31,6 @@ public class ReceiptController extends Controller {
   private ImageView dragTarget;
   private double dragStartMouseX = 0;
   private double dragStartMouseY = 0;
-  private boolean puzzleSolved = false;
 
   @FXML
   public void initialize() {
@@ -91,10 +90,7 @@ public class ReceiptController extends Controller {
     // Check if each element in a row is next to each other
     for (int i = 0; i < 2; i++) {
       for (int j = 0; j < 2; j++) {
-        // System.out.println(receiptPieces[i][j].getId() + ":" + receiptPieces[i][j].getLayoutX());
         if (!checkHorizontal(receiptPieces[i][j], receiptPieces[i][j + 1])) {
-          // System.out.println(receiptPieces[i][j].getId() + ":" + receiptPieces[i][j].getX());
-          System.out.println(receiptPieces[i][j].getId() + " NOT IN HORIZONTAL POSITION");
           return;
         }
       }
@@ -102,7 +98,6 @@ public class ReceiptController extends Controller {
 
     for (int i = 0; i < 3; i++) {
       if (!checkVertical(receiptPieces[0][i], receiptPieces[1][i])) {
-        System.out.println(receiptPieces[0][i].getId() + " NOT IN VERTICAL POSITION");
         return;
       }
     }
@@ -151,7 +146,6 @@ public class ReceiptController extends Controller {
   }
 
   private void onPuzzleSolve() {
-    System.out.println("SOLVED");
     for (int i = 0; i < 2; i++) {
       for (int j = 0; j < 3; j++) {
         receiptPieces[i][j].setDisable(true);
