@@ -5,14 +5,43 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ReceiptController">
    <children>
-      <ImageView fx:id="receiptImageView" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="flipButton" disable="true" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#onFlip" opacity="0.0" text="Flip" />
+      <ImageView fx:id="receiptImageView" fitHeight="223.0" fitWidth="365.0" layoutX="141.0" layoutY="54.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/ReceiptFront.png" />
          </image>
       </ImageView>
-      <Button fx:id="FlipButton" layoutX="274.0" layoutY="276.0" mnemonicParsing="false" onAction="#onFlip" text="Flip" />
+      <ImageView fx:id="receiptPiece1x1" fitHeight="111.5" fitWidth="121.667" layoutY="33.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt1x1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="receiptPiece2x1" fitHeight="111.5" fitWidth="200.0" layoutX="229.0" layoutY="25.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt2x1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="receiptPiece3x1" fitHeight="111.5" fitWidth="200.0" layoutX="456.0" layoutY="8.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt3x1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="receiptPiece1x2" fitHeight="111.5" fitWidth="200.0" layoutX="29.0" layoutY="200.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt1x2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="receiptPiece2x2" fitHeight="111.5" fitWidth="200.0" layoutX="284.0" layoutY="200.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt2x2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="receiptPiece3x2" fitHeight="111.5" fitWidth="200.0" layoutX="474.0" layoutY="244.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt_pieces/receipt3x2.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
