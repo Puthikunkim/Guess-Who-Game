@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,8 @@ public class ReceiptController extends Controller {
   @FXML private ImageView receiptPiece3x2;
 
   @FXML private ImageView[][] receiptPieces;
+
+  @FXML private Button flipButton;
 
   private Image frontReceipt = new Image("images/ReceiptFront.png");
   private Image backReceipt = new Image("images/ReceiptBack.png");
@@ -37,21 +40,6 @@ public class ReceiptController extends Controller {
       {receiptPiece1x2, receiptPiece2x2, receiptPiece3x2},
     };
     receiptPieces = tempReceiptPieces;
-  }
-
-  @Override
-  public void onSwitchTo() {
-    // Random rand = new Random();
-    // for (int i = 0; i < 2; i++) {
-    //   for (int j = 0; j < 3; j++) {
-    //     int sceneWidth = (int) receiptImageView.getScene().getWidth();
-    //     int RandomX = rand.nextInt(sceneWidth - 130) - sceneWidth / 2 + 130;
-    //     int sceneHeight = (int) receiptImageView.getScene().getHeight();
-    //     int RandomY = rand.nextInt(sceneHeight - 130) - sceneHeight / 2 + 130;
-    //     receiptPieces[i][j].setX(RandomX);
-    //     receiptPieces[i][j].setY(RandomY);
-    //   }
-    // }
   }
 
   @FXML
@@ -167,8 +155,12 @@ public class ReceiptController extends Controller {
     for (int i = 0; i < 2; i++) {
       for (int j = 0; j < 3; j++) {
         receiptPieces[i][j].setDisable(true);
+        receiptPieces[i][j].setOpacity(0);
       }
     }
+    receiptImageView.setOpacity(100);
+    flipButton.setOpacity(100);
+    flipButton.setDisable(false);
     return;
   }
 }
