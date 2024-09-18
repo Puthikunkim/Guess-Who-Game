@@ -1,31 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SecurityCameraController">
+<Pane prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SecurityCameraController">
    <children>
-      <Button fx:id="Time18" layoutX="36.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="18:00" />
-      <Button fx:id="Time19" layoutX="95.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="19:00" />
-      <Button fx:id="Time20" layoutX="155.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="20:00" />
-      <Button fx:id="Time21" layoutX="216.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="21:00" />
-      <Button fx:id="Time22" layoutX="274.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="22:00" />
-      <Button fx:id="Time23" layoutX="335.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="23:00" />
-      <Button fx:id="Time00" layoutX="397.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="00:00" />
-      <Button fx:id="Time01" layoutX="457.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="01:00" />
-      <Button fx:id="Time02" layoutX="519.0" layoutY="333.0" mnemonicParsing="false" onAction="#onDuringTimeClick" text="02:00" />
-      <Button fx:id="Time03" layoutX="214.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="03:00" />
-      <Button fx:id="Time04" layoutX="273.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="04:00" />
-      <Button fx:id="Time05" layoutX="333.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="05:00" />
-      <Text layoutX="247.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Should Not See This" />
-      <ImageView fx:id="cameraDisplayImage" fitHeight="240.0" fitWidth="390.0" layoutX="105.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="670.0" fitWidth="601.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/BeforeTheftCamera.png" />
+            <Image url="@../images/SecurityCameraBackground.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="284.0" fitWidth="446.0" layoutX="72.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/ExtendedCrimeScene.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="Time18" layoutX="45.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="18:00" />
+      <Button fx:id="Time19" layoutX="104.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="19:00" />
+      <Button fx:id="Time20" layoutX="164.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="20:00" />
+      <Button fx:id="Time21" layoutX="225.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="21:00" />
+      <Button fx:id="Time22" layoutX="283.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="22:00" />
+      <Button fx:id="Time23" layoutX="344.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="23:00" />
+      <Button fx:id="Time00" layoutX="406.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="00:00" />
+      <Button fx:id="Time01" layoutX="466.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="01:00" />
+      <Button fx:id="Time02" layoutX="528.0" layoutY="519.0" mnemonicParsing="false" onAction="#onDuringTimeClick" text="02:00" />
+      <Button fx:id="Time03" layoutX="223.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="03:00" />
+      <Button fx:id="Time04" layoutX="282.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="04:00" />
+      <Button fx:id="Time05" layoutX="342.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="05:00" />
+      <ImageView fx:id="cameraDisplayImage" fitHeight="58.0" fitWidth="76.0" layoutX="266.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Vase.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="staticImageView" fitHeight="281.0" fitWidth="593.0" layoutX="72.0" layoutY="91.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Static.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="backButton" layoutX="446.0" layoutY="560.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="25.0" prefWidth="110.0" text="Back" />
+      <Label fx:id="lblProfession" layoutX="626.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="835.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="854.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="845.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Button fx:id="btnGuess" layoutX="864.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <TextArea fx:id="txtaChat" editable="false" layoutX="616.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
+      <Label fx:id="timerLabel" layoutX="869.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGrandma" layoutX="864.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnBusinessman" layoutX="864.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnCrimeScene" layoutX="864.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" textFill="#663b3b" />
+      <Label fx:id="lblProfession1" layoutX="891.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnJimmy" layoutX="864.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
    </children>
 </Pane>
