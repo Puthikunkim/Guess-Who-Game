@@ -4,31 +4,59 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
+<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
    <children>
-      <Label layoutX="316.0" layoutY="42.0" text="Make a guess">
+      <ImageView fitHeight="615.0" fitWidth="597.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/room_background.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Label layoutX="627.0" layoutY="7.0" text="Make a guess" textFill="WHITE">
          <font>
-            <Font size="38.0" />
+            <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="lblProfession" layoutX="848.0" layoutY="23.0" prefHeight="37.0" prefWidth="289.0" wrapText="true">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="txtaChat1" editable="false" layoutX="825.0" layoutY="67.0" prefHeight="468.0" prefWidth="334.0" wrapText="true" />
-      <TextField fx:id="txtInput" layoutX="827.0" layoutY="548.0" prefHeight="26.0" prefWidth="276.0" />
-      <Button fx:id="btnSend" layoutX="1116.0" layoutY="549.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
-      <Button fx:id="btnJimmy" layoutX="189.0" layoutY="279.0" mnemonicParsing="false" onAction="#makeGuessJimmy" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnBusinessman" layoutX="525.0" layoutY="279.0" mnemonicParsing="false" onAction="#makeGuessBusinessman" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnSend" layoutX="873.0" layoutY="536.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="37.0" prefWidth="110.0" text="Send" />
+      <Button fx:id="btnJimmy" layoutX="51.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessJimmy" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnBusinessman" layoutX="433.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessBusinessman" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
       <Label fx:id="lblResponse" layoutX="624.0" layoutY="441.0" prefHeight="16.0" prefWidth="168.0" wrapText="true">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Button fx:id="btnGrandma" layoutX="357.0" layoutY="279.0" mnemonicParsing="false" onAction="#makeGuessGrandma" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnGrandma" layoutX="239.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessGrandma" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <TextField fx:id="txtInput" layoutX="617.0" layoutY="523.0" prefHeight="63.0" prefWidth="250.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <TextArea fx:id="txtaChat1" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="250.0" wrapText="true">
+         <font>
+            <Font size="13.5" />
+         </font></TextArea>
+      <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="251.0" fitWidth="192.0" layoutX="397.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/businessman.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="224.0" fitWidth="192.0" layoutX="203.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/grandma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="243.0" fitWidth="192.0" layoutX="14.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/jimmy.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

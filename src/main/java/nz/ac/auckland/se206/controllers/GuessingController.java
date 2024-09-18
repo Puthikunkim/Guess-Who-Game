@@ -49,6 +49,12 @@ public class GuessingController extends Controller {
   public void initialize() {
     lblResponse.setVisible(false);
     btnSend.setDisable(true);
+    txtaChat1.appendText("To Win You Must:");
+    txtaChat1.appendText("\n\n");
+    txtaChat1.appendText("Select the correct thief.");
+    txtaChat1.appendText("\n");
+    txtaChat1.appendText("If you guess incorrectly, you will lose.");
+    txtaChat1.appendText("\n\n");
   }
 
   public void makeGuessBusinessman() {
@@ -58,7 +64,7 @@ public class GuessingController extends Controller {
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
-    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    // SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
   public void makeGuessGrandma() {
