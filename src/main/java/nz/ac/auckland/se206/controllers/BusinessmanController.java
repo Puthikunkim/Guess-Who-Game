@@ -60,7 +60,22 @@ public class BusinessmanController extends Controller {
     lblResponse.setVisible(false);
     btnMakeGuess.setDisable(true);
     startChat(); // Start the chat with the suspect to avoid lag when clicking on suspect for first
-                 // time
+    // time
+    // Add event handler for pressing Enter in txtInput
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              try {
+                onSendMessage(new ActionEvent()); // Trigger the send message method
+              } catch (ApiProxyException | IOException e) {
+                e.printStackTrace();
+              }
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   /** when switched to disable button */
@@ -81,7 +96,7 @@ public class BusinessmanController extends Controller {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
-    timerLabel.setText("Time Remaining: " + timeString);
+    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
   /**
@@ -93,6 +108,7 @@ public class BusinessmanController extends Controller {
   @FXML
   private void handleCrimeSceneClick(ActionEvent event) throws IOException {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
+    txtaChat1.clear();
   }
 
   /**
@@ -107,6 +123,7 @@ public class BusinessmanController extends Controller {
         (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
     jimmyController.startChat();
+    txtaChat1.clear();
   }
 
   /**
@@ -121,6 +138,7 @@ public class BusinessmanController extends Controller {
         (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
     SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
     grandmaController.startChat();
+    txtaChat1.clear();
   }
 
   /**

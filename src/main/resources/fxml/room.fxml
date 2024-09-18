@@ -6,56 +6,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
+<Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
-      <ImageView fitHeight="155.0" fitWidth="101.0" layoutX="116.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="615.0" fitWidth="597.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/blocky_dumb_man.png" />
+            <Image url="@../images/room_background.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rectPerson1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="155.0" layoutX="116.0" layoutY="282.0" onMouseClicked="#handleRectangleClick" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="93.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="585.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/snowman.png" />
-         </image>
-      </ImageView>
-      <Rectangle fx:id="rectPerson3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="155.0" layoutX="585.0" layoutY="275.0" onMouseClicked="#handleRectangleClick" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="93.0" />
-      <ImageView fitHeight="79.0" fitWidth="119.0" layoutX="297.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/chest.png" />
-         </image>
-      </ImageView>
-      <Rectangle fx:id="rectChest" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="79.0" layoutX="293.0" layoutY="362.0" onMouseClicked="#handleRectangleClick" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="125.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="313.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/sad_skinny_man.png" />
-         </image>
-      </ImageView>
-      <Rectangle fx:id="rectPerson2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="155.0" layoutX="313.0" layoutY="181.0" onMouseClicked="#handleRectangleClick" opacity="0.68" stroke="BLACK" strokeType="INSIDE" width="93.0" />
-      <Label layoutX="155.0" layoutY="14.0" text="SOFTENG206 - Guess Who ?">
+      <Rectangle fx:id="rectPerson1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="67.0" layoutX="56.0" layoutY="42.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="61.0" />
+      <Rectangle fx:id="rectPerson3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="82.0" layoutX="467.0" layoutY="410.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <Rectangle fx:id="rectPerson2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="117.0" layoutX="256.0" layoutY="415.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Label fx:id="lblProfession" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
-            <Font size="38.0" />
+            <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="btnGuess" layoutX="525.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
-      <Label layoutX="84.0" layoutY="67.0" prefHeight="31.0" prefWidth="618.0" text="Chat with the three villagers, and guess who is the diamond thief ">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
+      <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font size="21.0" />
+            <Font name="Calibri Bold" size="22.0" />
+         </font></Label>
+      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" textFill="#663b3b" />
+      <Ellipse layoutX="534.0" layoutY="478.0" opacity="0.45" radiusX="55.0" radiusY="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="67.0" fitWidth="100.0" layoutX="471.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/lostfound_box.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="67.0" fitWidth="110.0" layoutX="488.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/Design%203%20(1).png" />
+         </image>
+      </ImageView>
+      <Ellipse layoutX="291.0" layoutY="484.0" opacity="0.25" radiusX="31.0" radiusY="47.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="95.0" fitWidth="83.0" layoutX="260.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/receipt.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblProfession1" layoutX="897.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="lblProfession" layoutX="848.0" layoutY="23.0" prefHeight="37.0" prefWidth="289.0" wrapText="true">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="txtaChat" editable="false" layoutX="825.0" layoutY="67.0" prefHeight="468.0" prefWidth="334.0" wrapText="true" />
-      <Label fx:id="timerLabel" layoutX="325.0" layoutY="98.0" text="YOU HAVE {} Seconds left" />
-      <Button fx:id="btnJimmy" layoutX="150.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnGrandma" layoutX="275.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
-      <Button fx:id="btnBusinessman" layoutX="400.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
-      <Button fx:id="btnCrimeScene" layoutX="25.0" layoutY="540.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
    </children>
 </Pane>
