@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.SceneManager;
 
 public class GameOverController extends Controller {
   private static GameStateContext context;
@@ -15,9 +17,12 @@ public class GameOverController extends Controller {
    * goes to Main Room and restarts game
    *
    * @param action
+   * @throws IOException
    */
   @FXML
-  private void onPlayAgainPressed(ActionEvent action) {}
+  private void onPlayAgainPressed(ActionEvent action) throws IOException {
+    SceneManager.restart();
+  }
 
   /**
    * exits game

@@ -17,6 +17,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 /**
@@ -57,6 +58,7 @@ public class GuessingController extends Controller {
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
+    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
   public void makeGuessGrandma() {
@@ -66,6 +68,7 @@ public class GuessingController extends Controller {
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
+    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
   public void makeGuessJimmy() {
@@ -75,6 +78,7 @@ public class GuessingController extends Controller {
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
+    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
   /**

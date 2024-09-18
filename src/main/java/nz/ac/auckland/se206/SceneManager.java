@@ -28,6 +28,7 @@ public class SceneManager {
     SECURITY_CAMERA_ROOM,
     LOST_FOUND_ROOM,
     RECEIPT_ROOM,
+    GAMEOVER_ROOM,
   }
 
   private static Scene scene;
@@ -62,12 +63,20 @@ public class SceneManager {
     SceneManager.addUi(AppUi.LOST_FOUND_ROOM, "lostAndFound");
     SceneManager.addUi(AppUi.RECEIPT_ROOM, "receipt");
 
+    // game over
+    SceneManager.addUi(AppUi.GAMEOVER_ROOM, "gameOver");
+
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);
     scene = new Scene(mainRoom);
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();
+  }
+
+  // restart the game
+  public static void restart() throws IOException {
+    start(stage);
   }
 
   /**

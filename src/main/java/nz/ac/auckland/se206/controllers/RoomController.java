@@ -18,7 +18,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class RoomController extends Controller {
 
-  private static boolean isFirstTimeInit = true;
   private static GameStateContext context = new GameStateContext();
 
   @FXML private Button btnGuess;
@@ -42,22 +41,19 @@ public class RoomController extends Controller {
    */
   @FXML
   public void initialize() {
-    if (isFirstTimeInit) {
-      isFirstTimeInit = false;
-      // Clue and win conditions chat initialisation
-      txtaChat.appendText("To Win You Must:");
-      txtaChat.appendText("\n\n");
-      txtaChat.appendText("- Chat with all 3 suspects.");
-      txtaChat.appendText("\n");
-      txtaChat.appendText("- Find 1 of the 3 clues.");
-      txtaChat.appendText("\n");
-      txtaChat.appendText("- Guess who the thief of the vase is.");
-      txtaChat.appendText("\n");
-      txtaChat.appendText("-------------------------------");
-      txtaChat.appendText("\n");
-      txtaChat.appendText("Clues Gathered:");
-      txtaChat.appendText("\n\n");
-    }
+    // Clue and win conditions chat initialisation
+    txtaChat.appendText("To Win You Must:");
+    txtaChat.appendText("\n\n");
+    txtaChat.appendText("- Chat with all 3 suspects.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("- Find 1 of the 3 clues.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("- Guess who the thief of the vase is.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("-------------------------------");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("Clues Gathered:");
+    txtaChat.appendText("\n\n");
   }
 
   /** when switched to for the first time set state to gameStarted */
@@ -152,7 +148,7 @@ public class RoomController extends Controller {
     context.handleGuessClick();
   }
 
-  public GameStateContext getContext() {
+  public static GameStateContext getContext() {
     return context;
   }
 }
