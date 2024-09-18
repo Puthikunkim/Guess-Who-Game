@@ -73,7 +73,7 @@ public class SceneManager {
     stage.show();
     mainRoom.requestFocus();
     System.out.println("HERE");
-    switchRoot(AppUi.SECURITY_CAMERA_ROOM);
+    switchRoot(AppUi.RECEIPT_ROOM);
   }
 
   // restart the game

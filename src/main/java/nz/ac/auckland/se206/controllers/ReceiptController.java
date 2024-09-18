@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -22,8 +21,6 @@ public class ReceiptController extends Controller {
 
   @FXML private Button flipButton;
 
-  private Image frontReceipt = new Image("images/ReceiptFront.png");
-  private Image backReceipt = new Image("images/ReceiptBack.png");
   private boolean frontShowing = true;
 
   private boolean receiptInfoFound = false;
@@ -35,22 +32,11 @@ public class ReceiptController extends Controller {
   @FXML
   public void initialize() {
     ImageView[][] tempReceiptPieces = {
-      {receiptPiece1x1, receiptPiece2x1, receiptPiece3x1},
-      {receiptPiece1x2, receiptPiece2x2, receiptPiece3x2},
+      {receiptPiece1x1, receiptPiece1x2},
+      {receiptPiece2x1, receiptPiece2x2},
+      {receiptPiece3x1, receiptPiece3x2}
     };
     receiptPieces = tempReceiptPieces;
-  }
-
-  @FXML
-  public void onFlip() {
-    if (frontShowing) {
-      receiptImageView.setImage(backReceipt);
-      frontShowing = false;
-    } else {
-      receiptImageView.setImage(frontReceipt);
-      frontShowing = true;
-      receiptInfoFound = true;
-    }
   }
 
   @FXML
@@ -88,17 +74,19 @@ public class ReceiptController extends Controller {
 
   private void checkPositions() {
     // Check if each element in a row is next to each other
-    for (int i = 0; i < 2; i++) {
-      for (int j = 0; j < 2; j++) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 1; j++) {
         if (!checkHorizontal(receiptPieces[i][j], receiptPieces[i][j + 1])) {
           return;
         }
       }
     }
 
-    for (int i = 0; i < 3; i++) {
-      if (!checkVertical(receiptPieces[0][i], receiptPieces[1][i])) {
-        return;
+    for (int i = 0; i < 2; i++) {
+      for (int j = 0; j < 2; j++) {
+        if (!checkVertical(receiptPieces[j][i], receiptPieces[j + 1][i])) {
+          return;
+        }
       }
     }
 
@@ -114,7 +102,7 @@ public class ReceiptController extends Controller {
     // Negative number = left, positive number equal inside or to the right
     double distanceX = leftPiecePos.getX() - rightPiecePos.getX();
     System.out.println(distanceX);
-    if (!(distanceX > -125 & distanceX < -105)) {
+    if (!(distanceX > -135 & distanceX < -115)) {
       return false;
     }
 
@@ -139,7 +127,7 @@ public class ReceiptController extends Controller {
 
     double distanceY = upPiecePos.getY() - downPiecePos.getY();
 
-    if (!(distanceY > -121.5 & distanceY < -101.5)) {
+    if (!(distanceY > -150 & distanceY < -130)) {
       return false;
     }
     return true;
@@ -153,8 +141,6 @@ public class ReceiptController extends Controller {
       }
     }
     receiptImageView.setOpacity(100);
-    flipButton.setOpacity(100);
-    flipButton.setDisable(false);
     return;
   }
 }
