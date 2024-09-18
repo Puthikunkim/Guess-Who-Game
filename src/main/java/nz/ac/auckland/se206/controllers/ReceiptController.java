@@ -34,8 +34,7 @@ public class ReceiptController extends Controller {
   private boolean receiptInfoFound = false;
 
   private ImageView dragTarget;
-  private double dragStartMouseX = 0;
-  private double dragStartMouseY = 0;
+  private Point2D dragMousePointOffset;
 
   // chat-room
   @FXML private Label timerLabel; //
@@ -59,33 +58,36 @@ public class ReceiptController extends Controller {
   @FXML
   public void onDragStart(MouseEvent event) {
     dragTarget = (ImageView) event.getTarget();
-    dragStartMouseX = event.getSceneX();
-    dragStartMouseY = event.getSceneY();
+    dragMousePointOffset = dragTarget.sceneToLocal(event.getSceneX(), event.getSceneY());
+    double offsetX = dragMousePointOffset.getX() - dragTarget.getX();
+    double offsetY = dragMousePointOffset.getY() - dragTarget.getY();
+    dragMousePointOffset = new Point2D(offsetX, offsetY);
   }
 
   @FXML
   public void onDragProgressed(MouseEvent event) {
     Scene currentScene = receiptImageView.getScene();
-    double newX = event.getSceneX();
-    double newY = event.getSceneY();
+    double newX = event.getSceneX() - dragMousePointOffset.getX();
+    double newY = event.getSceneY() - dragMousePointOffset.getY();
     // Clamp Value so cant drag images off screen
-    if (event.getSceneX() > currentScene.getWidth()) {
-      newX = currentScene.getWidth();
+    if (newX > 599 - dragTarget.getFitWidth()) {
+      newX = 599 - dragTarget.getFitWidth();
     }
-    if (event.getSceneX() < 0) {
+    if (newX < 0) {
       newX = 0;
     }
 
-    if (event.getSceneY() > currentScene.getHeight()) {
-      newY = currentScene.getHeight();
+    if (newY > currentScene.getHeight() - dragTarget.getFitHeight()) {
+      newY = currentScene.getHeight() - dragTarget.getFitHeight();
     }
-    if (event.getSceneY() < 0) {
+    if (newY < 0) {
       newY = 0;
     }
-    dragTarget.setX(dragTarget.getX() - (dragStartMouseX - newX));
-    dragStartMouseX = newX;
-    dragTarget.setY(dragTarget.getY() - (dragStartMouseY - newY));
-    dragStartMouseY = newY;
+
+    Point2D local = dragTarget.sceneToLocal(newX, newY);
+
+    dragTarget.setX(local.getX());
+    dragTarget.setY(local.getY());
     checkPositions();
   }
 
@@ -118,7 +120,6 @@ public class ReceiptController extends Controller {
         receiptPieceRight.localToScene(receiptPieceRight.getX(), receiptPieceRight.getY());
     // Negative number = left, positive number equal inside or to the right
     double distanceX = leftPiecePos.getX() - rightPiecePos.getX();
-    System.out.println(distanceX);
     if (!(distanceX > -135 & distanceX < -115)) {
       return false;
     }

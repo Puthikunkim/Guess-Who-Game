@@ -26,27 +26,27 @@
             <Image url="@../images/receipt_pieces/row-1-column-1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="receiptPiece1x2" fitHeight="143.0" fitWidth="125.0" layoutX="401.0" layoutY="21.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="receiptPiece1x2" fitHeight="140.0" fitWidth="125.0" layoutX="401.0" layoutY="21.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/receipt_pieces/row-1-column-2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="receiptPiece2x1" fitHeight="180.0" fitWidth="125.0" layoutX="237.0" layoutY="90.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="receiptPiece2x1" fitHeight="140.0" fitWidth="125.0" layoutX="237.0" layoutY="90.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/receipt_pieces/row-2-column-1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="receiptPiece2x2" fitHeight="160.0" fitWidth="125.0" layoutX="64.0" layoutY="36.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="receiptPiece2x2" fitHeight="140.0" fitWidth="125.0" layoutX="64.0" layoutY="36.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/receipt_pieces/row-2-column-2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="receiptPiece3x1" fitHeight="143.0" fitWidth="125.0" layoutX="417.0" layoutY="453.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="receiptPiece3x1" fitHeight="140.0" fitWidth="125.0" layoutX="417.0" layoutY="453.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/receipt_pieces/row-3-column-1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="receiptPiece3x2" fitHeight="165.0" fitWidth="125.0" layoutX="87.0" layoutY="453.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="receiptPiece3x2" fitHeight="140.0" fitWidth="125.0" layoutX="87.0" layoutY="453.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/receipt_pieces/row-3-column-2.png" />
          </image>
@@ -58,6 +58,7 @@
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="835.0" layoutY="43.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="854.0" layoutY="155.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="419.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
       <Button fx:id="btnGuess" layoutX="864.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
       <TextArea fx:id="txtaChat" editable="false" layoutX="616.0" layoutY="43.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
       <Label fx:id="timerLabel" layoutX="869.0" layoutY="43.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">

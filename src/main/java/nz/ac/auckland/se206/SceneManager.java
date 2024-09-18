@@ -73,7 +73,7 @@ public class SceneManager {
     stage.show();
     mainRoom.requestFocus();
     System.out.println("HERE");
-    switchRoot(AppUi.RECEIPT_ROOM);
+    switchRoot(AppUi.LOST_FOUND_ROOM);
   }
 
   // restart the game
