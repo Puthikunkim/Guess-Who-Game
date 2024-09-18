@@ -37,8 +37,7 @@ public class Guessing implements GameState {
    */
   @Override
   public void onSwitchTo() {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-    SceneManager.switchRoot(AppUi.MAIN_ROOM);
+    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
   }
 
   /** Starts the timer for the game state. */
