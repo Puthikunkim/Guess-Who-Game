@@ -1,20 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LostAndFoundController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LostAndFoundController">
    <children>
-      <ImageView fx:id="cufflink" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="109.0" onMousePressed="#onCufflinkClick" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" width="163.0" />
+      <ImageView fitHeight="599.0" fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Cufflink.png" />
+            <Image url="@../images/LostAndFoundBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="thingToDrag" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="126.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cufflink" fitHeight="100.0" fitWidth="100.0" layoutX="230.0" layoutY="233.0" onMousePressed="#onCufflinkClick" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/ThingToDrag.png" />
+            <Image url="@../images/CufflinkGold.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="thingToDrag" fitHeight="165.0" fitWidth="186.0" layoutX="261.0" layoutY="183.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Cap.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="thingToDrag1" fitHeight="144.0" fitWidth="165.0" layoutX="161.0" layoutY="299.0" onMouseDragged="#onDragProgressed" onMousePressed="#onDragStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Wallet.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblProfession" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
+      <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" textFill="#663b3b" />
+      <Label fx:id="lblProfession1" layoutX="897.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="backButton" layoutX="611.0" layoutY="522.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="45.0" prefWidth="126.0" text="Back" />
    </children>
 </Pane>
