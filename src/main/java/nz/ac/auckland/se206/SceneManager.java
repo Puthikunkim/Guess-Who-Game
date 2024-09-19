@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.BusinessmanController;
 import nz.ac.auckland.se206.controllers.Controller;
 import nz.ac.auckland.se206.controllers.GrandmaController;
+import nz.ac.auckland.se206.controllers.GuessingController;
 import nz.ac.auckland.se206.controllers.JimmyController;
 import nz.ac.auckland.se206.controllers.LostAndFoundController;
 import nz.ac.auckland.se206.controllers.ReceiptController;
@@ -159,15 +160,20 @@ public class SceneManager {
     GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
     BusinessmanController businessmanController =
         (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+
+    GuessingController guessingController = (GuessingController) getController(AppUi.GUESSING_ROOM);
+
     SecurityCameraController securityCameraController =
         (SecurityCameraController) getController(AppUi.SECURITY_CAMERA_ROOM);
     ReceiptController receiptController = (ReceiptController) getController(AppUi.RECEIPT_ROOM);
     LostAndFoundController lostAndFoundController =
         (LostAndFoundController) getController(AppUi.LOST_FOUND_ROOM);
+
     roomController.updateTimer(timeString);
     jimmyController.updateTimer(timeString);
     grandmaController.updateTimer(timeString);
     businessmanController.updateTimer(timeString);
+    guessingController.updateTimer(timeString);
     securityCameraController.updateTimer(timeString);
     receiptController.updateTimer(timeString);
     lostAndFoundController.updateTimer(timeString);
@@ -186,5 +192,6 @@ public class SceneManager {
       return true;
     }
     return false;
+
   }
 }

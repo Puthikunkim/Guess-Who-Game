@@ -89,6 +89,7 @@ public class Guessing implements GameState {
    */
   private void timerExpired() {
     context.setState(context.getGameOverState());
+    SceneManager.switchRoot(AppUi.GAMEOVER_ROOM);
   }
 
   /**

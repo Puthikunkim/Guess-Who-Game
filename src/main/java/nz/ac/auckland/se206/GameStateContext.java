@@ -219,4 +219,9 @@ public class GameStateContext {
   public void handleGuessClick() throws IOException {
     gameState.handleGuessClick();
   }
+
+  /** Stops the timer for the current game state. */
+  public void stopTimer() {
+    gameState.stopTimer();
+  }
 }

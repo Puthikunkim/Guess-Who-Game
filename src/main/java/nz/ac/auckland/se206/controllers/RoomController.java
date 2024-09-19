@@ -20,7 +20,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class RoomController extends Controller {
 
-  private static GameStateContext context = new GameStateContext();
+  public static GameStateContext context = new GameStateContext();
 
   @FXML private Button btnGuess;
   @FXML private Label lblProfession;

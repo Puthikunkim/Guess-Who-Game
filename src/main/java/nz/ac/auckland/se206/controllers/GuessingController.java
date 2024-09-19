@@ -29,17 +29,19 @@ public class GuessingController extends Controller {
   private ChatCompletionRequest
       chatCompletionRequestGuessing; // Chat completion requests for each suspect
   private boolean guessingStarted = false;
-  private boolean guessAccuracy = false;
 
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
 
   @FXML private Label lblResponse;
+  @FXML private Label timerLabel;
+  @FXML private Label lblGuess;
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
+  @FXML private Button btnEndGame;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -48,36 +50,55 @@ public class GuessingController extends Controller {
   @FXML
   public void initialize() {
     lblResponse.setVisible(false);
+    btnEndGame.setDisable(true);
     btnSend.setDisable(true);
+    txtaChat1.appendText("To Win You Must:");
+    txtaChat1.appendText("\n\n");
+    txtaChat1.appendText("Select the correct thief.");
+    txtaChat1.appendText("\n");
+    txtaChat1.appendText("If you guess incorrectly, you will be sent to the game over screen.");
+    txtaChat1.appendText("\n\n");
+    btnEndGame.setDisable(true);
+    // Add event handler for pressing Enter in txtInput
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              try {
+                onSendMessage(new ActionEvent()); // Trigger the send message method
+              } catch (ApiProxyException | IOException e) {
+                e.printStackTrace();
+              }
+              break;
+            default:
+              break;
+          }
+        });
+  }
+
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
   public void makeGuessBusinessman() {
     txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
-    guessAccuracy = true;
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
-    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    lblGuess.setText("Guess is correct");
   }
 
   public void makeGuessGrandma() {
-    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
-    guessAccuracy = false;
-    btnJimmy.setDisable(true);
-    btnGrandma.setDisable(true);
-    btnBusinessman.setDisable(true);
-    btnSend.setDisable(false);
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
   public void makeGuessJimmy() {
-    txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
-    guessAccuracy = false;
-    btnJimmy.setDisable(true);
-    btnGrandma.setDisable(true);
-    btnBusinessman.setDisable(true);
-    btnSend.setDisable(false);
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
@@ -187,7 +208,7 @@ public class GuessingController extends Controller {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
+    if (message.isEmpty() || btnSend.isDisabled()) {
       return;
     }
     txtInput.clear();
@@ -196,5 +217,19 @@ public class GuessingController extends Controller {
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
     runGpt(msg);
+    btnEndGame.setDisable(false);
+    btnSend.setDisable(true);
+    RoomController.context.stopTimer();
+  }
+
+  /**
+   * Handles the switch button click event to game over scene.
+   *
+   * @param event the action event triggered by clicking the game over button
+   * @throws IOException if there is an I/O error
+   */
+  @FXML
+  private void onEndGame(ActionEvent event) throws ApiProxyException, IOException {
+    SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 }
