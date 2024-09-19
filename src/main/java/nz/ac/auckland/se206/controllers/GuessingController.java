@@ -165,6 +165,9 @@ public class GuessingController extends Controller {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     lblResponse.setVisible(true);
     lblResponse.setText("Please wait...");
+    btnJimmy.setDisable(true);
+    btnGrandma.setDisable(true);
+    btnBusinessman.setDisable(true);
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -182,6 +185,9 @@ public class GuessingController extends Controller {
                   () -> {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
+                    btnJimmy.setDisable(false);
+                    btnGrandma.setDisable(false);
+                    btnBusinessman.setDisable(false);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();

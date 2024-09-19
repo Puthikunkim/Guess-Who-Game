@@ -8,12 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class SecurityCameraController extends Controller {
-  private static GameStateContext context = new GameStateContext();
+
   public static boolean foundTimeOfTheft = false;
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
@@ -139,6 +138,6 @@ public class SecurityCameraController extends Controller {
         (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);
     guessingController.startChat();
-    context.handleGuessClick();
+    RoomController.context.handleGuessClick();
   }
 }

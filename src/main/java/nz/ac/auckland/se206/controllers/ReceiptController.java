@@ -10,12 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ReceiptController extends Controller {
-  private static GameStateContext context = new GameStateContext();
+
   public static boolean receiptInfoFound = false;
   @FXML private ImageView receiptImageView;
 
@@ -258,6 +257,6 @@ public class ReceiptController extends Controller {
         (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);
     guessingController.startChat();
-    context.handleGuessClick();
+    RoomController.context.handleGuessClick();
   }
 }
