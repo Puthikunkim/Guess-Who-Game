@@ -103,12 +103,11 @@ public class RoomController extends Controller {
     txtaChat.appendText("\n");
     txtaChat.appendText("Clues Gathered:\n");
     if (SecurityCameraController.foundTimeOfTheft) {
-      txtaChat.appendText(
-          "\tSecurity Camera: Looks like the theft occurred at around 2 o'clock.\n");
+      txtaChat.appendText("Security Camera: Looks like the theft occurred at around 2 o'clock.\n");
     }
     if (ReceiptController.receiptInfoFound) {
       txtaChat.appendText(
-          "\tReceipt: Someone purchased a very expensive protective casing, I wonder what they"
+          "Receipt: Someone purchased a very expensive protective casing, I wonder what they"
               + " need\n"
               + " it for...");
     }

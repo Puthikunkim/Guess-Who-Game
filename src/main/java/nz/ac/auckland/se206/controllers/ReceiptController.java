@@ -161,6 +161,9 @@ public class ReceiptController extends Controller {
   }
 
   private void onPuzzleSolve() {
+    if (receiptInfoFound) {
+      return;
+    }
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         receiptPieces[i][j].setDisable(true);
