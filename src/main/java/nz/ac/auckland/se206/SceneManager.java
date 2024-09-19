@@ -11,7 +11,10 @@ import nz.ac.auckland.se206.controllers.BusinessmanController;
 import nz.ac.auckland.se206.controllers.Controller;
 import nz.ac.auckland.se206.controllers.GrandmaController;
 import nz.ac.auckland.se206.controllers.JimmyController;
+import nz.ac.auckland.se206.controllers.LostAndFoundController;
+import nz.ac.auckland.se206.controllers.ReceiptController;
 import nz.ac.auckland.se206.controllers.RoomController;
+import nz.ac.auckland.se206.controllers.SecurityCameraController;
 
 public class SceneManager {
 
@@ -145,9 +148,17 @@ public class SceneManager {
     GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
     BusinessmanController businessmanController =
         (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+    SecurityCameraController securityCameraController =
+        (SecurityCameraController) getController(AppUi.SECURITY_CAMERA_ROOM);
+    ReceiptController receiptController = (ReceiptController) getController(AppUi.RECEIPT_ROOM);
+    LostAndFoundController lostAndFoundController =
+        (LostAndFoundController) getController(AppUi.LOST_FOUND_ROOM);
     roomController.updateTimer(timeString);
     jimmyController.updateTimer(timeString);
     grandmaController.updateTimer(timeString);
     businessmanController.updateTimer(timeString);
+    securityCameraController.updateTimer(timeString);
+    receiptController.updateTimer(timeString);
+    lostAndFoundController.updateTimer(timeString);
   }
 }

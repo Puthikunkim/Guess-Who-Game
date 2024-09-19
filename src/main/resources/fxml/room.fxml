@@ -12,7 +12,7 @@
 
 <Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
-      <ImageView fitHeight="615.0" fitWidth="597.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="599.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/room_background.png" />
          </image>

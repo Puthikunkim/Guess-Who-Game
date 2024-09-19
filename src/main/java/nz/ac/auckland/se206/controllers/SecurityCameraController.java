@@ -29,6 +29,15 @@ public class SecurityCameraController extends Controller {
   @FXML private Button btnGuess;
   @FXML private TextArea txtaChat;
 
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText(timeString + "\n" + "Remaining");
+  }
+
   @FXML
   private void onBeforeTimeClick() {
     cameraDisplayImage.setImage(beforeImage);

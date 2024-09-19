@@ -55,6 +55,15 @@ public class ReceiptController extends Controller {
     receiptPieces = tempReceiptPieces;
   }
 
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText(timeString + "\n" + "Remaining");
+  }
+
   @FXML
   public void onDragStart(MouseEvent event) {
     dragTarget = (ImageView) event.getTarget();
