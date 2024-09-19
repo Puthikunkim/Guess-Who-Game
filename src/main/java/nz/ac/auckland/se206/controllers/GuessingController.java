@@ -34,7 +34,6 @@ public class GuessingController extends Controller {
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
 
-  @FXML private Label lblResponse;
   @FXML private Label timerLabel;
 
   @FXML private TextArea txtaChat1;
@@ -48,7 +47,6 @@ public class GuessingController extends Controller {
    */
   @FXML
   public void initialize() {
-    lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
     txtaChat1.appendText("To Win You Must:");
@@ -145,8 +143,6 @@ public class GuessingController extends Controller {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    lblResponse.setVisible(true);
-    lblResponse.setText("Please wait...");
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -163,7 +159,6 @@ public class GuessingController extends Controller {
               Platform.runLater(
                   () -> {
                     appendChatMessage(result.getChatMessage());
-                    lblResponse.setVisible(false);
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
