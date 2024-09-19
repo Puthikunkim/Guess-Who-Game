@@ -72,8 +72,8 @@ public class SceneManager {
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();
-    System.out.println("HERE");
-    switchRoot(AppUi.LOST_FOUND_ROOM);
+    // System.out.println("HERE");
+    // switchRoot(AppUi.LOST_FOUND_ROOM);
   }
 
   // restart the game

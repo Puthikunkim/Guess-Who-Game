@@ -3,10 +3,12 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
@@ -54,6 +56,41 @@ public class RoomController extends Controller {
     txtaChat.appendText("\n");
     txtaChat.appendText("Clues Gathered:");
     txtaChat.appendText("\n\n");
+    // Change cursor to hand when mouse enters the rectangle
+    rectPerson1.setOnMouseEntered(
+        event -> {
+          rectPerson1.setCursor(Cursor.HAND);
+          rectPerson1.setStroke(Color.YELLOW);
+          rectPerson1.setStrokeWidth(3);
+        });
+    rectPerson2.setOnMouseEntered(
+        event -> {
+          rectPerson2.setCursor(Cursor.HAND);
+          rectPerson2.setStroke(Color.YELLOW);
+          rectPerson2.setStrokeWidth(3);
+        });
+    rectPerson3.setOnMouseEntered(
+        event -> {
+          rectPerson3.setCursor(Cursor.HAND);
+          rectPerson3.setStroke(Color.YELLOW);
+          rectPerson3.setStrokeWidth(3);
+        });
+    // Change cursor back to default when mouse exits the rectangle
+    rectPerson1.setOnMouseExited(
+        event -> {
+          rectPerson1.setCursor(Cursor.DEFAULT);
+          rectPerson1.setStroke(Color.TRANSPARENT);
+        });
+    rectPerson2.setOnMouseExited(
+        event -> {
+          rectPerson2.setCursor(Cursor.DEFAULT);
+          rectPerson2.setStroke(Color.TRANSPARENT);
+        });
+    rectPerson3.setOnMouseExited(
+        event -> {
+          rectPerson3.setCursor(Cursor.DEFAULT);
+          rectPerson3.setStroke(Color.TRANSPARENT);
+        });
   }
 
   /** when switched to for the first time set state to gameStarted */

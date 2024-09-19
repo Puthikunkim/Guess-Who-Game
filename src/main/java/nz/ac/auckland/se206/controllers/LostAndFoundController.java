@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,6 +33,21 @@ public class LostAndFoundController extends Controller {
   @FXML private Button btnBusinessman;
   @FXML private Button btnGuess;
   @FXML private TextArea txtaChat;
+
+  @FXML
+  public void initialize() {
+    cufflink.setOnMouseEntered(
+        event -> {
+          cufflink.setCursor(Cursor.HAND);
+          cufflink.setOpacity(0.5); // Change opacity or add any other visual effect
+        });
+
+    cufflink.setOnMouseExited(
+        event -> {
+          cufflink.setCursor(Cursor.DEFAULT);
+          cufflink.setOpacity(1.0); // Reset opacity
+        });
+  }
 
   @FXML
   public void onDragStart(MouseEvent event) {
@@ -73,6 +89,12 @@ public class LostAndFoundController extends Controller {
   @FXML
   public void onCufflinkClick() {
     foundCufflink = true;
+    cufflink.setVisible(false);
+  }
+
+  @FXML
+  private void onBackPressed() {
+    SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 
   /** when switched to disable button */

@@ -11,6 +11,7 @@
 
 <Pane prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SecurityCameraController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" width="163.0" />
       <ImageView fitHeight="670.0" fitWidth="601.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/SecurityCameraBackground.png" />
@@ -43,7 +44,7 @@
             <Image url="@../images/Static.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="446.0" layoutY="560.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="25.0" prefWidth="110.0" text="Back" />
+      <Button fx:id="backButton" layoutX="611.0" layoutY="522.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="45.0" prefWidth="126.0" text="Back" />
       <Label fx:id="lblProfession" layoutX="626.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="21.0" />

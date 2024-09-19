@@ -162,6 +162,11 @@ public class ReceiptController extends Controller {
     return;
   }
 
+  @FXML
+  private void onBackPressed() {
+    SceneManager.switchRoot(AppUi.MAIN_ROOM);
+  }
+
   /** when switched to disable button */
   @Override
   public void onSwitchTo() {

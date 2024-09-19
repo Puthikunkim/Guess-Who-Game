@@ -11,6 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LostAndFoundController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" width="163.0" />
       <ImageView fitHeight="599.0" fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/LostAndFoundBackground.png" />
@@ -55,5 +56,6 @@
          </font>
       </Label>
       <Button fx:id="btnJimmy" layoutX="870.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="backButton" layoutX="611.0" layoutY="522.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="45.0" prefWidth="126.0" text="Back" />
    </children>
 </Pane>
