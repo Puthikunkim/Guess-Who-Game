@@ -19,7 +19,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
-      <Label layoutX="627.0" layoutY="7.0" text="Make a guess" textFill="WHITE">
+      <Label fx:id="lblGuess" layoutX="627.0" layoutY="7.0" text="Make a guess" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="21.0" />
          </font>

@@ -36,6 +36,7 @@ public class GuessingController extends Controller {
 
   @FXML private Label lblResponse;
   @FXML private Label timerLabel;
+  @FXML private Label lblGuess;
 
   @FXML private TextArea txtaChat1;
   @FXML private TextField txtInput;
@@ -90,6 +91,7 @@ public class GuessingController extends Controller {
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
+    lblGuess.setText("Guess is correct");
   }
 
   public void makeGuessGrandma() {
