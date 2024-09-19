@@ -206,7 +206,7 @@ public class GuessingController extends Controller {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
+    if (message.isEmpty() || btnSend.isDisabled()) {
       return;
     }
     txtInput.clear();
