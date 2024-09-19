@@ -18,12 +18,12 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class LostAndFoundController extends Controller {
 
   private static GameStateContext context = new GameStateContext();
+  public static boolean foundCufflink = false;
 
   @FXML private ImageView thingToDrag;
   @FXML private ImageView cufflink;
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
-  private boolean foundCufflink = false;
 
   // chat-room
   @FXML private Label timerLabel; //
@@ -98,7 +98,14 @@ public class LostAndFoundController extends Controller {
   @FXML
   public void onCufflinkClick() {
     foundCufflink = true;
+    txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
+
     cufflink.setVisible(false);
+    cufflink.setDisable(true);
+
+    if (SceneManager.getIfCanGuess()) {
+      btnGuess.setDisable(false);
+    }
   }
 
   @FXML
@@ -110,9 +117,7 @@ public class LostAndFoundController extends Controller {
   @Override
   public void onSwitchTo() {
     btnGuess.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
   }

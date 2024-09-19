@@ -98,9 +98,7 @@ public class RoomController extends Controller {
   public void onSwitchTo() {
     btnCrimeScene.setDisable(true);
     btnGuess.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
   }

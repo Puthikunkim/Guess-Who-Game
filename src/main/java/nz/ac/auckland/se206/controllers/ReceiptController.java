@@ -16,22 +16,22 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ReceiptController extends Controller {
   private static GameStateContext context = new GameStateContext();
+  public static boolean receiptInfoFound = false;
   @FXML private ImageView receiptImageView;
 
   @FXML private ImageView receiptPiece1x1;
   @FXML private ImageView receiptPiece1x2;
+  @FXML private ImageView receiptPiece1x3;
   @FXML private ImageView receiptPiece2x1;
   @FXML private ImageView receiptPiece2x2;
+  @FXML private ImageView receiptPiece2x3;
   @FXML private ImageView receiptPiece3x1;
   @FXML private ImageView receiptPiece3x2;
+  @FXML private ImageView receiptPiece3x3;
 
   @FXML private ImageView[][] receiptPieces;
 
   @FXML private Button flipButton;
-
-  private boolean frontShowing = true;
-
-  private boolean receiptInfoFound = false;
 
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
@@ -48,9 +48,9 @@ public class ReceiptController extends Controller {
   @FXML
   public void initialize() {
     ImageView[][] tempReceiptPieces = {
-      {receiptPiece1x1, receiptPiece1x2},
-      {receiptPiece2x1, receiptPiece2x2},
-      {receiptPiece3x1, receiptPiece3x2}
+      {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
+      {receiptPiece2x1, receiptPiece2x2, receiptPiece2x3},
+      {receiptPiece3x1, receiptPiece3x2, receiptPiece3x3}
     };
     receiptPieces = tempReceiptPieces;
   }
@@ -103,14 +103,14 @@ public class ReceiptController extends Controller {
   private void checkPositions() {
     // Check if each element in a row is next to each other
     for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 1; j++) {
+      for (int j = 0; j < 2; j++) {
         if (!checkHorizontal(receiptPieces[i][j], receiptPieces[i][j + 1])) {
           return;
         }
       }
     }
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 2; j++) {
         if (!checkVertical(receiptPieces[j][i], receiptPieces[j + 1][i])) {
           return;
@@ -129,7 +129,7 @@ public class ReceiptController extends Controller {
         receiptPieceRight.localToScene(receiptPieceRight.getX(), receiptPieceRight.getY());
     // Negative number = left, positive number equal inside or to the right
     double distanceX = leftPiecePos.getX() - rightPiecePos.getX();
-    if (!(distanceX > -135 & distanceX < -115)) {
+    if (!(distanceX > -120 & distanceX < -100)) {
       return false;
     }
 
@@ -162,12 +162,19 @@ public class ReceiptController extends Controller {
 
   private void onPuzzleSolve() {
     for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 2; j++) {
+      for (int j = 0; j < 3; j++) {
         receiptPieces[i][j].setDisable(true);
         receiptPieces[i][j].setOpacity(0);
       }
     }
     receiptImageView.setOpacity(100);
+    txtaChat.appendText(
+        "You: Someone purchased a very expensive protective casing, I wonder what they need it"
+            + " for...");
+    receiptInfoFound = true;
+    if (SceneManager.getIfCanGuess()) {
+      btnGuess.setDisable(false);
+    }
     return;
   }
 
@@ -180,9 +187,7 @@ public class ReceiptController extends Controller {
   @Override
   public void onSwitchTo() {
     btnGuess.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
   }

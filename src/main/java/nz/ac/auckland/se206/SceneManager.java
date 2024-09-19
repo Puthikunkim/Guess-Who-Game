@@ -37,8 +37,8 @@ public class SceneManager {
   private static Scene scene;
   private static Stage stage;
   // Maps containing the room and controller corresponding to the AppUI enum
-  private static Map<AppUi, Parent> sceneMap = new HashMap<>();
-  private static Map<AppUi, Controller> controllerMap = new HashMap<>();
+  private static Map<AppUi, Parent> sceneMap;
+  private static Map<AppUi, Controller> controllerMap;
 
   /**
    * Runs on application start(called in App.start), to initialaze all rooms and their controllers.
@@ -47,6 +47,12 @@ public class SceneManager {
    * @throws IOException
    */
   public static void start(final Stage stage) throws IOException {
+
+    JimmyController.jimmyChatted = false;
+    GrandmaController.grandmaChatted = false;
+    BusinessmanController.businessmanChatted = false;
+    sceneMap = new HashMap<>();
+    controllerMap = new HashMap<>();
     // Save refrence to stage for easy resizing later
     SceneManager.stage = stage;
     // Load All Rooms for easy switching
@@ -160,5 +166,20 @@ public class SceneManager {
     securityCameraController.updateTimer(timeString);
     receiptController.updateTimer(timeString);
     lostAndFoundController.updateTimer(timeString);
+  }
+
+  public static boolean getIfCanGuess() {
+    boolean aClueFound =
+        LostAndFoundController.foundCufflink
+            || ReceiptController.receiptInfoFound
+            || SecurityCameraController.foundTimeOfTheft;
+    boolean allChatted =
+        BusinessmanController.businessmanChatted == true
+            && GrandmaController.grandmaChatted == true
+            && JimmyController.jimmyChatted == true;
+    if (allChatted && aClueFound) {
+      return true;
+    }
+    return false;
   }
 }

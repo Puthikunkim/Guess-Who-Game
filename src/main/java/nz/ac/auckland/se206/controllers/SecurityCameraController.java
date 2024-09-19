@@ -14,11 +14,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class SecurityCameraController extends Controller {
   private static GameStateContext context = new GameStateContext();
+  public static boolean foundTimeOfTheft = false;
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
-
-  private boolean foundTimeOfTheft = false;
 
   // chat-room
   @FXML private Label timerLabel; //
@@ -55,7 +54,12 @@ public class SecurityCameraController extends Controller {
   @FXML
   private void onDuringTimeClick() {
     staticImageView.setOpacity(100);
+    txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+
     foundTimeOfTheft = true;
+    if (SceneManager.getIfCanGuess()) {
+      btnGuess.setDisable(false);
+    }
   }
 
   @FXML
@@ -67,9 +71,7 @@ public class SecurityCameraController extends Controller {
   @Override
   public void onSwitchTo() {
     btnGuess.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
   }

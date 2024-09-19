@@ -49,7 +49,6 @@ public class BusinessmanController extends Controller {
   @FXML private Button btnSend;
 
   private boolean canSwitch = true; // Boolean to track if the user can switch suspects
-  private boolean canGuess = false;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -82,11 +81,8 @@ public class BusinessmanController extends Controller {
   @Override
   public void onSwitchTo() {
     btnBusinessman.setDisable(true);
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnMakeGuess.setDisable(false);
-      canGuess = true;
     }
   }
 
@@ -205,7 +201,7 @@ public class BusinessmanController extends Controller {
     lblResponse.setVisible(true);
     lblResponse.setText("Mr. Harrison is responding...");
     canSwitch = false;
-    enableButtons(canSwitch, canGuess);
+    enableButtons(canSwitch, SceneManager.getIfCanGuess());
 
     // Create a Task for the background thread to run the GPT model
     Task<Void> backgroundTask =
@@ -225,7 +221,7 @@ public class BusinessmanController extends Controller {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
                     canSwitch = true;
-                    enableButtons(canSwitch, canGuess);
+                    enableButtons(canSwitch, SceneManager.getIfCanGuess());
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
@@ -267,11 +263,8 @@ public class BusinessmanController extends Controller {
     }
     txtInput.clear();
     businessmanChatted = true;
-    if (BusinessmanController.businessmanChatted == true
-        && GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       btnMakeGuess.setDisable(false);
-      canGuess = true;
     }
     // Create a ChatMessage object with the user's message, append it to the chat area and get a
     // response from the GPT model
