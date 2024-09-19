@@ -59,6 +59,15 @@ public class GuessingController extends Controller {
     txtaChat1.appendText("\n\n");
   }
 
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    timerLabel.setText(timeString + "\n" + "Remaining");
+  }
+
   public void makeGuessBusinessman() {
     txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
     btnJimmy.setDisable(true);
@@ -202,14 +211,5 @@ public class GuessingController extends Controller {
   @FXML
   private void onEndGame(ActionEvent event) throws ApiProxyException, IOException {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
-  }
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 }
