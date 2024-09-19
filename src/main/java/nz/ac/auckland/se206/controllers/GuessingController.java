@@ -217,6 +217,7 @@ public class GuessingController extends Controller {
     runGpt(msg);
     btnEndGame.setDisable(false);
     btnSend.setDisable(true);
+    RoomController.context.stopTimer();
   }
 
   /**

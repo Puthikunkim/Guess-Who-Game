@@ -8,6 +8,10 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.BusinessmanController;
+import nz.ac.auckland.se206.controllers.GrandmaController;
+import nz.ac.auckland.se206.controllers.GuessingController;
+import nz.ac.auckland.se206.controllers.JimmyController;
 import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
@@ -82,6 +86,16 @@ public class GameStarted implements GameState {
   /** Handles the event when the timer expires. Transitions to the guessing state. */
   private void timerExpired() {
     context.setState(context.getGuessingState());
+    if (GrandmaController.grandmaChatted == true
+        && JimmyController.jimmyChatted == true
+        && BusinessmanController.businessmanChatted == true) {
+      GuessingController guessingController =
+          (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
+      SceneManager.switchRoot(AppUi.GUESSING_ROOM);
+      guessingController.startChat();
+    } else {
+      SceneManager.switchRoot(AppUi.GAMEOVER_ROOM);
+    }
   }
 
   /**
