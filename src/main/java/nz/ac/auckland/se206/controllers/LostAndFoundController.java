@@ -71,7 +71,6 @@ public class LostAndFoundController extends Controller {
   public void onDragProgressed(MouseEvent event) {
     Scene currentScene = thingToDrag.getScene();
 
-    Point2D dragTargetPoint = dragTarget.localToScene(dragTarget.getX(), dragTarget.getY());
     double newX = event.getSceneX() - dragMousePointOffset.getX();
     double newY = event.getSceneY() - dragMousePointOffset.getY();
     // Clamp Value so cant drag images off screen

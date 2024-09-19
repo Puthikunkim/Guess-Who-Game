@@ -51,6 +51,11 @@ public class SceneManager {
     JimmyController.jimmyChatted = false;
     GrandmaController.grandmaChatted = false;
     BusinessmanController.businessmanChatted = false;
+
+    LostAndFoundController.foundCufflink = false;
+    SecurityCameraController.foundTimeOfTheft = false;
+    ReceiptController.receiptInfoFound = false;
+
     sceneMap = new HashMap<>();
     controllerMap = new HashMap<>();
     // Save refrence to stage for easy resizing later

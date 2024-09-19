@@ -43,19 +43,7 @@ public class RoomController extends Controller {
    */
   @FXML
   public void initialize() {
-    // Clue and win conditions chat initialisation
-    txtaChat.appendText("To Win You Must:");
-    txtaChat.appendText("\n\n");
-    txtaChat.appendText("- Chat with all 3 suspects.");
-    txtaChat.appendText("\n");
-    txtaChat.appendText("- Find 1 of the 3 clues.");
-    txtaChat.appendText("\n");
-    txtaChat.appendText("- Guess who the thief of the vase is.");
-    txtaChat.appendText("\n");
-    txtaChat.appendText("-------------------------------");
-    txtaChat.appendText("\n");
-    txtaChat.appendText("Clues Gathered:");
-    txtaChat.appendText("\n\n");
+
     // Change cursor to hand when mouse enters the rectangle
     rectPerson1.setOnMouseEntered(
         event -> {
@@ -101,6 +89,34 @@ public class RoomController extends Controller {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
+    txtaChat.clear();
+    // Clue and win conditions chat initialisation
+    txtaChat.appendText("To Win You Must:");
+    txtaChat.appendText("\n\n");
+    txtaChat.appendText("- Chat with all 3 suspects.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("- Find 1 of the 3 clues.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("- Guess who the thief of the vase is.");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("-------------------------------");
+    txtaChat.appendText("\n");
+    txtaChat.appendText("Clues Gathered:\n");
+    if (SecurityCameraController.foundTimeOfTheft) {
+      txtaChat.appendText(
+          "\tSecurity Camera: Looks like the theft occurred at around 2 o'clock.\n");
+    }
+    if (ReceiptController.receiptInfoFound) {
+      txtaChat.appendText(
+          "\tReceipt: Someone purchased a very expensive protective casing, I wonder what they"
+              + " need\n"
+              + " it for...");
+    }
+    if (LostAndFoundController.foundCufflink) {
+      txtaChat.appendText("Cufflink: Hmmm, seems like someone dropped their cufflink.\n");
+    }
+
+    txtaChat.appendText("\n\n");
   }
 
   /**
