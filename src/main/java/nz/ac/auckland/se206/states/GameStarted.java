@@ -110,8 +110,14 @@ public class GameStarted implements GameState {
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
     // Transition to chat view or provide an introduction based on the clicked rectangle
     switch (rectangleId) {
-      case "rectChest":
-        SceneManager.switchRoot(AppUi.CHEST_ROOM);
+      case "rectPerson1":
+        SceneManager.switchRoot(AppUi.SECURITY_CAMERA_ROOM);
+        return;
+      case "rectPerson2":
+        SceneManager.switchRoot(AppUi.RECEIPT_ROOM);
+        return;
+      case "rectPerson3":
+        SceneManager.switchRoot(AppUi.LOST_FOUND_ROOM);
         return;
     }
 

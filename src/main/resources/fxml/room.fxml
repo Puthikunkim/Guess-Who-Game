@@ -12,14 +12,11 @@
 
 <Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
-      <ImageView fitHeight="615.0" fitWidth="597.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="599.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/room_background.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rectPerson1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="67.0" layoutX="56.0" layoutY="42.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="61.0" />
-      <Rectangle fx:id="rectPerson3" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="82.0" layoutX="467.0" layoutY="410.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-      <Rectangle fx:id="rectPerson2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="117.0" layoutX="256.0" layoutY="415.0" onMouseClicked="#handleRectangleClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
       <Label fx:id="lblProfession" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="21.0" />
@@ -60,5 +57,8 @@
             <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
+      <Rectangle fx:id="rectPerson1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="67.0" layoutX="56.0" layoutY="42.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="61.0" />
+      <Rectangle fx:id="rectPerson2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="117.0" layoutX="256.0" layoutY="415.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="rectPerson3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="82.0" layoutX="467.0" layoutY="410.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="110.0" />
    </children>
 </Pane>
