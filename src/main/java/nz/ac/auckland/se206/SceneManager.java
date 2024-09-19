@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.BusinessmanController;
 import nz.ac.auckland.se206.controllers.Controller;
 import nz.ac.auckland.se206.controllers.GrandmaController;
+import nz.ac.auckland.se206.controllers.GuessingController;
 import nz.ac.auckland.se206.controllers.JimmyController;
 import nz.ac.auckland.se206.controllers.RoomController;
 
@@ -143,9 +144,11 @@ public class SceneManager {
     GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
     BusinessmanController businessmanController =
         (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+    GuessingController guessingController = (GuessingController) getController(AppUi.GUESSING_ROOM);
     roomController.updateTimer(timeString);
     jimmyController.updateTimer(timeString);
     grandmaController.updateTimer(timeString);
     businessmanController.updateTimer(timeString);
+    guessingController.updateTimer(timeString);
   }
 }
