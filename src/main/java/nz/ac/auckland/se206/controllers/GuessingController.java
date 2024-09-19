@@ -55,6 +55,22 @@ public class GuessingController extends Controller {
     txtaChat1.appendText("\n");
     txtaChat1.appendText("If you guess incorrectly, you will be sent to the game over screen.");
     txtaChat1.appendText("\n\n");
+    btnEndGame.setDisable(true);
+    // Add event handler for pressing Enter in txtInput
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              try {
+                onSendMessage(new ActionEvent()); // Trigger the send message method
+              } catch (ApiProxyException | IOException e) {
+                e.printStackTrace();
+              }
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   /**
@@ -195,6 +211,7 @@ public class GuessingController extends Controller {
     appendChatMessage(msg);
     runGpt(msg);
     btnEndGame.setDisable(false);
+    btnSend.setDisable(true);
   }
 
   /**

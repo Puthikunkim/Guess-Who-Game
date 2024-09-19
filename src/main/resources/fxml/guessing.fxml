@@ -28,7 +28,10 @@
       <Button fx:id="btnJimmy" layoutX="51.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessJimmy" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="btnBusinessman" layoutX="433.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessBusinessman" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
       <Button fx:id="btnGrandma" layoutX="239.0" layoutY="366.0" mnemonicParsing="false" onAction="#makeGuessGrandma" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
-      <TextField fx:id="txtInput" layoutX="617.0" layoutY="523.0" prefHeight="63.0" prefWidth="250.0" />
+      <TextField fx:id="txtInput" alignment="TOP_LEFT" layoutX="617.0" layoutY="523.0" prefHeight="63.0" prefWidth="250.0" promptText="Enter reasoning here:">
+         <font>
+            <Font size="13.5" />
+         </font></TextField>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
       <TextArea fx:id="txtaChat1" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="250.0" wrapText="true">
          <font>
