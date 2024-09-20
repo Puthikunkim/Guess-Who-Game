@@ -27,10 +27,10 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  */
 public class GrandmaController extends Controller {
 
+  public static boolean grandmaChatted = false;
   private ChatCompletionRequest
       chatCompletionRequestGrandma; // Chat completion requests for each suspect
   private boolean grandmaStarted = false;
-  public static boolean grandmaChatted = false;
 
   @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
