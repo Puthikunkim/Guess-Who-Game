@@ -112,11 +112,7 @@ public class GrandmaController extends Controller {
    */
   @FXML
   private void onJimmyClick(ActionEvent event) throws IOException {
-    JimmyController jimmyController =
-        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
-    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
-    jimmyController.startChat();
-    txtaChat1.clear();
+    SceneManager.changeToJimmyScene(event);
   }
 
   /**
@@ -127,10 +123,7 @@ public class GrandmaController extends Controller {
    */
   @FXML
   private void onBusinessmanClick(ActionEvent event) throws IOException {
-    BusinessmanController businessmanController =
-        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
-    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
-    businessmanController.startChat();
+    SceneManager.changeToBusinessmanScene(event);
     txtaChat1.clear();
   }
 
@@ -278,10 +271,6 @@ public class GrandmaController extends Controller {
    */
   @FXML
   private void onGuessClick(ActionEvent event) throws IOException {
-    GuessingController guessingController =
-        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
-    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
-    guessingController.startChat();
-    RoomController.context.handleGuessClick();
+    SceneManager.changeToGuessScene(event);
   }
 }

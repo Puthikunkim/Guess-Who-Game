@@ -134,10 +134,7 @@ public class LostAndFoundController extends Controller {
 
   @FXML
   private void onJimmyClick(ActionEvent event) throws IOException {
-    JimmyController jimmyController =
-        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
-    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
-    jimmyController.startChat();
+    SceneManager.changeToJimmyScene(event);
     txtaChat.clear();
   }
 
@@ -149,10 +146,7 @@ public class LostAndFoundController extends Controller {
    */
   @FXML
   private void onGrandmaClick(ActionEvent event) throws IOException {
-    GrandmaController grandmaController =
-        (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
-    SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
-    grandmaController.startChat();
+    SceneManager.changeToGrandmaScene(event);
     txtaChat.clear();
   }
 
@@ -164,10 +158,7 @@ public class LostAndFoundController extends Controller {
    */
   @FXML
   private void onBusinessmanClick(ActionEvent event) throws IOException {
-    BusinessmanController businessmanController =
-        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
-    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
-    businessmanController.startChat();
+    SceneManager.changeToBusinessmanScene(event);
     txtaChat.clear();
   }
 
@@ -179,10 +170,6 @@ public class LostAndFoundController extends Controller {
    */
   @FXML
   private void onGuessClick(ActionEvent event) throws IOException {
-    GuessingController guessingController =
-        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
-    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
-    guessingController.startChat();
-    RoomController.context.handleGuessClick();
+    SceneManager.changeToGuessScene(event);
   }
 }
