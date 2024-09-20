@@ -79,6 +79,7 @@ public class GameStarted implements GameState {
 
   /** Handles the event when the timer expires. Transitions to the guessing state. */
   private void timerExpired() {
+    // switches to guessing room if can guess else to gameover room
     context.setState(context.getGuessingState());
     if (SceneManager.getIfCanGuess()) {
       GuessingController guessingController =

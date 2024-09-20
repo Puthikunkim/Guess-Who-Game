@@ -154,6 +154,7 @@ public class SceneManager {
 
   // timer
   public static void checkTimer(String timeString) {
+    // get controller for all rooms
     RoomController roomController = (RoomController) getController(AppUi.MAIN_ROOM);
     JimmyController jimmyController = (JimmyController) getController(AppUi.JIMMY_ROOM);
     GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
@@ -168,6 +169,7 @@ public class SceneManager {
     LostAndFoundController lostAndFoundController =
         (LostAndFoundController) getController(AppUi.LOST_FOUND_ROOM);
 
+    // update timer for all rooms
     roomController.updateTimer(timeString);
     jimmyController.updateTimer(timeString);
     grandmaController.updateTimer(timeString);
@@ -178,7 +180,10 @@ public class SceneManager {
     lostAndFoundController.updateTimer(timeString);
   }
 
+  // check if all clues are found and all characters are chatted
+  // enable guess button if all clues are found and all characters are chatted
   public static boolean getIfCanGuess() {
+    // checks all requirements to move on to guessing room
     boolean aClueFound =
         LostAndFoundController.foundCufflink
             || ReceiptController.receiptInfoFound

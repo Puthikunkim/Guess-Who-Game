@@ -120,6 +120,7 @@ public class GuessingController extends Controller {
    * @param profession the profession to set
    */
   public void startChat() {
+    // Initialize the ChatCompletionRequest if it hasn't been initialized yet
     if (!guessingStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();

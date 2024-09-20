@@ -46,6 +46,7 @@ public class ReceiptController extends Controller {
 
   @FXML
   public void initialize() {
+    // Initialize the receipt pieces
     ImageView[][] tempReceiptPieces = {
       {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
       {receiptPiece2x1, receiptPiece2x2, receiptPiece2x3},
@@ -160,6 +161,7 @@ public class ReceiptController extends Controller {
   }
 
   private void onPuzzleSolve() {
+    // put the pieces together once the puzzle is solved
     if (receiptInfoFound) {
       return;
     }

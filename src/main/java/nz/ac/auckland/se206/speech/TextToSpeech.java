@@ -24,6 +24,7 @@ public class TextToSpeech {
    * @throws IllegalArgumentException if the text is null or empty
    */
   public static void speak(String text, Voice voice) {
+    // Check if the text is null or empty
     if (text == null || text.isEmpty()) {
       throw new IllegalArgumentException("Text should not be null or empty");
     }
@@ -33,6 +34,7 @@ public class TextToSpeech {
     if (player != null) {
       player.stop();
     }
+    // Create a new background task to convert the text to speech
     Task<Void> backgroundTask =
         new Task<>() {
           @Override

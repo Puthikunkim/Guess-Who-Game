@@ -94,6 +94,7 @@ public class LostAndFoundController extends Controller {
 
   @FXML
   public void onCufflinkClick() {
+    // if cufflink is found append text into chat
     foundCufflink = true;
     txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
 

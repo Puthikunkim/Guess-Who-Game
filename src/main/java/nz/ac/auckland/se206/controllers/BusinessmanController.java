@@ -151,6 +151,7 @@ public class BusinessmanController extends Controller {
    * @param profession the profession to set
    */
   public void startChat() {
+    // If the chat with the suspect has not started, initialize the ChatCompletionRequest and start
     if (!businessmanStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();

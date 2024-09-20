@@ -22,21 +22,22 @@ public class RoomController extends Controller {
 
   public static GameStateContext context = new GameStateContext();
 
-  @FXML private Button btnGuess;
-  @FXML private Label lblProfession;
-  @FXML private Label timerLabel; //
-  @FXML private Rectangle rectCashier;
-  @FXML private Rectangle rectChest; //
-  @FXML private Rectangle rectPerson1;
-  @FXML private Rectangle rectPerson2;
-  @FXML private Rectangle rectPerson3;
-  @FXML private TextArea txtaChat; //
+  @FXML private TextArea txtaChat;
 
-  // chat-room
+  @FXML private Button btnGuess;
   @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
+
+  @FXML private Label lblProfession;
+  @FXML private Label timerLabel;
+
+  @FXML private Rectangle rectCashier;
+  @FXML private Rectangle rectChest;
+  @FXML private Rectangle rectPerson1;
+  @FXML private Rectangle rectPerson2;
+  @FXML private Rectangle rectPerson3;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions.
@@ -84,6 +85,7 @@ public class RoomController extends Controller {
   /** when switched to for the first time set state to gameStarted */
   @Override
   public void onSwitchTo() {
+    // Disable all buttons except for the crime scene button
     btnCrimeScene.setDisable(true);
     btnGuess.setDisable(true);
     if (SceneManager.getIfCanGuess()) {

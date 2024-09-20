@@ -32,9 +32,11 @@ public class ChestController extends Controller {
   /** Initializes the room view. Sets the hint image to the correct image for the thief. */
   @FXML
   public void initialize() {
+    // Get the context from the main room controller
     RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context = roomController.getContext();
     rubbishRectToImage = new HashMap<>();
+    // Set the rubbish rectangles and images
     rubbishRectToImage.put(rubbishRect1, rubbishImage1);
     rubbishRectToImage.put(rubbishRect2, rubbishImage2);
     rubbishRectToImage.put(rubbishRect3, rubbishImage3);
@@ -51,8 +53,10 @@ public class ChestController extends Controller {
    */
   @FXML
   private void handleRectangleClick(MouseEvent event) throws IOException {
+    // Get the rectangle that was clicked
     Rectangle clickedRectangle = (Rectangle) event.getSource();
     String rectangleId = clickedRectangle.getId();
+    // If the rectangle is a rubbish rectangle, destroy it and the corresponding image
     if (rectangleId.contains("rubbish")) {
       ImageView image = rubbishRectToImage.get(clickedRectangle);
       clickedRectangle.setDisable(true);
