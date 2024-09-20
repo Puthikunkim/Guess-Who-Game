@@ -22,21 +22,22 @@ public class RoomController extends Controller {
 
   public static GameStateContext context = new GameStateContext();
 
-  @FXML private Button btnGuess;
-  @FXML private Label lblProfession;
-  @FXML private Label timerLabel; //
-  @FXML private Rectangle rectCashier;
-  @FXML private Rectangle rectChest; //
-  @FXML private Rectangle rectPerson1;
-  @FXML private Rectangle rectPerson2;
-  @FXML private Rectangle rectPerson3;
-  @FXML private TextArea txtaChat; //
+  @FXML private TextArea txtaChat;
 
-  // chat-room
+  @FXML private Button btnGuess;
   @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
+
+  @FXML private Label lblProfession;
+  @FXML private Label timerLabel;
+
+  @FXML private Rectangle rectCashier;
+  @FXML private Rectangle rectChest;
+  @FXML private Rectangle rectPerson1;
+  @FXML private Rectangle rectPerson2;
+  @FXML private Rectangle rectPerson3;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions.
@@ -84,6 +85,7 @@ public class RoomController extends Controller {
   /** when switched to for the first time set state to gameStarted */
   @Override
   public void onSwitchTo() {
+    // Disable all buttons except for the crime scene button
     btnCrimeScene.setDisable(true);
     btnGuess.setDisable(true);
     if (SceneManager.getIfCanGuess()) {
@@ -148,7 +150,7 @@ public class RoomController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleJimmyClick(ActionEvent event) throws IOException {
+  private void onJimmyClick(ActionEvent event) throws IOException {
     JimmyController jimmyController =
         (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
@@ -162,7 +164,7 @@ public class RoomController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleGrandmaClick(ActionEvent event) throws IOException {
+  private void onGrandmaClick(ActionEvent event) throws IOException {
     GrandmaController grandmaController =
         (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
     SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
@@ -176,7 +178,7 @@ public class RoomController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleBusinessmanClick(ActionEvent event) throws IOException {
+  private void onBusinessmanClick(ActionEvent event) throws IOException {
     BusinessmanController businessmanController =
         (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
     SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);

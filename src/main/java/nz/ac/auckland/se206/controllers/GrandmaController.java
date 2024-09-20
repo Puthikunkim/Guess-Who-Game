@@ -27,10 +27,10 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  */
 public class GrandmaController extends Controller {
 
+  public static boolean grandmaChatted = false;
   private ChatCompletionRequest
       chatCompletionRequestGrandma; // Chat completion requests for each suspect
   private boolean grandmaStarted = false;
-  public static boolean grandmaChatted = false;
 
   @FXML private Button btnCrimeScene;
   @FXML private Button btnJimmy;
@@ -99,7 +99,7 @@ public class GrandmaController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleCrimeSceneClick(ActionEvent event) throws IOException {
+  private void onCrimeSceneClick(ActionEvent event) throws IOException {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
     txtaChat1.clear();
   }
@@ -111,7 +111,7 @@ public class GrandmaController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleJimmyClick(ActionEvent event) throws IOException {
+  private void onJimmyClick(ActionEvent event) throws IOException {
     JimmyController jimmyController =
         (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
@@ -126,7 +126,7 @@ public class GrandmaController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleBusinessmanClick(ActionEvent event) throws IOException {
+  private void onBusinessmanClick(ActionEvent event) throws IOException {
     BusinessmanController businessmanController =
         (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
     SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
@@ -151,6 +151,7 @@ public class GrandmaController extends Controller {
    * @param profession the profession to set
    */
   public void startChat() {
+    // If the chat with the suspect has not started, initialize the ChatCompletionRequest and start
     if (!grandmaStarted) {
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -276,7 +277,7 @@ public class GrandmaController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
+  private void onGuessClick(ActionEvent event) throws IOException {
     GuessingController guessingController =
         (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);

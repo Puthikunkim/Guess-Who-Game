@@ -7,8 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -66,7 +64,6 @@ public class App extends Application {
    */
   @Override
   public void stop() {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     Platform.exit();
     System.exit(0); // Force the application to exit
   }

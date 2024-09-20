@@ -3,10 +3,6 @@ package nz.ac.auckland.se206.states;
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.Person;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * The GameOver state of the game. Handles interactions after the game has ended, informing the
@@ -41,8 +37,6 @@ public class GameOver implements GameState {
     if (rectangleId.equals("rectChest")) {
       return;
     }
-    Person clickedPerson = context.getPerson(rectangleId);
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.playSound("Thief" + context.getPersonToGuess().getName());
   }
 
@@ -53,9 +47,7 @@ public class GameOver implements GameState {
    * @throws IOException if there is an I/O error
    */
   @Override
-  public void handleGuessClick() throws IOException {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-  }
+  public void handleGuessClick() throws IOException {}
 
   /** Does nothing as the game is over and no further actions can be taken. */
   @Override

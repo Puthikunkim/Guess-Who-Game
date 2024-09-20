@@ -31,9 +31,9 @@
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font></Label>
-      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
-      <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
+      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#onGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" onAction="#onBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
       <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" textFill="#663b3b" />
       <Ellipse layoutX="534.0" layoutY="478.0" opacity="0.45" radiusX="55.0" radiusY="13.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fitHeight="67.0" fitWidth="100.0" layoutX="471.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">

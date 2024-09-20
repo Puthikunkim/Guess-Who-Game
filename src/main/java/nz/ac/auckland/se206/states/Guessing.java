@@ -6,10 +6,8 @@ import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.Person;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * The Guessing state of the game. Handles the logic for when the player is making a guess about the
@@ -102,10 +100,7 @@ public class Guessing implements GameState {
    */
   @Override
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-
     // Checks if player guessed correctly, displays appropiate message
-    Person clickedPerson = context.getPerson(rectangleId);
     context.setGuessed(true);
     context.setState(context.getGameOverState());
   }
@@ -117,7 +112,5 @@ public class Guessing implements GameState {
    * @throws IOException if there is an I/O error
    */
   @Override
-  public void handleGuessClick() throws IOException {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-  }
+  public void handleGuessClick() throws IOException {}
 }

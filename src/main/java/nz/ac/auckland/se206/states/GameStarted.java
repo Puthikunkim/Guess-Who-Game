@@ -8,11 +8,7 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.BusinessmanController;
-import nz.ac.auckland.se206.controllers.GrandmaController;
 import nz.ac.auckland.se206.controllers.GuessingController;
-import nz.ac.auckland.se206.controllers.JimmyController;
-import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * The GameStarted state of the game. Handles the initial interactions when the game starts,
@@ -36,9 +32,7 @@ public class GameStarted implements GameState {
 
   /** when game is started start the timer in RoomController. */
   @Override
-  public void onSwitchTo() {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
-  }
+  public void onSwitchTo() {}
 
   /** Starts the timer for the game. */
   @Override
@@ -85,10 +79,9 @@ public class GameStarted implements GameState {
 
   /** Handles the event when the timer expires. Transitions to the guessing state. */
   private void timerExpired() {
+    // switches to guessing room if can guess else to gameover room
     context.setState(context.getGuessingState());
-    if (GrandmaController.grandmaChatted == true
-        && JimmyController.jimmyChatted == true
-        && BusinessmanController.businessmanChatted == true) {
+    if (SceneManager.getIfCanGuess()) {
       GuessingController guessingController =
           (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
       SceneManager.switchRoot(AppUi.GUESSING_ROOM);
@@ -120,8 +113,6 @@ public class GameStarted implements GameState {
         SceneManager.switchRoot(AppUi.LOST_FOUND_ROOM);
         return;
     }
-
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.setTalkedToPeople(true);
   }
 
@@ -133,7 +124,6 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.setState(context.getGuessingState());
   }
 }
