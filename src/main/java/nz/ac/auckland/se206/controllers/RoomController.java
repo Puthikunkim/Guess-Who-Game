@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -17,7 +16,7 @@ import nz.ac.auckland.se206.SceneManager;
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
-public class RoomController extends Controller {
+public class RoomController extends GameRoomController {
 
   public static GameStateContext context = new GameStateContext();
 
@@ -138,52 +137,6 @@ public class RoomController extends Controller {
   private void handleRectangleClick(MouseEvent event) throws IOException {
     Rectangle clickedRectangle = (Rectangle) event.getSource();
     context.handleRectangleClick(event, clickedRectangle.getId());
-  }
-
-  // chat-room
-
-  /**
-   * Handles the switch button click event to jimmy's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onJimmyClick(ActionEvent event) throws IOException {
-    SceneManager.changeToJimmyScene(event);
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onGrandmaClick(ActionEvent event) throws IOException {
-    SceneManager.changeToGrandmaScene(event);
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onBusinessmanClick(ActionEvent event) throws IOException {
-    SceneManager.changeToBusinessmanScene(event);
-  }
-
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    SceneManager.changeToGuessScene(event);
   }
 
   public static GameStateContext getContext() {
