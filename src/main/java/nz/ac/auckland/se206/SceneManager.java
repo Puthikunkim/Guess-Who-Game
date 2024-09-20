@@ -87,7 +87,6 @@ public class SceneManager {
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();
-    // switchRoot(AppUi.LOST_FOUND_ROOM);
   }
 
   // restart the game
@@ -184,7 +183,7 @@ public class SceneManager {
   // enable guess button if all clues are found and all characters are chatted
   public static boolean getIfCanGuess() {
     // checks all requirements to move on to guessing room
-    boolean aClueFound =
+    boolean clueFound =
         LostAndFoundController.foundCufflink
             || ReceiptController.receiptInfoFound
             || SecurityCameraController.foundTimeOfTheft;
@@ -192,7 +191,7 @@ public class SceneManager {
         BusinessmanController.businessmanChatted == true
             && GrandmaController.grandmaChatted == true
             && JimmyController.jimmyChatted == true;
-    if (allChatted && aClueFound) {
+    if (allChatted && clueFound) {
       return true;
     }
     return false;

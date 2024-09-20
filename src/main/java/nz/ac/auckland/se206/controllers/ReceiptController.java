@@ -179,7 +179,6 @@ public class ReceiptController extends Controller {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
-    return;
   }
 
   @FXML

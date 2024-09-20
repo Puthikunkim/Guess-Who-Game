@@ -3,7 +3,7 @@ package nz.ac.auckland.se206.states;
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 
-public class menuState implements GameState {
+public class MenuState implements GameState {
   public void onSwitchTo() {
     // TODO Auto-generated method
   }

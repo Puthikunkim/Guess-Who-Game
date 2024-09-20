@@ -15,7 +15,7 @@ import nz.ac.auckland.se206.states.GameOver;
 import nz.ac.auckland.se206.states.GameStarted;
 import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.states.Guessing;
-import nz.ac.auckland.se206.states.menuState;
+import nz.ac.auckland.se206.states.MenuState;
 
 /**
  * Context class for managing the state of the game. Handles transitions between different game
@@ -37,7 +37,7 @@ public class GameStateContext {
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
     // Init game states for refrence later
-    menuState menuState = new menuState();
+    MenuState menuState = new MenuState();
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
