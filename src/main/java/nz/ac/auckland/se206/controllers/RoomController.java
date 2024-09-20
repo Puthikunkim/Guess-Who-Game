@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -12,13 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
-public class RoomController extends Controller {
+public class RoomController extends GameRoomController {
 
   public static GameStateContext context = new GameStateContext();
 
@@ -139,65 +137,6 @@ public class RoomController extends Controller {
   private void handleRectangleClick(MouseEvent event) throws IOException {
     Rectangle clickedRectangle = (Rectangle) event.getSource();
     context.handleRectangleClick(event, clickedRectangle.getId());
-  }
-
-  // chat-room
-
-  /**
-   * Handles the switch button click event to jimmy's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onJimmyClick(ActionEvent event) throws IOException {
-    JimmyController jimmyController =
-        (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
-    SceneManager.switchRoot(AppUi.JIMMY_ROOM);
-    jimmyController.startChat();
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onGrandmaClick(ActionEvent event) throws IOException {
-    GrandmaController grandmaController =
-        (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
-    SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
-    grandmaController.startChat();
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onBusinessmanClick(ActionEvent event) throws IOException {
-    BusinessmanController businessmanController =
-        (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
-    SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
-    businessmanController.startChat();
-  }
-
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    GuessingController guessingController =
-        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
-    SceneManager.switchRoot(AppUi.GUESSING_ROOM);
-    guessingController.startChat();
-    context.handleGuessClick();
   }
 
   public static GameStateContext getContext() {

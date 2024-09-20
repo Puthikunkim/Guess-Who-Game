@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -195,5 +196,49 @@ public class SceneManager {
       return true;
     }
     return false;
+  }
+
+  public static void changeToJimmyScene(ActionEvent event) throws IOException {
+    JimmyController jimmyController = (JimmyController) getController(AppUi.JIMMY_ROOM);
+    switchRoot(AppUi.JIMMY_ROOM);
+    jimmyController.startChat();
+  }
+
+  /**
+   * Handles the switch button click event to grandma's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  public static void changeToGrandmaScene(ActionEvent event) throws IOException {
+    GrandmaController grandmaController = (GrandmaController) getController(AppUi.GRANDMA_ROOM);
+    switchRoot(AppUi.GRANDMA_ROOM);
+    grandmaController.startChat();
+  }
+
+  /**
+   * Handles the switch button click event to grandma's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  public static void changeToBusinessmanScene(ActionEvent event) throws IOException {
+    BusinessmanController businessmanController =
+        (BusinessmanController) getController(AppUi.BUSINESSMAN_ROOM);
+    switchRoot(AppUi.BUSINESSMAN_ROOM);
+    businessmanController.startChat();
+  }
+
+  /**
+   * Handles the guess button click event.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
+  public static void changeToGuessScene(ActionEvent event) throws IOException {
+    GuessingController guessingController = (GuessingController) getController(AppUi.GUESSING_ROOM);
+    switchRoot(AppUi.GUESSING_ROOM);
+    guessingController.startChat();
+    RoomController.context.handleGuessClick();
   }
 }
