@@ -203,13 +203,13 @@ public class ReceiptController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleCrimeSceneClick(ActionEvent event) throws IOException {
+  private void onCrimeSceneClick(ActionEvent event) throws IOException {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
     txtaChat.clear();
   }
 
   @FXML
-  private void handleJimmyClick(ActionEvent event) throws IOException {
+  private void onJimmyClick(ActionEvent event) throws IOException {
     JimmyController jimmyController =
         (JimmyController) SceneManager.getController(AppUi.JIMMY_ROOM);
     SceneManager.switchRoot(AppUi.JIMMY_ROOM);
@@ -224,7 +224,7 @@ public class ReceiptController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleGrandmaClick(ActionEvent event) throws IOException {
+  private void onGrandmaClick(ActionEvent event) throws IOException {
     GrandmaController grandmaController =
         (GrandmaController) SceneManager.getController(AppUi.GRANDMA_ROOM);
     SceneManager.switchRoot(AppUi.GRANDMA_ROOM);
@@ -239,7 +239,7 @@ public class ReceiptController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleBusinessmanClick(ActionEvent event) throws IOException {
+  private void onBusinessmanClick(ActionEvent event) throws IOException {
     BusinessmanController businessmanController =
         (BusinessmanController) SceneManager.getController(AppUi.BUSINESSMAN_ROOM);
     SceneManager.switchRoot(AppUi.BUSINESSMAN_ROOM);
@@ -254,7 +254,7 @@ public class ReceiptController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
+  private void onGuessClick(ActionEvent event) throws IOException {
     GuessingController guessingController =
         (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);

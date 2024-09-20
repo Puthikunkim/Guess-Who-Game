@@ -31,16 +31,16 @@
             <Font size="13.5" />
          </font></TextField>
       <Button fx:id="btnSend" layoutX="865.0" layoutY="536.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="37.0" prefWidth="119.0" text="Send" />
-      <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
-      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
-      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
+      <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#onCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
+      <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#onGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
       <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
-      <Button fx:id="btnMakeGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
+      <Button fx:id="btnMakeGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
       <ImageView fitHeight="636.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/businessman_room.jpg" />
