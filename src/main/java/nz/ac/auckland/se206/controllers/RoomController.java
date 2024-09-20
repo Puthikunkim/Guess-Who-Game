@@ -20,6 +20,15 @@ public class RoomController extends GameRoomController {
 
   public static GameStateContext context = new GameStateContext();
 
+  /**
+   * Gets the game state context.
+   *
+   * @return the game state context
+   */
+  public static GameStateContext getContext() {
+    return context;
+  }
+
   @FXML private Rectangle rectCashier;
   @FXML private Rectangle rectChest;
   @FXML private Rectangle rectPerson1;
@@ -137,9 +146,5 @@ public class RoomController extends GameRoomController {
   private void handleRectangleClick(MouseEvent event) throws IOException {
     Rectangle clickedRectangle = (Rectangle) event.getSource();
     context.handleRectangleClick(event, clickedRectangle.getId());
-  }
-
-  public static GameStateContext getContext() {
-    return context;
   }
 }

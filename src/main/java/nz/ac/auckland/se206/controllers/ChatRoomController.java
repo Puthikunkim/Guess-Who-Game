@@ -94,6 +94,7 @@ public class ChatRoomController extends GameRoomController {
   public void startChat() {
     // If the chat with the suspect has not started, initialize the ChatCompletionRequest and start
     if (!chatStarted) {
+      // Initialize the ChatCompletionRequest
       try {
         ApiProxyConfig config = ApiProxyConfig.readConfig();
         chatCompletionRequest =
@@ -103,6 +104,7 @@ public class ChatRoomController extends GameRoomController {
                 .setTopP(0.5)
                 .setMaxTokens(100);
         String systemPrompt;
+        // Set the system prompt based on the suspect
         if (character == Characters.JIMMY) {
           systemPrompt = getSystemPrompt("jimmy.txt");
         } else if (character == Characters.BUSINESSMAN) {
@@ -110,11 +112,11 @@ public class ChatRoomController extends GameRoomController {
         } else {
           systemPrompt = getSystemPrompt("grandma.txt");
         }
-
+        // Start the chat with the suspect
         runGpt(new ChatMessage("system", systemPrompt));
         chatStarted = true;
       } catch (ApiProxyException e) {
-        e.printStackTrace();
+        e.printStackTrace(); // Print the stack trace if there is an error
       }
     }
   }
@@ -202,7 +204,14 @@ public class ChatRoomController extends GameRoomController {
     return null;
   }
 
+  /**
+   * Enables or disables the buttons in the chat room.
+   *
+   * @param enable whether to enable the buttons
+   * @param canGuess whether the user can make a guess
+   */
   protected void enableButtons(boolean enable, boolean canGuess) {
+    // Enable or disable the buttons based on the enable parameter
     if (character != Characters.JIMMY) {
       btnJimmy.setDisable(!enable);
     }
@@ -213,6 +222,7 @@ public class ChatRoomController extends GameRoomController {
       btnGrandma.setDisable(!enable);
     }
 
+    // Enable or disable the crime scene and send buttons based on the enable parameter
     btnCrimeScene.setDisable(!enable);
     btnSend.setDisable(!enable);
     if (canGuess == true) {
