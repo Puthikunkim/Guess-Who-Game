@@ -29,6 +29,7 @@ public class GuessingController extends Controller {
   private ChatCompletionRequest
       chatCompletionRequestGuessing; // Chat completion requests for each suspect
   private boolean guessingStarted = false;
+  private boolean firstTime = true;
 
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
@@ -185,9 +186,12 @@ public class GuessingController extends Controller {
                   () -> {
                     appendChatMessage(result.getChatMessage());
                     lblResponse.setVisible(false);
-                    btnJimmy.setDisable(false);
-                    btnGrandma.setDisable(false);
-                    btnBusinessman.setDisable(false);
+                    if (firstTime) {
+                      firstTime = false;
+                      btnJimmy.setDisable(false);
+                      btnGrandma.setDisable(false);
+                      btnBusinessman.setDisable(false);
+                    }
                   });
             } catch (ApiProxyException e) {
               e.printStackTrace();
