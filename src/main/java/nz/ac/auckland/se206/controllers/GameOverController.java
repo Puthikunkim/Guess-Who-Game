@@ -5,11 +5,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 
 public class GameOverController extends Controller {
-  private static GameStateContext context;
   @FXML private Button playAgainBtn;
   @FXML private Button exitBtn;
 

@@ -61,7 +61,6 @@ public class ChestController extends Controller {
       return;
     }
 
-    RoomController roomController = (RoomController) SceneManager.getController(AppUi.MAIN_ROOM);
     context.playSound("Chest" + context.getPersonToGuess().getName());
     context.setChestChecked(true);
     SceneManager.switchRoot(AppUi.MAIN_ROOM);

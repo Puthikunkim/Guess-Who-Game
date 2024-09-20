@@ -87,7 +87,6 @@ public class SceneManager {
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();
-    // System.out.println("HERE");
     // switchRoot(AppUi.LOST_FOUND_ROOM);
   }
 
@@ -192,6 +191,5 @@ public class SceneManager {
       return true;
     }
     return false;
-
   }
 }
