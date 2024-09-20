@@ -86,7 +86,8 @@ public class GuessingController extends Controller {
     timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
-  public void onBusinessmanGuess() {
+  @FXML
+  private void onBusinessmanGuess() {
     txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
@@ -95,11 +96,13 @@ public class GuessingController extends Controller {
     lblGuess.setText("Guess is correct");
   }
 
-  public void onGrandmaGuess() {
+  @FXML
+  private void onGrandmaGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
-  public void onJimmyGuess() {
+  @FXML
+  private void onJimmyGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
   }
 
