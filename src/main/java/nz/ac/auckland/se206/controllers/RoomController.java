@@ -22,6 +22,12 @@ public class RoomController extends Controller {
 
   public static GameStateContext context = new GameStateContext();
 
+  @FXML private Rectangle rectCashier;
+  @FXML private Rectangle rectChest;
+  @FXML private Rectangle rectPerson1;
+  @FXML private Rectangle rectPerson2;
+  @FXML private Rectangle rectPerson3;
+
   @FXML private TextArea txtaChat;
 
   @FXML private Button btnGuess;
@@ -32,12 +38,6 @@ public class RoomController extends Controller {
 
   @FXML private Label lblProfession;
   @FXML private Label timerLabel;
-
-  @FXML private Rectangle rectCashier;
-  @FXML private Rectangle rectChest;
-  @FXML private Rectangle rectPerson1;
-  @FXML private Rectangle rectPerson2;
-  @FXML private Rectangle rectPerson3;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions.
