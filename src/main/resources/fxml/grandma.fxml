@@ -18,10 +18,10 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="139.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
       <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" promptText="Suspect response:" wrapText="true">
          <font>
             <Font size="13.5" />
@@ -34,19 +34,19 @@
       <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#onCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
       <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="btnBusinessman" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" onAction="#onBusinessmanClick" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
-      <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblResponse" layoutX="617.0" layoutY="494.0" prefHeight="21.0" prefWidth="236.0" styleClass="response-label" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <Button fx:id="btnGrandma" disable="true" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
       <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
-      <Label fx:id="timerLabel" layoutX="871.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblProfession1" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblProfession1" layoutX="617.0" layoutY="7.0" prefHeight="37.0" prefWidth="242.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="21.0" />
          </font>

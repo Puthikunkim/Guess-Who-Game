@@ -11,7 +11,7 @@
 
 <Pane prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SecurityCameraController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" width="163.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="163.0" />
       <ImageView fitHeight="670.0" fitWidth="601.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/SecurityCameraBackground.png" />
@@ -22,18 +22,19 @@
             <Image url="@../images/ExtendedCrimeScene.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="Time18" layoutX="45.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="18:00" />
-      <Button fx:id="Time19" layoutX="104.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="19:00" />
-      <Button fx:id="Time20" layoutX="164.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="20:00" />
-      <Button fx:id="Time21" layoutX="225.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="21:00" />
-      <Button fx:id="Time22" layoutX="283.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="22:00" />
-      <Button fx:id="Time23" layoutX="344.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="23:00" />
-      <Button fx:id="Time00" layoutX="406.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="00:00" />
-      <Button fx:id="Time01" layoutX="466.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" text="01:00" />
-      <Button fx:id="Time02" layoutX="528.0" layoutY="519.0" mnemonicParsing="false" onAction="#onDuringTimeClick" text="02:00" />
-      <Button fx:id="Time03" layoutX="223.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="03:00" />
-      <Button fx:id="Time04" layoutX="282.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="04:00" />
-      <Button fx:id="Time05" layoutX="342.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAfterTimeClick" text="05:00" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="121.0" layoutX="69.0" layoutY="483.0" stroke="BLACK" strokeType="INSIDE" styleClass="security-dashboard" width="455.0" />
+      <Button fx:id="Time18" layoutX="102.0" layoutY="504.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="18:00" />
+      <Button fx:id="Time19" layoutX="169.0" layoutY="505.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="19:00" />
+      <Button fx:id="Time20" layoutX="237.0" layoutY="505.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="20:00" />
+      <Button fx:id="Time21" layoutX="305.0" layoutY="505.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="21:00" />
+      <Button fx:id="Time22" layoutX="372.0" layoutY="505.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="22:00" />
+      <Button fx:id="Time23" layoutX="440.0" layoutY="505.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="23:00" />
+      <Button fx:id="Time00" layoutX="102.0" layoutY="554.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="00:00" />
+      <Button fx:id="Time01" layoutX="169.0" layoutY="554.0" mnemonicParsing="false" onAction="#onBeforeTimeClick" styleClass="security-button" text="01:00" />
+      <Button fx:id="Time02" layoutX="237.0" layoutY="554.0" mnemonicParsing="false" onAction="#onDuringTimeClick" styleClass="security-button" text="02:00" />
+      <Button fx:id="Time03" layoutX="305.0" layoutY="554.0" mnemonicParsing="false" onAction="#onAfterTimeClick" styleClass="security-button" text="03:00" />
+      <Button fx:id="Time04" layoutX="372.0" layoutY="554.0" mnemonicParsing="false" onAction="#onAfterTimeClick" styleClass="security-button" text="04:00" />
+      <Button fx:id="Time05" layoutX="440.0" layoutY="554.0" mnemonicParsing="false" onAction="#onAfterTimeClick" styleClass="security-button" text="05:00" />
       <ImageView fx:id="cameraDisplayImage" fitHeight="58.0" fitWidth="76.0" layoutX="266.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Vase.png" />
@@ -45,14 +46,14 @@
          </image>
       </ImageView>
       <Button fx:id="backButton" layoutX="611.0" layoutY="522.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="45.0" prefWidth="126.0" text="Back" />
-      <Label fx:id="lblProfession" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblProfession" layoutX="617.0" layoutY="7.0" prefHeight="37.0" prefWidth="242.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
       <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
       <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
       <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
@@ -69,5 +70,10 @@
          </font>
       </Label>
       <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
+      <ImageView fitHeight="250.0" fitWidth="436.0" layoutX="78.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/recording.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

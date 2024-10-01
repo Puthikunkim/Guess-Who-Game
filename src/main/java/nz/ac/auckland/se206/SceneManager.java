@@ -85,6 +85,9 @@ public class SceneManager {
     // Set initial room to MainMenu.fxml
     Parent mainRoom = SceneManager.getRoot(AppUi.MAIN_MENU);
     scene = new Scene(mainRoom);
+    scene
+        .getStylesheets()
+        .add(App.class.getResource("/css/style.css").toExternalForm()); // Load CSS here
     stage.setScene(scene);
     stage.show();
     mainRoom.requestFocus();

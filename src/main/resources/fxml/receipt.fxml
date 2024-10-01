@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ReceiptController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" width="163.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="585.0" layoutY="504.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="163.0" />
       <ImageView fitHeight="599.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/BlurredCrimesceneBackground.png" />
@@ -67,14 +67,14 @@
             <Image url="@../images/receipt_pieces/row-3-column-3.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblProfession" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblProfession" layoutX="617.0" layoutY="7.0" prefHeight="37.0" prefWidth="242.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
       <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
       <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
       <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">

@@ -12,14 +12,15 @@
 
 <Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessingController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
       <ImageView fitHeight="615.0" fitWidth="597.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/room_background.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
-      <Label fx:id="lblGuess" layoutX="627.0" layoutY="7.0" text="Make a guess" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000077" height="333.0" layoutY="126.0" stroke="TRANSPARENT" strokeType="INSIDE" width="597.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
+      <Label fx:id="lblGuess" layoutX="627.0" layoutY="11.0" text="Make a guess" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="21.0" />
          </font>
@@ -32,7 +33,7 @@
          <font>
             <Font size="13.5" />
          </font></TextField>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
       <TextArea fx:id="txtaChat1" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true">
          <font>
             <Font size="13.5" />
@@ -58,7 +59,7 @@
          </image>
       </ImageView>
       <Button fx:id="btnEndGame" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onEndGame" prefHeight="45.0" prefWidth="119.0" text="End game" />
-      <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" styleClass="response-label" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

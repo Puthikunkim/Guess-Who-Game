@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class SecurityCameraController extends Controller {
 
   public static boolean foundTimeOfTheft = false;
+  public static boolean firstFound = false;
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
@@ -53,7 +54,10 @@ public class SecurityCameraController extends Controller {
   @FXML
   private void onDuringTimeClick() {
     staticImageView.setOpacity(100);
-    txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+    if (!firstFound) {
+      txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+      firstFound = true;
+    }
 
     foundTimeOfTheft = true;
     if (SceneManager.getIfCanGuess()) {
