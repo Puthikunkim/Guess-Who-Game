@@ -6,16 +6,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="600.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MainMenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="600.0" style="-fx-background-color: #F7c59f;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MainMenuController">
    <children>
       <ImageView fitHeight="585.0" fitWidth="587.0" layoutX="6.0" layoutY="6.0">
          <image>
             <Image url="@../images/start.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="77.0" layoutX="236.0" layoutY="402.0" stroke="WHITE" strokeType="INSIDE" width="130.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="77.0" layoutX="261.0" layoutY="502.0" stroke="WHITE" strokeType="INSIDE" width="81.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000033" height="585.0" layoutX="6.0" layoutY="7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="587.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="77.0" layoutX="222.0" layoutY="402.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="156.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="77.0" layoutX="222.0" layoutY="498.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="156.0" />
       <Button fx:id="playButton" layoutX="248.0" layoutY="417.0" mnemonicParsing="false" onAction="#onPlayPressed" prefHeight="47.0" prefWidth="105.0" text="Play" />
-      <Button fx:id="exitButton" layoutX="273.0" layoutY="517.0" mnemonicParsing="false" onAction="#onExitPressed" prefHeight="47.0" prefWidth="56.0" text="Exit" />
+      <Button fx:id="exitButton" layoutX="249.0" layoutY="513.0" mnemonicParsing="false" onAction="#onExitPressed" prefHeight="47.0" prefWidth="105.0" text="Exit" />
    </children>
 </Pane>

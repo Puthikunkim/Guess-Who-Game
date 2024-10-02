@@ -17,6 +17,8 @@
             <Image url="@../images/LostAndFoundBackground.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="599.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" width="599.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28452a00" height="599.0" layoutX="593.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" styleClass="box" width="414.0" />
       <ImageView fx:id="cufflink" fitHeight="100.0" fitWidth="100.0" layoutX="230.0" layoutY="233.0" onMousePressed="#onCufflinkClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/CufflinkGold.png" />
@@ -34,7 +36,7 @@
       </ImageView>
       <Label fx:id="lblProfession" layoutX="617.0" layoutY="7.0" prefHeight="37.0" prefWidth="242.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
@@ -44,7 +46,7 @@
       <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" wrapText="true" />
       <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
       <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#onGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
@@ -52,7 +54,7 @@
       <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#onCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" textFill="#663b3b" />
       <Label fx:id="lblProfession1" layoutX="897.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
       <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />

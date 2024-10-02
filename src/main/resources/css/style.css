@@ -1,5 +1,15 @@
 /* General */
 
+/* Border styling */
+.box {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.938), 15, 0.0, -4, 0); /* Shadow on the left */
+}
+
+/* Title styling */
+.title {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Shadow effect */
+}
+
 /* General Button Styles */
 .button {
   -fx-background-color: linear-gradient(to bottom, #536878, #2a324b); /* Gradient for depth */
@@ -35,7 +45,7 @@
   -fx-stroke-width: 2; /* Border width */
   -fx-arc-height: 15; /* Rounded corners */
   -fx-arc-width: 15; /* Rounded corners */
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 0, 3); /* Shadow effect */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.0, 0, 10); /* Shadow effect */
   -fx-padding: 5; /* Internal padding */
   -fx-opacity: 0.9; /* Slight transparency */
 }
@@ -45,6 +55,7 @@
   -fx-background-color: white; /* Change background color to white */
   -fx-text-fill: black; /* Text color */
   -fx-font-size: 14px; /* Font size */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Enhanced shadow effect */
 }
 
 
@@ -58,6 +69,7 @@
   -fx-border-width: 2px; /* Make it stand out */
   -fx-background-radius: 10px; /* Smooth rounded corners */
   -fx-padding: 10px; /* Comfortable spacing */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Enhanced shadow effect */
 }
 
 /* Label Styling */
@@ -65,7 +77,7 @@
   -fx-text-fill: white; /* White text for contrast */
   -fx-font-size: 19px; /* Larger font size for clarity */
   -fx-font-weight: bold; /* Bold for emphasis */
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Subtle shadow to lift text */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.449), 4, 0, 0, 4); /* Subtle shadow to lift text */
 }
 
 /* Label Styling for Character Responses */
@@ -73,7 +85,7 @@
   -fx-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   -fx-text-fill: white; /* White text for contrast */
   -fx-font-family: "System Bold"; /* Bold font */
-  -fx-font-size: 13px; /* Smaller font size */
+  -fx-font-size: 14.5px; /* Smaller font size */
   -fx-background-radius: 10px; /* Rounded corners */
   -fx-padding: 5px; /* Inner padding */
 }
