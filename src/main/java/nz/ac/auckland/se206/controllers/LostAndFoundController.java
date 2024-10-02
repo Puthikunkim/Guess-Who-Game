@@ -34,7 +34,7 @@ public class LostAndFoundController extends GameRoomController {
   public void initialize() {
     cufflink.setOnMouseEntered(
         event -> {
-          cufflink.setCursor(Cursor.HAND);
+          cufflink.setCursor(Cursor.CLOSED_HAND);
           cufflink.setOpacity(0.5); // Change opacity or add any other visual effect
         });
 
@@ -51,7 +51,20 @@ public class LostAndFoundController extends GameRoomController {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
+    // Update the label text
     timerLabel.setText(timeString + "\n" + "Remaining");
+
+    // Split the timeString to extract minutes and seconds
+    String[] timeParts = timeString.split(":");
+    int minutes = Integer.parseInt(timeParts[0]);
+    int seconds = Integer.parseInt(timeParts[1]);
+
+    // Check if there are 10 seconds or less remaining
+    if (minutes == 0 && seconds <= 10) {
+      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
+    } else {
+      timerLabel.setStyle(""); // Reset to default style
+    }
   }
 
   @FXML
