@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class SecurityCameraController extends Controller {
 
   public static boolean foundTimeOfTheft = false;
+  public static boolean firstFound = false;
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
@@ -33,7 +34,20 @@ public class SecurityCameraController extends Controller {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
+    // Update the label text
     timerLabel.setText(timeString + "\n" + "Remaining");
+
+    // Split the timeString to extract minutes and seconds
+    String[] timeParts = timeString.split(":");
+    int minutes = Integer.parseInt(timeParts[0]);
+    int seconds = Integer.parseInt(timeParts[1]);
+
+    // Check if there are 10 seconds or less remaining
+    if (minutes == 0 && seconds <= 10) {
+      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
+    } else {
+      timerLabel.setStyle(""); // Reset to default style
+    }
   }
 
   @FXML
@@ -53,7 +67,10 @@ public class SecurityCameraController extends Controller {
   @FXML
   private void onDuringTimeClick() {
     staticImageView.setOpacity(100);
-    txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+    if (!firstFound) {
+      txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+      firstFound = true;
+    }
 
     foundTimeOfTheft = true;
     if (SceneManager.getIfCanGuess()) {
