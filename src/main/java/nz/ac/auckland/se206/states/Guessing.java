@@ -79,6 +79,9 @@ public class Guessing implements GameState {
     int seconds = timeRemaining % 60;
     String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
     SceneManager.checkTimer(timeString); // Update the timer UI
+    if (minutes == 0 && seconds == 30) {
+      context.playSound("30SecondWarning");
+    }
   }
 
   /**
