@@ -20,7 +20,6 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
@@ -106,14 +105,14 @@ public class GuessingController extends Controller {
   @FXML
   private void onGrandmaGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
-    TextToSpeech.speak("You guessed incorrectly.");
+    context.playSound("IncorrectGuess");
   }
 
   /** Handles the button click event for the jimmy suspect. */
   @FXML
   private void onJimmyGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
-    TextToSpeech.speak("you guessed incorrectly.");
+    context.playSound("IncorrectGuess");
   }
 
   /**
