@@ -17,8 +17,10 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
@@ -43,6 +45,7 @@ public class GuessingController extends Controller {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
   @FXML private Button btnEndGame;
+  private GameStateContext context;
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -50,6 +53,7 @@ public class GuessingController extends Controller {
    */
   @FXML
   public void initialize() {
+    context = RoomController.getContext();
     lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
@@ -95,18 +99,21 @@ public class GuessingController extends Controller {
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
+    context.playSound("CorrectGuess");
   }
 
   /** Handles the button click event for the grandma suspect. */
   @FXML
   private void onGrandmaGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    TextToSpeech.speak("You guessed incorrectly.");
   }
 
   /** Handles the button click event for the jimmy suspect. */
   @FXML
   private void onJimmyGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    TextToSpeech.speak("you guessed incorrectly.");
   }
 
   /**
