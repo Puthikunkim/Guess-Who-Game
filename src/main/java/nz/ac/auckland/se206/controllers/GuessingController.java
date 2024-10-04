@@ -80,6 +80,11 @@ public class GuessingController extends Controller {
         });
   }
 
+  @Override
+  public void onSwitchTo() {
+    context.playSound("GuessingPrompt");
+  }
+
   /**
    * Updates the timer label with the given time string.
    *

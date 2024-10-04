@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -20,6 +21,7 @@ public class LostAndFoundController extends GameRoomController {
   @FXML private ImageView cufflink;
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
+  private GameStateContext context;
 
   // chat-room
   @FXML private Label timerLabel; //
@@ -32,6 +34,7 @@ public class LostAndFoundController extends GameRoomController {
 
   @FXML
   public void initialize() {
+    context = RoomController.getContext();
     cufflink.setOnMouseEntered(
         event -> {
           cufflink.setCursor(Cursor.HAND);
@@ -43,6 +46,11 @@ public class LostAndFoundController extends GameRoomController {
           cufflink.setCursor(Cursor.DEFAULT);
           cufflink.setOpacity(1.0); // Reset opacity
         });
+  }
+
+  @Override
+  public void onSwitchTo() {
+    context.playSound("ping-82822");
   }
 
   /**
@@ -102,6 +110,7 @@ public class LostAndFoundController extends GameRoomController {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
+    context.playSound("ping-82822");
   }
 
   @FXML

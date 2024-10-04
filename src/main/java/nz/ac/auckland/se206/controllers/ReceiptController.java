@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -42,8 +43,11 @@ public class ReceiptController extends GameRoomController {
   @FXML private Button btnGuess;
   @FXML private TextArea txtaChat;
 
+  private GameStateContext context;
+
   @FXML
   public void initialize() {
+    context = RoomController.getContext();
     // Initialize the receipt pieces
     ImageView[][] tempReceiptPieces = {
       {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
@@ -51,6 +55,11 @@ public class ReceiptController extends GameRoomController {
       {receiptPiece3x1, receiptPiece3x2, receiptPiece3x3}
     };
     receiptPieces = tempReceiptPieces;
+  }
+
+  @Override
+  public void onSwitchTo() {
+    context.playSound("ping-82822");
   }
 
   /**
@@ -177,6 +186,7 @@ public class ReceiptController extends GameRoomController {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
+    context.playSound("ping-82822");
   }
 
   @FXML

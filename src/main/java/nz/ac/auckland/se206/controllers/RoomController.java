@@ -46,6 +46,8 @@ public class RoomController extends GameRoomController {
   @FXML private Label lblProfession;
   @FXML private Label timerLabel;
 
+  private boolean firstTime = true;
+
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions.
    */
@@ -87,11 +89,18 @@ public class RoomController extends GameRoomController {
           rectPerson3.setCursor(Cursor.DEFAULT);
           rectPerson3.setStroke(Color.TRANSPARENT);
         });
+
+    firstTime = true;
   }
 
   /** when switched to for the first time set state to gameStarted */
   @Override
   public void onSwitchTo() {
+    if (firstTime) {
+      context.playSound("InitialPrompt");
+      firstTime = false;
+    }
+
     // Disable all buttons except for the crime scene button
     btnCrimeScene.setDisable(true);
     btnGuess.setDisable(true);
