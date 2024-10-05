@@ -78,6 +78,9 @@ public class GameStarted implements GameState {
     if (minutes == 0 && seconds == 30) {
       context.playSound("30SecondWarning");
     }
+    if (minutes == 0 && seconds == 10) {
+      context.playSound("10SecondWarning");
+    }
   }
 
   /** Handles the event when the timer expires. Transitions to the guessing state. */

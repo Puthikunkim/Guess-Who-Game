@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
@@ -13,6 +14,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 public class BusinessmanController extends ChatRoomController {
 
   public static boolean businessmanChatted = false;
+  private GameStateContext context;
 
   @FXML private Label timerLabel; //
 
@@ -24,6 +26,7 @@ public class BusinessmanController extends ChatRoomController {
   public void initialize() {
     character = Characters.BUSINESSMAN;
     super.initialize();
+    context = RoomController.getContext();
   }
 
   /**
@@ -40,5 +43,6 @@ public class BusinessmanController extends ChatRoomController {
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     super.onSendMessage(event);
     businessmanChatted = true;
+    context.playSound("button-4-214382");
   }
 }
