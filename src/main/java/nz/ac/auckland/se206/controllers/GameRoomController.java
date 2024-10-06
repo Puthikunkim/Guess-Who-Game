@@ -12,12 +12,11 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class GameRoomController extends Controller {
   @FXML protected TextArea txtaChat;
   @FXML protected Button btnGuess;
-  private GameStateContext context;
+  private GameStateContext context = RoomController.getContext();
 
   /** when switched to disable button */
   @Override
   public void onSwitchTo() {
-    context = RoomController.getContext();
     super.onSwitchTo();
     btnGuess.setDisable(true);
     if (SceneManager.getIfCanGuess()) {

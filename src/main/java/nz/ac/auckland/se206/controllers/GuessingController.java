@@ -248,7 +248,7 @@ public class GuessingController extends Controller {
     btnEndGame.setDisable(false);
     btnSend.setDisable(true);
     RoomController.context.stopTimer();
-    context.playSound("button-4-214382");
+    context.playSound("MaleThinking");
   }
 
   /**

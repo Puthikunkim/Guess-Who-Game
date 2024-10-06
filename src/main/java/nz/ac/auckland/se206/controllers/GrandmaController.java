@@ -23,9 +23,9 @@ public class GrandmaController extends ChatRoomController {
    */
   @FXML
   public void initialize() {
+    context = RoomController.getContext();
     character = Characters.GRANDMA;
     super.initialize();
-    context = RoomController.getContext();
   }
 
   /**

@@ -24,9 +24,9 @@ public class BusinessmanController extends ChatRoomController {
    */
   @FXML
   public void initialize() {
+    context = RoomController.getContext();
     character = Characters.BUSINESSMAN;
     super.initialize();
-    context = RoomController.getContext();
   }
 
   /**
