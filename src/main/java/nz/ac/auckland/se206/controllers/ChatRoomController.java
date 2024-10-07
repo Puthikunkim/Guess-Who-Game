@@ -21,6 +21,7 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class ChatRoomController extends GameRoomController {
 
+  // The different characters, can change this to classes later down the line if needed
   public enum Characters {
     JIMMY,
     BUSINESSMAN,
@@ -42,7 +43,7 @@ public class ChatRoomController extends GameRoomController {
 
   private boolean canSwitch = true; // Boolean to track if the user can switch suspects
 
-  /** when switched to disable button */
+  /** when switched to clear the chat histiry */
   @Override
   public void onSwitchTo() {
     super.onSwitchTo();
@@ -255,6 +256,9 @@ public class ChatRoomController extends GameRoomController {
     runGpt(msg);
   }
 
+  /**
+   * @return chatted - if this character has been chatted with (currently obsolete)
+   */
   public boolean getChatted() {
     return chatted;
   }

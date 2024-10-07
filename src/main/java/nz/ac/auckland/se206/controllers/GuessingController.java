@@ -50,9 +50,11 @@ public class GuessingController extends Controller {
    */
   @FXML
   public void initialize() {
+    // Initial Scene Setup
     lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
+    // Print out instructions
     txtaChat1.appendText("To Win You Must:");
     txtaChat1.appendText("\n\n");
     txtaChat1.appendText("Select the correct thief.");

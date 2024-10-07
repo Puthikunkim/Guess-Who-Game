@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 
 /**
- * Controller class for the room view. Handles user interactions within the room where the user can
- * chat with customers and guess their profession.
+ * Controller class for the Jimmy Room view. Handles user interactions within the room where the
+ * user can chat with Jimmy
  */
 public class JimmyController extends ChatRoomController {
 
@@ -47,6 +47,11 @@ public class JimmyController extends ChatRoomController {
     }
   }
 
+  /**
+   * Updates jimmy chatted for the {talked to all 3 suspects} check in scene manager.
+   *
+   * @param event event thrown when send message
+   */
   @Override
   @FXML
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {

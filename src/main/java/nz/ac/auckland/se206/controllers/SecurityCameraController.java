@@ -1,17 +1,14 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-public class SecurityCameraController extends Controller {
+/** The controller for the securtiy camera scene */
+public class SecurityCameraController extends GameRoomController {
 
   public static boolean foundTimeOfTheft = false;
   public static boolean firstFound = false;
@@ -21,12 +18,6 @@ public class SecurityCameraController extends Controller {
 
   // chat-room
   @FXML private Label timerLabel; //
-  @FXML private Button btnCrimeScene;
-  @FXML private Button btnJimmy;
-  @FXML private Button btnGrandma;
-  @FXML private Button btnBusinessman;
-  @FXML private Button btnGuess;
-  @FXML private TextArea txtaChat;
 
   /**
    * Updates the timer label with the given time string.
@@ -50,12 +41,17 @@ public class SecurityCameraController extends Controller {
     }
   }
 
+  /**
+   * If a time before the ctheft occured is clicked then show an image of the vase still on the
+   * pedestal
+   */
   @FXML
   private void onBeforeTimeClick() {
     cameraDisplayImage.setImage(beforeImage);
     staticImageView.setOpacity(0);
   }
 
+  /** if after time of theft then show vase not on pedestal */
   @FXML
   private void onAfterTimeClick() {
 
@@ -63,7 +59,7 @@ public class SecurityCameraController extends Controller {
     staticImageView.setOpacity(0);
   }
 
-  /** Correct Time is 2:00 */
+  /** Correct Time is 2:00, if correct time is selected show a static screen */
   @FXML
   private void onDuringTimeClick() {
     staticImageView.setOpacity(100);
@@ -78,69 +74,9 @@ public class SecurityCameraController extends Controller {
     }
   }
 
+  /** Go back to crime scene */
   @FXML
   private void onBackPressed() {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
-  }
-
-  /** when switched to disable button */
-  @Override
-  public void onSwitchTo() {
-    btnGuess.setDisable(true);
-    if (SceneManager.getIfCanGuess()) {
-      btnGuess.setDisable(false);
-    }
-  }
-
-  /**
-   * Handles the switch button click event to jimmy's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onCrimeSceneClick(ActionEvent event) throws IOException {
-    SceneManager.switchRoot(AppUi.MAIN_ROOM);
-    txtaChat.clear();
-  }
-
-  @FXML
-  private void onJimmyClick(ActionEvent event) throws IOException {
-    SceneManager.changeToJimmyScene(event);
-    txtaChat.clear();
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onGrandmaClick(ActionEvent event) throws IOException {
-    SceneManager.changeToGrandmaScene(event);
-  }
-
-  /**
-   * Handles the switch button click event to grandma's scene.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onBusinessmanClick(ActionEvent event) throws IOException {
-    SceneManager.changeToBusinessmanScene(event);
-    txtaChat.clear();
-  }
-
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void onGuessClick(ActionEvent event) throws IOException {
-    SceneManager.changeToGuessScene(event);
   }
 }
