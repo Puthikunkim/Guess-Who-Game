@@ -303,7 +303,7 @@ public class GuessingController extends Controller {
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
     backgroundThread.start();
-    context.playSound("MaleThinking");
+    context.playSound("PleaseWait");
   }
 
   /**
