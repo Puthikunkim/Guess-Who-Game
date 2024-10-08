@@ -130,6 +130,7 @@ public class SecurityCameraController extends Controller {
    */
   @FXML
   private void onGuessClick(ActionEvent event) throws IOException {
+    context.playSound("button-4-214382");
     SceneManager.changeToGuessScene(event);
   }
 }

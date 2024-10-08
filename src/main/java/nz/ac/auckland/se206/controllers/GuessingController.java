@@ -44,7 +44,7 @@ public class GuessingController extends Controller {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
   @FXML private Button btnEndGame;
-  private GameStateContext context;
+  private GameStateContext context = RoomController.getContext();
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -52,7 +52,6 @@ public class GuessingController extends Controller {
    */
   @FXML
   public void initialize() {
-    context = RoomController.getContext();
     lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
@@ -82,7 +81,17 @@ public class GuessingController extends Controller {
 
   @Override
   public void onSwitchTo() {
-    context.playSound("GuessingPrompt");
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("GuessingPrompt");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
   }
 
   /**
@@ -103,6 +112,17 @@ public class GuessingController extends Controller {
     btnBusinessman.setDisable(true);
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
     context.playSound("CorrectGuess");
   }
 
@@ -110,14 +130,38 @@ public class GuessingController extends Controller {
   @FXML
   private void onGrandmaGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
     context.playSound("IncorrectGuess");
+    context.setState(context.getGameOverState());
   }
 
   /** Handles the button click event for the jimmy suspect. */
   @FXML
   private void onJimmyGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
     context.playSound("IncorrectGuess");
+    context.setState(context.getGameOverState());
   }
 
   /**
@@ -248,6 +292,17 @@ public class GuessingController extends Controller {
     btnEndGame.setDisable(false);
     btnSend.setDisable(true);
     RoomController.context.stopTimer();
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
     context.playSound("MaleThinking");
   }
 
@@ -259,6 +314,8 @@ public class GuessingController extends Controller {
    */
   @FXML
   private void onEndGame(ActionEvent event) throws ApiProxyException, IOException {
+    context.playSound("button-4-214382");
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    context.setState(context.getGameOverState());
   }
 }

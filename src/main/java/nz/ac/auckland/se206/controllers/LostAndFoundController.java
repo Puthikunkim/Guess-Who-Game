@@ -115,6 +115,7 @@ public class LostAndFoundController extends GameRoomController {
 
   @FXML
   private void onBackPressed() {
+    context.playSound("button-4-214382");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }

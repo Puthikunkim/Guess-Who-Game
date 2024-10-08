@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ public class GrandmaController extends ChatRoomController {
 
   public static boolean grandmaChatted = false;
   @FXML private Label timerLabel; //
-  private GameStateContext context;
+  private GameStateContext context = RoomController.getContext();
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -23,7 +24,6 @@ public class GrandmaController extends ChatRoomController {
    */
   @FXML
   public void initialize() {
-    context = RoomController.getContext();
     character = Characters.GRANDMA;
     super.initialize();
   }
@@ -42,6 +42,16 @@ public class GrandmaController extends ChatRoomController {
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     super.onSendMessage(event);
     grandmaChatted = true;
-    context.playSound("button-4-214382");
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("FemaleThinking");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
   }
 }
