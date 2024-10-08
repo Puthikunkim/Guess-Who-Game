@@ -71,6 +71,34 @@
   -fx-background-color: transparent;
 }
 
+/* Scrollbar Styling */
+.text-area .scroll-pane .scroll-bar {
+  -fx-background-color: transparent; /* Transparent scrollbar background */
+}
+
+/* Scrollbar Track (background) */
+.text-area .scroll-pane .scroll-bar .track {
+  -fx-background-color: #E0E0E0; /* Light grey background for track */
+}
+
+/* Scrollbar Thumb (draggable part) */
+.text-area .scroll-pane .scroll-bar .thumb {
+  -fx-background-color: #888; /* Darker gray for the thumb */
+  -fx-background-radius: 5px; /* Rounded corners for a modern look */
+  -fx-padding: 5px; /* Padding for smooth appearance */
+}
+
+/* Scrollbar on hover effect */
+.text-area .scroll-pane .scroll-bar .thumb:hover {
+  -fx-background-color: #666; /* Darker gray on hover */
+}
+
+/* Scrollbar Buttons */
+.text-area .scroll-pane .scroll-bar .increment-button,
+.text-area .scroll-pane .scroll-bar .decrement-button {
+  -fx-background-color: transparent; /* Transparent buttons */
+}
+
 
 /* TextField Styling (for user input) */
 .text-field {
