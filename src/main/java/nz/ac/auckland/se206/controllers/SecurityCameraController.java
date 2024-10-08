@@ -62,12 +62,14 @@ public class SecurityCameraController extends GameRoomController {
   /** Correct Time is 2:00, if correct time is selected show a static screen */
   @FXML
   private void onDuringTimeClick() {
+    // Show static image
     staticImageView.setOpacity(100);
+    // On first find set found clue and tell player they have found the clue
     if (!firstFound) {
       txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
       firstFound = true;
     }
-
+    // after this check if you can guess and update the guessing button
     foundTimeOfTheft = true;
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
