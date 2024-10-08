@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** controller for the main menu, players can either exit or go to how to play menu */
 public class MainMenuController extends Controller {
   @FXML private Button playButton;
 

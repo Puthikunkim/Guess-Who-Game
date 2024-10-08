@@ -48,6 +48,11 @@ public class BusinessmanController extends ChatRoomController {
     }
   }
 
+  /**
+   * Updates Businessman chatted for the talked to all 3 suspects check in scene manager.
+   *
+   * @param event event thrown when send message
+   */
   @Override
   @FXML
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {

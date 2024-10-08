@@ -50,9 +50,11 @@ public class GuessingController extends Controller {
    */
   @FXML
   public void initialize() {
+    // Initial Scene Setup
     lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
+    // Print out instructions
     txtaChat1.appendText("To Win You Must:");
     txtaChat1.appendText("\n\n");
     txtaChat1.appendText("Select the correct thief.");
@@ -102,10 +104,13 @@ public class GuessingController extends Controller {
   /** Handles the button click event for the businessman suspect. */
   @FXML
   private void onBusinessmanGuess() {
+    // Tell player to input reasoning
     txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
+    // Disable guessing buttons
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
+    // Enable sending of reasoning
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
   }

@@ -7,6 +7,7 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** The controller for the how to play menu, when continue the game starts */
 public class HowToPlayController extends Controller {
   private static GameStateContext context;
   @FXML private Button continueButton;
