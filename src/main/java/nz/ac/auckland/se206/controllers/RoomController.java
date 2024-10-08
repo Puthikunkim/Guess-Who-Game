@@ -108,7 +108,7 @@ public class RoomController extends GameRoomController {
     txtaChat.appendText("\n");
     txtaChat.appendText("- Guess who the thief of the vase is.");
     txtaChat.appendText("\n");
-    txtaChat.appendText("-------------------------------");
+    txtaChat.appendText("--------------------");
     txtaChat.appendText("\n");
     txtaChat.appendText("Clues Gathered:\n");
     if (SecurityCameraController.foundTimeOfTheft) {

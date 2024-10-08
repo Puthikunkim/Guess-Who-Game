@@ -59,5 +59,15 @@
       </Label>
       <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="backButton" layoutX="611.0" layoutY="522.0" mnemonicParsing="false" onAction="#onBackPressed" prefHeight="45.0" prefWidth="126.0" text="Back" />
+      <ImageView fitHeight="26.0" fitWidth="221.0" layoutX="628.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_extension.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="221.8" layoutX="627.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_1.jpg" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

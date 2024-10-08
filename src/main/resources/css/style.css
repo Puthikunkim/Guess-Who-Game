@@ -97,6 +97,7 @@
 .text-area .scroll-pane .scroll-bar .increment-button,
 .text-area .scroll-pane .scroll-bar .decrement-button {
   -fx-background-color: transparent; /* Transparent buttons */
+  -fx-shape: ""; /* Remove the arrow icons */
 }
 
 

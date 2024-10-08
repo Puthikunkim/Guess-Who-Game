@@ -74,5 +74,15 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
+      <ImageView fitHeight="26.0" fitWidth="221.8" layoutX="627.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="221.0" layoutX="628.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_extension.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

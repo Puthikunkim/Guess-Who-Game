@@ -62,5 +62,15 @@
       <Rectangle fx:id="rectPerson1" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="67.0" layoutX="56.0" layoutY="42.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="61.0" />
       <Rectangle fx:id="rectPerson2" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="117.0" layoutX="256.0" layoutY="415.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="70.0" />
       <Rectangle fx:id="rectPerson3" arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" focusTraversable="true" height="82.0" layoutX="467.0" layoutY="410.0" onMouseClicked="#handleRectangleClick" stroke="TRANSPARENT" strokeType="INSIDE" width="110.0" />
+      <ImageView fitHeight="26.0" fitWidth="221.8" layoutX="627.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="221.0" layoutX="628.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_extension.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
