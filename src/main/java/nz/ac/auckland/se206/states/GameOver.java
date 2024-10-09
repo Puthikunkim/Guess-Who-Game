@@ -21,7 +21,7 @@ public class GameOver extends GameState {
     this.context = context;
   }
 
-  /** When Switched to disable everything and set GAME OVER */
+  /** When Switched to disable everything and set GAME OVER. */
   public void onSwitchTo() {}
 
   /**
@@ -37,7 +37,6 @@ public class GameOver extends GameState {
     if (rectangleId.equals("rectChest")) {
       return;
     }
-    context.playSound("Thief" + context.getPersonToGuess().getName());
   }
 
   /**

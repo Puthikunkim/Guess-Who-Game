@@ -2,18 +2,12 @@ package nz.ac.auckland.se206;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.se206.states.GameOver;
 import nz.ac.auckland.se206.states.GameStarted;
 import nz.ac.auckland.se206.states.GameState;
@@ -25,8 +19,6 @@ import nz.ac.auckland.se206.states.Guessing;
  */
 public class GameStateContext {
 
-  private final Person personThiefToGuess;
-  private final Map<String, Person> rectanglesToPerson;
   private final GameStarted gameStartedState;
   private final Guessing guessingState;
   private final GameOver gameOverState;
@@ -47,48 +39,6 @@ public class GameStateContext {
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
     gameState = gameStartedState; // Initial state
-
-    // Randomly chose thief out of the 3 possible
-    Random random = new Random();
-    random.setSeed(System.currentTimeMillis());
-    int randThiefInt = random.nextInt(3);
-
-    // Create array list that stores what index the thief is and what index isnt
-    ArrayList<Boolean> thief = new ArrayList<>();
-    thief.add(false);
-    thief.add(false);
-    thief.add(false);
-    thief.set(randThiefInt, true);
-    // Then take that random choice and put into a map corresponding to each rectID for ez refrence
-    // later
-    Person bob =
-        new Person(
-            "Bob",
-            thief.get(0),
-            Voice.GOOGLE_EN_AU_STANDARD_B,
-            "there are cookie crumbs in the chest",
-            new Image("images/Crumbs.png"));
-    Person skinnyBob =
-        new Person(
-            "Skinny Bob",
-            thief.get(1),
-            Voice.GOOGLE_EN_AU_STANDARD_A,
-            "there is wheat seeds left in the chest",
-            new Image("images/WheatSeeds.png"));
-    Person snowmanBob =
-        new Person(
-            "Snowman Bob",
-            thief.get(2),
-            Voice.GOOGLE_EN_AU_STANDARD_C,
-            "there is water and snowflakes left in the chest",
-            new Image("images/SnowAndWater.png"));
-    rectanglesToPerson = new HashMap<>();
-    rectanglesToPerson.put("rectPerson1", bob);
-    rectanglesToPerson.put("rectPerson2", skinnyBob);
-    rectanglesToPerson.put("rectPerson3", snowmanBob);
-
-    // Set which rectPerson is the thief for guess checking later
-    personThiefToGuess = rectanglesToPerson.get("rectPerson" + (randThiefInt + 1));
   }
 
   /**
@@ -120,7 +70,11 @@ public class GameStateContext {
     return guessed;
   }
 
-  /** Starts the timer for the game. */
+  /**
+   * Starts the timer with the given time.
+   *
+   * @param time - how long timer should be set for
+   */
   public void startTimer(int time) {
     timeRemaining = time; // 2 minutes in seconds
     timer = new Timer(); // Create a new timer
@@ -162,9 +116,9 @@ public class GameStateContext {
   }
 
   /**
-   * plays given sound file
+   * plays given sound file.
    *
-   * @param sound_File_path format "file_name.mp3"
+   * @param soundFileName format "file_name.mp3"
    */
   public void playSound(String soundFileName) {
     try {
@@ -225,25 +179,6 @@ public class GameStateContext {
    */
   public GameState getGameOverState() {
     return gameOverState;
-  }
-
-  /**
-   * Gets the ID of the rectangle to be guessed.
-   *
-   * @return the rectangle ID to guess
-   */
-  public Person getPersonToGuess() {
-    return personThiefToGuess;
-  }
-
-  /**
-   * Gets the person associated with a specific rectangle ID.
-   *
-   * @param rectangleId the rectangle ID
-   * @return the profession associated with the rectangle ID
-   */
-  public Person getPerson(String rectangleId) {
-    return rectanglesToPerson.get(rectangleId);
   }
 
   /**

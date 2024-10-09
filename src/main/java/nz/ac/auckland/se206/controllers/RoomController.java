@@ -88,7 +88,7 @@ public class RoomController extends GameRoomController {
         });
   }
 
-  /** when switched to for the first time set state to gameStarted */
+  /** when switched to for the first time set state to gameStarted. */
   @Override
   public void onSwitchTo() {
     // Disable all buttons except for the crime scene button

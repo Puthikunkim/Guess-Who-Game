@@ -20,12 +20,11 @@ import nz.ac.auckland.se206.controllers.SecurityCameraController;
 
 public class SceneManager {
 
-  // Enum corresponding to each room
+  /** Enum that corresponds to each room and its controller. */
   public enum AppUi {
     MAIN_MENU,
     HOW_TO_PLAY,
     MAIN_ROOM,
-    CHEST_ROOM,
     JIMMY_ROOM,
     GRANDMA_ROOM,
     BUSINESSMAN_ROOM,
@@ -45,8 +44,8 @@ public class SceneManager {
   /**
    * Runs on application start(called in App.start), to initialaze all rooms and their controllers.
    *
-   * @param stage
-   * @throws IOException
+   * @param stage - start stage
+   * @throws IOException - if there is an I/O error
    */
   public static void start(final Stage stage) throws IOException {
 
@@ -66,7 +65,6 @@ public class SceneManager {
     SceneManager.addUi(AppUi.MAIN_MENU, "mainMenu");
     SceneManager.addUi(AppUi.HOW_TO_PLAY, "howToPlay");
     SceneManager.addUi(AppUi.MAIN_ROOM, "room");
-    SceneManager.addUi(AppUi.CHEST_ROOM, "chestInside");
 
     // chat-room
     SceneManager.addUi(AppUi.JIMMY_ROOM, "jimmy");
@@ -93,7 +91,11 @@ public class SceneManager {
     mainRoom.requestFocus();
   }
 
-  // restart the game
+  /**
+   * Restarts the game by reloading all scenes.
+   *
+   * @throws IOException if there is an I/O error
+   */
   public static void restart() throws IOException {
     start(stage);
   }
@@ -101,9 +103,9 @@ public class SceneManager {
   /**
    * Loads chosen FXML and saves its root and controller to the chosen AppUi.
    *
-   * @param appUi
-   * @param fxml
-   * @throws IOException
+   * @param appUi - AppUi enum that corresponds to the room the user wants to add
+   * @param fxml - Path to the FXML corresponding to chosen room
+   * @throws IOException - if there is an I/O error
    */
   public static void addUi(AppUi appUi, String fxml) throws IOException {
     // Loads FXML
@@ -119,7 +121,7 @@ public class SceneManager {
   /**
    * gets root for the given AppUi.
    *
-   * @param appUi
+   * @param appUi - AppUi enum that corresponds to the room the user wants to get root of
    * @return
    */
   public static Parent getRoot(AppUi appUi) {
@@ -129,7 +131,7 @@ public class SceneManager {
   /**
    * gets controller for the given AppUi.
    *
-   * @param appUi
+   * @param appUi - the enum AppUi that corresponds to the room controller wanted
    * @return
    */
   public static Controller getController(AppUi appUi) {
@@ -139,7 +141,7 @@ public class SceneManager {
   /**
    * Switch scene root to target AppUi scene.
    *
-   * @param targetScene
+   * @param targetScene - AppUi enum that corresponds to the room the user wants to switch to
    */
   public static void switchRoot(AppUi targetScene) {
     try {
@@ -155,7 +157,11 @@ public class SceneManager {
     }
   }
 
-  // timer
+  /**
+   * Updates all rooms that have timer with current timer.
+   *
+   * @param timeString - Time to update all the visual timers with
+   */
   public static void checkTimer(String timeString) {
     // get controller for all rooms
     RoomController roomController = (RoomController) getController(AppUi.MAIN_ROOM);
@@ -183,8 +189,12 @@ public class SceneManager {
     lostAndFoundController.updateTimer(timeString);
   }
 
-  // check if all clues are found and all characters are chatted
-  // enable guess button if all clues are found and all characters are chatted
+  /**
+   * check if all clues are found and all characters are chatted. enable guess button if all clues
+   * are found and all characters are chatted.
+   *
+   * @return boolean - if gussing is now allowed
+   */
   public static boolean getIfCanGuess() {
     // checks all requirements to move on to guessing room
     boolean clueFound =
@@ -201,6 +211,12 @@ public class SceneManager {
     return false;
   }
 
+  /**
+   * Handles the switch button click event to Jimmys's scene.
+   *
+   * @param event the action event triggered by clicking the guess button
+   * @throws IOException if there is an I/O error
+   */
   public static void changeToJimmyScene(ActionEvent event) throws IOException {
     JimmyController jimmyController = (JimmyController) getController(AppUi.JIMMY_ROOM);
     switchRoot(AppUi.JIMMY_ROOM);

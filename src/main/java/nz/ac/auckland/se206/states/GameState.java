@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 public abstract class GameState {
   protected int timerLength = 0;
 
-  /** Handles logic for when switching to this GameState */
+  /** Handles logic for when switching to this GameState. */
   public void onSwitchTo() {}
   ;
 

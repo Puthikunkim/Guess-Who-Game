@@ -11,14 +11,14 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
  * Parent class for all Room controllers that exist within the game itself, excluding the Start,How
- * to play and Game Over scenes
+ * to play and Game Over scenes.
  */
 public class GameRoomController extends Controller {
   @FXML protected TextArea txtaChat;
   @FXML protected Button btnGuess;
   @FXML private Label timerLabel; //
 
-  /** when switched to disable button */
+  /** when switched to this room disable buttons. */
   @Override
   public void onSwitchTo() {
     super.onSwitchTo();
@@ -95,7 +95,7 @@ public class GameRoomController extends Controller {
   }
 
   /**
-   * Handles the guess button click event., Switches to guessing scene
+   * Handles the guess button click event., Switches to guessing scene.
    *
    * @param event the action event triggered by clicking the guess button
    * @throws IOException if there is an I/O error

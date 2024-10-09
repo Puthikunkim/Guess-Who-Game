@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
@@ -20,7 +21,7 @@ public class LostAndFoundController extends GameRoomController {
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
 
-  // When initialzed set functions so that the cufflink interaction is more obvious
+  /** When initialzed set functions so that the cufflink interaction is more obvious. */
   @FXML
   public void initialize() {
     // On mouse hover on the vufflink chang its opacity and set the cursor to a closed hand
@@ -88,9 +89,13 @@ public class LostAndFoundController extends GameRoomController {
     dragTarget.setY(local.getY());
   }
 
-  /** when cufflink is clicked hide cufflink and inform user that they have found a clue */
+  /**
+   * when cufflink is clicked hide cufflink and inform user that they have found a clue.
+   *
+   * @param event - event when cufflink is clicked
+   */
   @FXML
-  public void onCufflinkClick() {
+  public void onCufflinkClick(ActionEvent event) {
     // if cufflink is found append text into chat
     foundCufflink = true;
     txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
@@ -103,9 +108,13 @@ public class LostAndFoundController extends GameRoomController {
     }
   }
 
-  /** Goes back to crime scene */
+  /**
+   * Goes back to crime scene.
+   *
+   * @param event - event of pressing this button
+   */
   @FXML
-  private void onBackPressed() {
+  private void onBackPressed(ActionEvent event) {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }

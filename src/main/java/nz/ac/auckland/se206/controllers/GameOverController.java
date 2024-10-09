@@ -15,21 +15,16 @@ public class GameOverController extends Controller {
   /**
    * goes to Main Room and restarts game.
    *
-   * @param action
-   * @throws IOException
+   * @throws IOException if there is an I/O error
    */
   @FXML
-  private void onPlayAgainPressed(ActionEvent action) throws IOException {
+  private void onPlayAgainPressed(ActionEvent event) throws IOException {
     SceneManager.restart();
   }
 
-  /**
-   * exits game.
-   *
-   * @param action
-   */
+  /** Handles exit button press closing the entire game. */
   @FXML
-  private void onExitPressed(ActionEvent action) {
+  private void onExitPressed(ActionEvent event) {
     Platform.exit();
   }
 }

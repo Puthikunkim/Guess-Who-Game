@@ -7,7 +7,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 
 /**
  * Controller class for the grandma scene. Handles user interactions within the room where the user
- * can chat with grandma
+ * can chat with grandma.
  */
 public class GrandmaController extends ChatRoomController {
 

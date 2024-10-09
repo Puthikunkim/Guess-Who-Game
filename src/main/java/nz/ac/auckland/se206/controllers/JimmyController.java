@@ -7,7 +7,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 
 /**
  * Controller class for the Jimmy Room view. Handles user interactions within the room where the
- * user can chat with Jimmy
+ * user can chat with Jimmy.
  */
 public class JimmyController extends ChatRoomController {
 

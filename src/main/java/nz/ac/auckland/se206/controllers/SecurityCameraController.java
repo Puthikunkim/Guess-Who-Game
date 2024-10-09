@@ -1,12 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** The controller for the securtiy camera scene */
+/** The controller for the securtiy camera scene. */
 public class SecurityCameraController extends GameRoomController {
 
   public static boolean foundTimeOfTheft = false;
@@ -16,26 +17,36 @@ public class SecurityCameraController extends GameRoomController {
   private Image beforeImage = new Image("images/Vase.png");
 
   /**
-   * If a time before the ctheft occured is clicked then show an image of the vase still on the
-   * pedestal
+   * If a time before the theft occured is clicked then show an image of the vase still on the
+   * pedestal.
+   *
+   * @param event - event of this button pressed
    */
   @FXML
-  private void onBeforeTimeClick() {
+  private void onBeforeTimeClick(ActionEvent event) {
     cameraDisplayImage.setImage(beforeImage);
     staticImageView.setOpacity(0);
   }
 
-  /** if after time of theft then show vase not on pedestal */
+  /**
+   * if after time of theft then show vase not on pedestal.
+   *
+   * @param event - event of this button pressed
+   */
   @FXML
-  private void onAfterTimeClick() {
+  private void onAfterTimeClick(ActionEvent event) {
 
     cameraDisplayImage.setImage(null);
     staticImageView.setOpacity(0);
   }
 
-  /** Correct Time is 2:00, if correct time is selected show a static screen */
+  /**
+   * Correct Time is 2:00, if correct time is selected show a static screen.
+   *
+   * @param event - event of this button pressed
+   */
   @FXML
-  private void onDuringTimeClick() {
+  private void onDuringTimeClick(ActionEvent event) {
     // Show static image
     staticImageView.setOpacity(100);
     // On first find set found clue and tell player they have found the clue
@@ -50,9 +61,13 @@ public class SecurityCameraController extends GameRoomController {
     }
   }
 
-  /** Go back to crime scene */
+  /**
+   * Go back to crime scene.
+   *
+   * @param event - event of this button pressed
+   */
   @FXML
-  private void onBackPressed() {
+  private void onBackPressed(ActionEvent event) {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }
