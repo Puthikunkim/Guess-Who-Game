@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.GuessingController;
 
 /**
  * The Guessing state of the game. Handles the logic for when the player is making a guess about the
@@ -39,8 +41,19 @@ public class Guessing extends GameState {
    */
   @Override
   public void timerExpired() {
+
     context.setState(context.getGameOverState());
-    SceneManager.switchRoot(AppUi.GAMEOVER_ROOM);
+    GuessingController guessingController =
+        (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
+    if (guessingController.getGuessingCorrect()) {
+      try {
+        guessingController.onSendMessage(new ActionEvent());
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
+    } else {
+      SceneManager.switchRoot(AppUi.GAMEOVER_ROOM);
+    }
   }
 
   /**
