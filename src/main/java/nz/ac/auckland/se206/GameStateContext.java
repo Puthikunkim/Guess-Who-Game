@@ -32,9 +32,12 @@ public class GameStateContext {
   private boolean talkedToPeople = false;
   private boolean guessed = false;
   private MediaPlayer reusedMediaPlayer;
+  private MediaPlayer reusedTTSPlayer;
 
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
+    // Enum corresponding to each room
+
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
@@ -124,6 +127,23 @@ public class GameStateContext {
       // reusedMediaPlayer.stop();
       reusedMediaPlayer = new MediaPlayer(newSound);
       reusedMediaPlayer.play();
+    } catch (URISyntaxException e) {
+      System.out.println(soundFileName);
+      System.out.println(e.getStackTrace());
+    }
+  }
+
+  /**
+   * plays given sound file
+   *
+   * @param sound_File_path format "file_name.mp3"
+   */
+  public void playSoundTTS(String soundFileName) {
+    try {
+      Media newSound =
+          new Media(App.class.getResource("/sounds/" + soundFileName + ".mp3").toURI().toString());
+      reusedTTSPlayer = new MediaPlayer(newSound);
+      reusedTTSPlayer.play();
     } catch (URISyntaxException e) {
       System.out.println(soundFileName);
       System.out.println(e.getStackTrace());

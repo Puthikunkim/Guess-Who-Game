@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -98,17 +97,7 @@ public class RoomController extends GameRoomController {
   @Override
   public void onSwitchTo() {
     if (firstTime) {
-      Task<Void> backgroundTask =
-          new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-              context.playSound("InitialPrompt");
-              return null;
-            }
-          };
-      Thread backgroundThread = new Thread(backgroundTask);
-      backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
-      backgroundThread.start();
+      context.playSoundTTS("InitialPrompt");
 
       firstTime = false;
     }
