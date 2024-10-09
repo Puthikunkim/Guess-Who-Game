@@ -11,7 +11,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class SecurityCameraController extends GameRoomController {
 
   public static boolean foundTimeOfTheft = false;
-  public static boolean firstFound = false;
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
@@ -50,9 +49,8 @@ public class SecurityCameraController extends GameRoomController {
     // Show static image
     staticImageView.setOpacity(100);
     // On first find set found clue and tell player they have found the clue
-    if (!firstFound) {
+    if (!foundTimeOfTheft) {
       txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
-      firstFound = true;
     }
     // after this check if you can guess and update the guessing button
     foundTimeOfTheft = true;

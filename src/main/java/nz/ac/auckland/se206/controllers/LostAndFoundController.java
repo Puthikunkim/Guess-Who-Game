@@ -95,7 +95,7 @@ public class LostAndFoundController extends GameRoomController {
    * @param event - event when cufflink is clicked
    */
   @FXML
-  public void onCufflinkClick(ActionEvent event) {
+  public void onCufflinkClick(MouseEvent event) {
     // if cufflink is found append text into chat
     foundCufflink = true;
     txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
