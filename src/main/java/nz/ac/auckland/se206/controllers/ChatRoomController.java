@@ -43,7 +43,7 @@ public class ChatRoomController extends GameRoomController {
 
   private boolean canSwitch = true; // Boolean to track if the user can switch suspects
 
-  /** when switched to clear the chat histiry */
+  /** when switched to clear the chat history. */
   @Override
   public void onSwitchTo() {
     super.onSwitchTo();

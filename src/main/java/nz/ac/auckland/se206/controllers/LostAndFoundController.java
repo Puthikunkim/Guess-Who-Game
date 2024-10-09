@@ -1,10 +1,10 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.SceneManager;
@@ -21,10 +21,7 @@ public class LostAndFoundController extends GameRoomController {
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
 
-  // Side bar buttons
-  @FXML private Label timerLabel; //
-
-  // When initialzed set functions so that the cufflink interaction is more obvious
+  /** When initialzed set functions so that the cufflink interaction is more obvious. */
   @FXML
   public void initialize() {
     // On mouse hover on the vufflink chang its opacity and set the cursor to a closed hand
@@ -39,28 +36,6 @@ public class LostAndFoundController extends GameRoomController {
           cufflink.setCursor(Cursor.DEFAULT);
           cufflink.setOpacity(1.0); // Reset opacity
         });
-  }
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    // Update the label text
-    timerLabel.setText(timeString + "\n" + "Remaining");
-
-    // Split the timeString to extract minutes and seconds
-    String[] timeParts = timeString.split(":");
-    int minutes = Integer.parseInt(timeParts[0]);
-    int seconds = Integer.parseInt(timeParts[1]);
-
-    // Check if there are 10 seconds or less remaining
-    if (minutes == 0 && seconds <= 10) {
-      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
-    } else {
-      timerLabel.setStyle(""); // Reset to default style
-    }
   }
 
   /**
@@ -114,9 +89,13 @@ public class LostAndFoundController extends GameRoomController {
     dragTarget.setY(local.getY());
   }
 
-  /** when cufflink is clicked hide cufflink and inform user that they have found a clue */
+  /**
+   * when cufflink is clicked hide cufflink and inform user that they have found a clue.
+   *
+   * @param event - event when cufflink is clicked
+   */
   @FXML
-  public void onCufflinkClick() {
+  public void onCufflinkClick(MouseEvent event) {
     // if cufflink is found append text into chat
     foundCufflink = true;
     txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
@@ -129,9 +108,13 @@ public class LostAndFoundController extends GameRoomController {
     }
   }
 
-  /** Goes back to crime scene */
+  /**
+   * Goes back to crime scene.
+   *
+   * @param event - event of pressing this button
+   */
   @FXML
-  private void onBackPressed() {
+  private void onBackPressed(ActionEvent event) {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }

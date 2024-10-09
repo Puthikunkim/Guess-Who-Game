@@ -14,22 +14,22 @@ public class MainMenuController extends Controller {
   @FXML private Button exitButton;
 
   /**
-   * Moves to How to play screen when pressed
+   * Moves to How to play screen when pressed.
    *
-   * @param action
+   * @param event - event of this button pressed
    */
   @FXML
-  private void onPlayPressed(ActionEvent action) {
+  private void onPlayPressed(ActionEvent event) {
     SceneManager.switchRoot(AppUi.HOW_TO_PLAY);
   }
 
   /**
-   * Exits entire game
+   * when pressing button you exit the game by closing th game window
    *
-   * @param action
+   * @param event - event of pressing this button
    */
   @FXML
-  private void onExitPressed(ActionEvent action) {
+  private void onExitPressed(ActionEvent event) {
     Platform.exit();
   }
 }

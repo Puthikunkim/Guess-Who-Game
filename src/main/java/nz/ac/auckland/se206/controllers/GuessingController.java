@@ -44,6 +44,8 @@ public class GuessingController extends Controller {
   @FXML private Button btnSend;
   @FXML private Button btnEndGame;
 
+  private boolean guessingCorrect = false;
+
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
@@ -113,6 +115,7 @@ public class GuessingController extends Controller {
     // Enable sending of reasoning
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
+    guessingCorrect = true;
   }
 
   /** Handles the button click event for the grandma suspect. */
@@ -241,7 +244,7 @@ public class GuessingController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty() || btnSend.isDisabled()) {
       return;
@@ -266,5 +269,9 @@ public class GuessingController extends Controller {
   @FXML
   private void onEndGame(ActionEvent event) throws ApiProxyException, IOException {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+  }
+
+  public boolean getGuessingCorrect() {
+    return guessingCorrect;
   }
 }
