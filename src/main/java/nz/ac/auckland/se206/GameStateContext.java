@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
@@ -27,14 +30,19 @@ public class GameStateContext {
   private final GameStarted gameStartedState;
   private final Guessing guessingState;
   private final GameOver gameOverState;
+
   private GameState gameState;
   private boolean chestChecked = false;
   private boolean talkedToPeople = false;
   private boolean guessed = false;
   private MediaPlayer reusedMediaPlayer;
 
+  private Timer timer; // Timer for the current state
+  private int timeRemaining;
+
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
+
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
@@ -112,6 +120,47 @@ public class GameStateContext {
     return guessed;
   }
 
+  /** Starts the timer for the game. */
+  public void startTimer(int time) {
+    timeRemaining = time; // 2 minutes in seconds
+    timer = new Timer(); // Create a new timer
+    // Schedule a task to run every second
+    timer.scheduleAtFixedRate(
+        new TimerTask() {
+          @Override
+          public void run() {
+            Platform.runLater(
+                () -> {
+                  if (timeRemaining >= 0) {
+                    updateTimerDisplay(); // Update the timer UI
+                    timeRemaining--; // Decrement the time remaining
+                  } else { // If the time is up
+                    timer.cancel(); // Cancel the timer
+                    gameState.timerExpired(); // Handle the timer expiration
+                  }
+                }); // Run the task on the JavaFX application thread
+          }
+        },
+        0,
+        1000); // Run every second
+  }
+
+  /** Stops the timer for the current game state. */
+  public void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+    }
+  }
+
+  /** Updates the timer UI to show the time remaining in the game. */
+  private void updateTimerDisplay() {
+    // Convert the time remaining to minutes and seconds
+    int minutes = timeRemaining / 60;
+    int seconds = timeRemaining % 60;
+    String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
+    SceneManager.checkTimer(timeString); // Update the timer UI
+  }
+
   /**
    * plays given sound file
    *
@@ -136,9 +185,9 @@ public class GameStateContext {
    * @param state the new state to set
    */
   public void setState(GameState state) {
-    gameState.stopTimer(); // Stop the timer for the current state
+    stopTimer(); // Stop the timer for the current state
     this.gameState = state;
-    gameState.startTimer(); // Start the timer for the new state
+    startTimer(gameState.getTimerLength()); // Start the timer for the new state
     gameState.onSwitchTo();
   }
 
@@ -215,10 +264,5 @@ public class GameStateContext {
    */
   public void handleGuessClick() throws IOException {
     gameState.handleGuessClick();
-  }
-
-  /** Stops the timer for the current game state. */
-  public void stopTimer() {
-    gameState.stopTimer();
   }
 }

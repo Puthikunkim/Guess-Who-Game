@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.SceneManager;
@@ -35,15 +33,6 @@ public class ReceiptController extends GameRoomController {
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
 
-  // chat-room
-  @FXML private Label timerLabel; //
-  @FXML private Button btnCrimeScene;
-  @FXML private Button btnJimmy;
-  @FXML private Button btnGrandma;
-  @FXML private Button btnBusinessman;
-  @FXML private Button btnGuess;
-  @FXML private TextArea txtaChat;
-
   @FXML
   public void initialize() {
     // Initialize the receipt pieces, for easy comparison
@@ -53,28 +42,6 @@ public class ReceiptController extends GameRoomController {
       {receiptPiece3x1, receiptPiece3x2, receiptPiece3x3}
     };
     receiptPieces = tempReceiptPieces;
-  }
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    // Update the label text
-    timerLabel.setText(timeString + "\n" + "Remaining");
-
-    // Split the timeString to extract minutes and seconds
-    String[] timeParts = timeString.split(":");
-    int minutes = Integer.parseInt(timeParts[0]);
-    int seconds = Integer.parseInt(timeParts[1]);
-
-    // Check if there are 10 seconds or less remaining
-    if (minutes == 0 && seconds <= 10) {
-      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
-    } else {
-      timerLabel.setStyle(""); // Reset to default style
-    }
   }
 
   /**

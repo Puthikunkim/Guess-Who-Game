@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -15,6 +16,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class GameRoomController extends Controller {
   @FXML protected TextArea txtaChat;
   @FXML protected Button btnGuess;
+  @FXML private Label timerLabel; //
 
   /** when switched to disable button */
   @Override
@@ -23,6 +25,28 @@ public class GameRoomController extends Controller {
     btnGuess.setDisable(true);
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
+    }
+  }
+
+  /**
+   * Updates the timer label with the given time string.
+   *
+   * @param timeString the time string to display
+   */
+  public void updateTimer(String timeString) {
+    // Update the label text
+    timerLabel.setText(timeString + "\n" + "Remaining");
+
+    // Split the timeString to extract minutes and seconds
+    String[] timeParts = timeString.split(":");
+    int minutes = Integer.parseInt(timeParts[0]);
+    int seconds = Integer.parseInt(timeParts[1]);
+
+    // Check if there are 10 seconds or less remaining
+    if (minutes == 0 && seconds <= 10) {
+      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
+    } else {
+      timerLabel.setStyle(""); // Reset to default style
     }
   }
 

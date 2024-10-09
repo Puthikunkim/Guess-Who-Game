@@ -1,9 +1,6 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
@@ -14,12 +11,9 @@ import nz.ac.auckland.se206.controllers.GuessingController;
  * The GameStarted state of the game. Handles the initial interactions when the game starts,
  * allowing the player to chat with characters and prepare to make a guess.
  */
-public class GameStarted implements GameState {
+public class GameStarted extends GameState {
 
   private final GameStateContext context;
-
-  private Timer timer; // Timer for the current state
-  private int timeRemaining;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
@@ -28,57 +22,15 @@ public class GameStarted implements GameState {
    */
   public GameStarted(GameStateContext context) {
     this.context = context;
+    this.timerLength = 300;
   }
 
   /** when game is started start the timer in RoomController. */
   @Override
   public void onSwitchTo() {}
 
-  /** Starts the timer for the game. */
-  @Override
-  public void startTimer() {
-    timeRemaining = 300; // 2 minutes in seconds
-    timer = new Timer(); // Create a new timer
-    // Schedule a task to run every second
-    timer.scheduleAtFixedRate(
-        new TimerTask() {
-          @Override
-          public void run() {
-            Platform.runLater(
-                () -> {
-                  if (timeRemaining >= 0) {
-                    updateTimerDisplay(); // Update the timer UI
-                    timeRemaining--; // Decrement the time remaining
-                  } else { // If the time is up
-                    timer.cancel(); // Cancel the timer
-                    timerExpired(); // Handle the timer expiration
-                  }
-                }); // Run the task on the JavaFX application thread
-          }
-        },
-        0,
-        1000); // Run every second
-  }
-
-  /** Stops the timer for the current game state. */
-  @Override
-  public void stopTimer() {
-    if (timer != null) {
-      timer.cancel();
-    }
-  }
-
-  /** Updates the timer UI to show the time remaining in the game. */
-  private void updateTimerDisplay() {
-    // Convert the time remaining to minutes and seconds
-    int minutes = timeRemaining / 60;
-    int seconds = timeRemaining % 60;
-    String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
-    SceneManager.checkTimer(timeString); // Update the timer UI
-  }
-
   /** Handles the event when the timer expires. Transitions to the guessing state. */
-  private void timerExpired() {
+  public void timerExpired() {
     // switches to guessing room if can guess else to gameover room
     context.setState(context.getGuessingState());
     if (SceneManager.getIfCanGuess()) {

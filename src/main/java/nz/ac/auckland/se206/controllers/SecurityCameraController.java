@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.SceneManager;
@@ -15,31 +14,6 @@ public class SecurityCameraController extends GameRoomController {
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
-
-  // chat-room
-  @FXML private Label timerLabel; //
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    // Update the label text
-    timerLabel.setText(timeString + "\n" + "Remaining");
-
-    // Split the timeString to extract minutes and seconds
-    String[] timeParts = timeString.split(":");
-    int minutes = Integer.parseInt(timeParts[0]);
-    int seconds = Integer.parseInt(timeParts[1]);
-
-    // Check if there are 10 seconds or less remaining
-    if (minutes == 0 && seconds <= 10) {
-      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
-    } else {
-      timerLabel.setStyle(""); // Reset to default style
-    }
-  }
 
   /**
    * If a time before the ctheft occured is clicked then show an image of the vase still on the

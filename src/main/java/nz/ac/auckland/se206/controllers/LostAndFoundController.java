@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.SceneManager;
@@ -21,9 +20,6 @@ public class LostAndFoundController extends GameRoomController {
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
 
-  // Side bar buttons
-  @FXML private Label timerLabel; //
-
   // When initialzed set functions so that the cufflink interaction is more obvious
   @FXML
   public void initialize() {
@@ -39,28 +35,6 @@ public class LostAndFoundController extends GameRoomController {
           cufflink.setCursor(Cursor.DEFAULT);
           cufflink.setOpacity(1.0); // Reset opacity
         });
-  }
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    // Update the label text
-    timerLabel.setText(timeString + "\n" + "Remaining");
-
-    // Split the timeString to extract minutes and seconds
-    String[] timeParts = timeString.split(":");
-    int minutes = Integer.parseInt(timeParts[0]);
-    int seconds = Integer.parseInt(timeParts[1]);
-
-    // Check if there are 10 seconds or less remaining
-    if (minutes == 0 && seconds <= 10) {
-      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
-    } else {
-      timerLabel.setStyle(""); // Reset to default style
-    }
   }
 
   /**
