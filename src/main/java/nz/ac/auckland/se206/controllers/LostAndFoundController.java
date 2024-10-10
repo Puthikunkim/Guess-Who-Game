@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
@@ -11,7 +10,7 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** Controller for the lost and found scene, where the cufflink clue is found */
+/** Controller for the lost and found scene, where the cufflink clue is found. */
 public class LostAndFoundController extends GameRoomController {
 
   public static boolean foundCufflink = false;
@@ -46,6 +45,7 @@ public class LostAndFoundController extends GameRoomController {
 
   @Override
   public void onSwitchTo() {
+    super.onSwitchTo();
     context.playSound("ping-82822");
   }
 
@@ -126,7 +126,6 @@ public class LostAndFoundController extends GameRoomController {
    * @param event - event of pressing this button
    */
   @FXML
-
   private void onBackPressed() {
     context.playSound("button-4-214382");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);

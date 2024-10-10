@@ -69,15 +69,10 @@ public class SecurityCameraController extends GameRoomController {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 
-  /** when switched to disable button */
+  /** when switched to disable button. */
   @Override
   public void onSwitchTo() {
+    super.onSwitchTo();
     context = RoomController.getContext();
-    btnGuess.setDisable(true);
-
-    if (SceneManager.getIfCanGuess()) {
-      btnGuess.setDisable(false);
-    }
-    context.playSound("ping-82822");
   }
 }

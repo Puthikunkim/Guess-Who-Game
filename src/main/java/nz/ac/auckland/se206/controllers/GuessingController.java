@@ -198,11 +198,7 @@ public class GuessingController extends Controller {
     return PromptEngineering.getPrompt("guessing.txt", map);
   }
 
-  /**
-   * Sets the suspect for the chat context and initializes the ChatCompletionRequest.
-   *
-   * @param profession the profession to set
-   */
+  /** Sets the suspect for the chat context and initializes the ChatCompletionRequest. */
   public void startChat() {
     // Initialize the ChatCompletionRequest if it hasn't been initialized yet
     if (!guessingStarted) {
@@ -301,7 +297,11 @@ public class GuessingController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    SendMessage();
+  }
+
+  public void SendMessage() throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty() || btnSend.isDisabled()) {
       return;

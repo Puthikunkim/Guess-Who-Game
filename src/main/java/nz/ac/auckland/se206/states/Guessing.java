@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
@@ -35,7 +34,6 @@ public class Guessing extends GameState {
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);
   }
 
-
   /**
    * Handles the event when the timer expires. Notifies the player that the time is up and the game
    * is over and transitions to the game over state.
@@ -48,7 +46,7 @@ public class Guessing extends GameState {
         (GuessingController) SceneManager.getController(AppUi.GUESSING_ROOM);
     if (guessingController.getGuessingCorrect()) {
       try {
-        guessingController.onSendMessage(new ActionEvent());
+        guessingController.SendMessage();
       } catch (Exception e) {
         // TODO: handle exception
       }

@@ -12,7 +12,6 @@ public abstract class GameState {
 
   /** Handles logic for when switching to this GameState. */
   public void onSwitchTo() {}
-  ;
 
   /**
    * Handles the event when a rectangle is clicked.
@@ -22,7 +21,6 @@ public abstract class GameState {
    * @throws IOException if there is an I/O error
    */
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {}
-  ;
 
   /**
    * Handles the event when the guess button is clicked.
