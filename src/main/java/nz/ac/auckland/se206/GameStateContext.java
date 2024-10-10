@@ -112,6 +112,12 @@ public class GameStateContext {
     int minutes = timeRemaining / 60;
     int seconds = timeRemaining % 60;
     String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
+    if (minutes == 0 && seconds == 30) {
+      playSoundTTS("30SecondWarning");
+    }
+    if (minutes == 0 && seconds == 10) {
+      playSoundTTS("10SecondWarning");
+    }
     SceneManager.checkTimer(timeString); // Update the timer UI
   }
 
