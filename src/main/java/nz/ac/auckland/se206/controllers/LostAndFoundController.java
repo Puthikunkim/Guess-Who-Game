@@ -45,6 +45,7 @@ public class LostAndFoundController extends GameRoomController {
 
   @Override
   public void onSwitchTo() {
+    super.onSwitchTo();
     context.playSound("ping-82822");
   }
 
