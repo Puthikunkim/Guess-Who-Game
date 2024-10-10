@@ -69,7 +69,7 @@ public class SecurityCameraController extends GameRoomController {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 
-  /** when switched to disable button */
+  /** when switched to disable button. */
   @Override
   public void onSwitchTo() {
     context = RoomController.getContext();

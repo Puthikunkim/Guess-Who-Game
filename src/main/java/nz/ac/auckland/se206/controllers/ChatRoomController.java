@@ -20,9 +20,10 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
+/** Parent class for all rooms that have a character to chat with. */
 public class ChatRoomController extends GameRoomController {
 
-  // The different characters, can change this to classes later down the line if needed
+  /** The different characters, can change this to classes later down the line if needed */
   public enum Characters {
     JIMMY,
     BUSINESSMAN,
@@ -90,11 +91,7 @@ public class ChatRoomController extends GameRoomController {
     return PromptEngineering.getPrompt(prompt, map);
   }
 
-  /**
-   * Sets the suspect for the chat context and initializes the ChatCompletionRequest.
-   *
-   * @param profession the profession to set
-   */
+  /** Sets the suspect for the chat context and initializes the ChatCompletionRequest. */
   public void startChat() {
     // If the chat with the suspect has not started, initialize the ChatCompletionRequest and start
     if (!chatStarted) {
@@ -261,6 +258,9 @@ public class ChatRoomController extends GameRoomController {
   }
 
   /**
+   * THis method returns get chatted if the player has chatted with the character (Currently
+   * Obsolete).
+   *
    * @return chatted - if this character has been chatted with (currently obsolete)
    */
   public boolean getChatted() {

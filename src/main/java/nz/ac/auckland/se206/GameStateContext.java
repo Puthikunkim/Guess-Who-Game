@@ -142,12 +142,13 @@ public class GameStateContext {
   /**
    * plays given sound file
    *
-   * @param sound_File_path format "file_name.mp3"
+   * @param soundFileName format "file_name.mp3"
    */
   public void playSoundTTS(String soundFileName) {
     try {
       Media newSound =
           new Media(App.class.getResource("/sounds/" + soundFileName + ".mp3").toURI().toString());
+      // Reuse mediaplayer variable to avoid creating tons of variables
       reusedTTSPlayer = new MediaPlayer(newSound);
       reusedTTSPlayer.play();
     } catch (URISyntaxException e) {

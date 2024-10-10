@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 
-/** Controller for the game over scene, Handles Replay and Exit */
+/** Controller for the game over scene, Handles Replay and Exit. */
 public class GameOverController extends Controller {
   @FXML private Button playAgainBtn;
   @FXML private Button exitBtn;
@@ -20,7 +20,6 @@ public class GameOverController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-
   private void onPlayAgainPressed(ActionEvent action) throws IOException {
     context.playSound("button-4-214382");
     SceneManager.restart();

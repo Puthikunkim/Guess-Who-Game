@@ -18,6 +18,7 @@ import nz.ac.auckland.se206.controllers.ReceiptController;
 import nz.ac.auckland.se206.controllers.RoomController;
 import nz.ac.auckland.se206.controllers.SecurityCameraController;
 
+/** SceneManager any switching, creating or controller operations must occur in this file. */
 public class SceneManager {
 
   /** Enum that corresponds to each room and its controller. */
@@ -122,7 +123,7 @@ public class SceneManager {
    * gets root for the given AppUi.
    *
    * @param appUi - AppUi enum that corresponds to the room the user wants to get root of
-   * @return
+   * @return return the root of the room chose
    */
   public static Parent getRoot(AppUi appUi) {
     return sceneMap.get(appUi);
@@ -132,7 +133,7 @@ public class SceneManager {
    * gets controller for the given AppUi.
    *
    * @param appUi - the enum AppUi that corresponds to the room controller wanted
-   * @return
+   * @return controller of the chosen room
    */
   public static Controller getController(AppUi appUi) {
     return controllerMap.get(appUi);

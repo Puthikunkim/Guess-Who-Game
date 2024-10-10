@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
@@ -11,7 +10,7 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-/** Controller for the receipt puzzle scene */
+/** Controller for the receipt puzzle scene. */
 public class ReceiptController extends GameRoomController {
 
   public static boolean receiptInfoFound = false;
@@ -36,11 +35,11 @@ public class ReceiptController extends GameRoomController {
   private Point2D dragMousePointOffset;
   private GameStateContext context;
 
+  /** Initialize the receipt peices from the FXML to a 2d array for easy comparison later. */
   @FXML
-   /** Initialize the receipt peices from the FXML to a 2d array for easy comparison later. */
   public void initialize() {
     context = RoomController.getContext();
-  // Initialize the receipt pieces, for easy comparison
+    // Initialize the receipt pieces, for easy comparison
     ImageView[][] tempReceiptPieces = {
       {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
       {receiptPiece2x1, receiptPiece2x2, receiptPiece2x3},
@@ -132,7 +131,7 @@ public class ReceiptController extends GameRoomController {
    *
    * @param receiptPieceLeft - The receipt piece to the left
    * @param receiptPieceRight - The receipt piece to the right
-   * @return
+   * @return boolean - true if peices are in correct positions in comparison to each other
    */
   private boolean checkHorizontal(ImageView receiptPieceLeft, ImageView receiptPieceRight) {
 
@@ -159,7 +158,7 @@ public class ReceiptController extends GameRoomController {
    *
    * @param receiptPieceUp - The upper receipt piece
    * @param receiptPieceDown - The lower receipt piece
-   * @return
+   * @return boolean - true if peices are in correct positions in comparison to each other
    */
   private boolean checkVertical(ImageView receiptPieceUp, ImageView receiptPieceDown) {
     Point2D downPiecePos =
