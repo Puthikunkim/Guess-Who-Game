@@ -23,5 +23,6 @@ public class HowToPlayController extends Controller {
 
     context = RoomController.getContext();
     context.setState(context.getGameStartedState());
+    context.playSound("button-4-214382");
   }
 }

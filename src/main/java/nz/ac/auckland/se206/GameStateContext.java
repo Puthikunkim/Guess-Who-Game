@@ -28,13 +28,13 @@ public class GameStateContext {
   private boolean talkedToPeople = false;
   private boolean guessed = false;
   private MediaPlayer reusedMediaPlayer;
+  private MediaPlayer reusedTTSPlayer;
 
   private Timer timer; // Timer for the current state
   private int timeRemaining;
 
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext() {
-
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
@@ -112,6 +112,12 @@ public class GameStateContext {
     int minutes = timeRemaining / 60;
     int seconds = timeRemaining % 60;
     String timeString = String.format("%02d:%02d", minutes, seconds); // Format the time string
+    if (minutes == 0 && seconds == 30) {
+      playSoundTTS("30SecondWarning");
+    }
+    if (minutes == 0 && seconds == 10) {
+      playSoundTTS("10SecondWarning");
+    }
     SceneManager.checkTimer(timeString); // Update the timer UI
   }
 
@@ -127,6 +133,23 @@ public class GameStateContext {
       // reusedMediaPlayer.stop();
       reusedMediaPlayer = new MediaPlayer(newSound);
       reusedMediaPlayer.play();
+    } catch (URISyntaxException e) {
+      System.out.println(soundFileName);
+      System.out.println(e.getStackTrace());
+    }
+  }
+
+  /**
+   * plays given sound file
+   *
+   * @param sound_File_path format "file_name.mp3"
+   */
+  public void playSoundTTS(String soundFileName) {
+    try {
+      Media newSound =
+          new Media(App.class.getResource("/sounds/" + soundFileName + ".mp3").toURI().toString());
+      reusedTTSPlayer = new MediaPlayer(newSound);
+      reusedTTSPlayer.play();
     } catch (URISyntaxException e) {
       System.out.println(soundFileName);
       System.out.println(e.getStackTrace());

@@ -16,6 +16,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
@@ -40,6 +41,8 @@ public class ChatRoomController extends GameRoomController {
   @FXML private Button btnJimmy;
   @FXML private Button btnGrandma;
   @FXML private Button btnBusinessman;
+
+  private GameStateContext context = RoomController.getContext();
 
   private boolean canSwitch = true; // Boolean to track if the user can switch suspects
 
@@ -240,6 +243,7 @@ public class ChatRoomController extends GameRoomController {
    */
   @FXML
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    context.playSound("button-4-214382");
     chatted = true;
     String message = txtInput.getText().trim();
     if (message.isEmpty() || !canSwitch) {

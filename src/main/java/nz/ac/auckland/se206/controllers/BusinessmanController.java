@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
@@ -13,6 +15,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 public class BusinessmanController extends ChatRoomController {
 
   public static boolean businessmanChatted = false;
+  private GameStateContext context = RoomController.getContext();
 
   @FXML private Label timerLabel; //
 
@@ -58,5 +61,16 @@ public class BusinessmanController extends ChatRoomController {
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     super.onSendMessage(event);
     businessmanChatted = true;
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("MaleThinking");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
   }
 }

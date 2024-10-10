@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -33,17 +34,24 @@ public class ReceiptController extends GameRoomController {
 
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
+  private GameStateContext context;
 
-  /** Initialize the receipt peices from the FXML to a 2d array for easy comparison later. */
   @FXML
+   /** Initialize the receipt peices from the FXML to a 2d array for easy comparison later. */
   public void initialize() {
-    // Initialize the receipt pieces, for easy comparison
+    context = RoomController.getContext();
+  // Initialize the receipt pieces, for easy comparison
     ImageView[][] tempReceiptPieces = {
       {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
       {receiptPiece2x1, receiptPiece2x2, receiptPiece2x3},
       {receiptPiece3x1, receiptPiece3x2, receiptPiece3x3}
     };
     receiptPieces = tempReceiptPieces;
+  }
+
+  @Override
+  public void onSwitchTo() {
+    context.playSound("ping-82822");
   }
 
   /**
@@ -199,6 +207,7 @@ public class ReceiptController extends GameRoomController {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
+    context.playSound("ping-82822");
   }
 
   /**
@@ -207,7 +216,8 @@ public class ReceiptController extends GameRoomController {
    * @param event - event of pressing this button
    */
   @FXML
-  private void onBackPressed(ActionEvent event) {
+  private void onBackPressed() {
+    context.playSound("button-4-214382");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }

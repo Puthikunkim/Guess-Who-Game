@@ -17,6 +17,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
@@ -43,6 +44,7 @@ public class GuessingController extends Controller {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
   @FXML private Button btnEndGame;
+  private GameStateContext context = RoomController.getContext();
 
   private boolean guessingCorrect = false;
 
@@ -81,6 +83,21 @@ public class GuessingController extends Controller {
         });
   }
 
+  @Override
+  public void onSwitchTo() {
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("GuessingPrompt");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
+  }
+
   /**
    * Updates the timer label with the given time string.
    *
@@ -115,6 +132,20 @@ public class GuessingController extends Controller {
     // Enable sending of reasoning
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
+
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
+    context.playSound("CorrectGuess");
+
     guessingCorrect = true;
   }
 
@@ -122,12 +153,38 @@ public class GuessingController extends Controller {
   @FXML
   private void onGrandmaGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
+    context.playSound("IncorrectGuess");
+    context.setState(context.getGameOverState());
   }
 
   /** Handles the button click event for the jimmy suspect. */
   @FXML
   private void onJimmyGuess() {
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
+    context.playSound("IncorrectGuess");
+    context.setState(context.getGameOverState());
   }
 
   /**
@@ -258,6 +315,18 @@ public class GuessingController extends Controller {
     btnEndGame.setDisable(false);
     btnSend.setDisable(true);
     RoomController.context.stopTimer();
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            context.playSound("button-4-214382");
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
+    backgroundThread.start();
+    context.playSound("PleaseWait");
   }
 
   /**
@@ -268,7 +337,9 @@ public class GuessingController extends Controller {
    */
   @FXML
   private void onEndGame(ActionEvent event) throws ApiProxyException, IOException {
+    context.playSound("button-4-214382");
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
+    context.setState(context.getGameOverState());
   }
 
   public boolean getGuessingCorrect() {

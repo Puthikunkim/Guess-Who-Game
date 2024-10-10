@@ -7,6 +7,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -20,11 +21,16 @@ public class LostAndFoundController extends GameRoomController {
   @FXML private ImageView cufflink;
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
+  private GameStateContext context;
 
   /** When initialzed set functions so that the cufflink interaction is more obvious. */
   @FXML
   public void initialize() {
+
+    context = RoomController.getContext();
+
     // On mouse hover on the vufflink chang its opacity and set the cursor to a closed hand
+
     cufflink.setOnMouseEntered(
         event -> {
           cufflink.setCursor(Cursor.CLOSED_HAND);
@@ -36,6 +42,11 @@ public class LostAndFoundController extends GameRoomController {
           cufflink.setCursor(Cursor.DEFAULT);
           cufflink.setOpacity(1.0); // Reset opacity
         });
+  }
+
+  @Override
+  public void onSwitchTo() {
+    context.playSound("ping-82822");
   }
 
   /**
@@ -106,6 +117,7 @@ public class LostAndFoundController extends GameRoomController {
     if (SceneManager.getIfCanGuess()) {
       btnGuess.setDisable(false);
     }
+    context.playSound("ping-82822");
   }
 
   /**
@@ -114,7 +126,9 @@ public class LostAndFoundController extends GameRoomController {
    * @param event - event of pressing this button
    */
   @FXML
-  private void onBackPressed(ActionEvent event) {
+
+  private void onBackPressed() {
+    context.playSound("button-4-214382");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
   }
 }

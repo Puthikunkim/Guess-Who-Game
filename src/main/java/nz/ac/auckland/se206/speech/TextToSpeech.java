@@ -8,7 +8,6 @@ import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Provider;
-import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechResult;
 
 /** A utility class for converting text to speech using the specified API proxy. */
@@ -23,7 +22,7 @@ public class TextToSpeech {
    * @param text the text to be converted to speech
    * @throws IllegalArgumentException if the text is null or empty
    */
-  public static void speak(String text, Voice voice) {
+  public static void speak(String text) {
     // Check if the text is null or empty
     if (text == null || text.isEmpty()) {
       throw new IllegalArgumentException("Text should not be null or empty");
@@ -44,10 +43,12 @@ public class TextToSpeech {
               Provider provider = Provider.GOOGLE;
 
               TextToSpeechRequest ttsRequest = new TextToSpeechRequest(config);
-              ttsRequest.setText(text).setProvider(provider).setVoice(voice);
+              ttsRequest.setText(text).setProvider(provider);
 
               TextToSpeechResult ttsResult = ttsRequest.execute();
               String audioUrl = ttsResult.getAudioUrl();
+
+              System.out.println("Plating audio from: " + audioUrl);
 
               Platform.runLater(
                   () -> {

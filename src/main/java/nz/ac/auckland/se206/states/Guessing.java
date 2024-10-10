@@ -35,6 +35,7 @@ public class Guessing extends GameState {
     SceneManager.switchRoot(AppUi.GUESSING_ROOM);
   }
 
+
   /**
    * Handles the event when the timer expires. Notifies the player that the time is up and the game
    * is over and transitions to the game over state.

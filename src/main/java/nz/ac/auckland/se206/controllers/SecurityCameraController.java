@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -14,6 +15,7 @@ public class SecurityCameraController extends GameRoomController {
   @FXML private ImageView cameraDisplayImage;
   @FXML private ImageView staticImageView;
   private Image beforeImage = new Image("images/Vase.png");
+  private GameStateContext context;
 
   /**
    * If a time before the theft occured is clicked then show an image of the vase still on the
@@ -48,15 +50,13 @@ public class SecurityCameraController extends GameRoomController {
   private void onDuringTimeClick(ActionEvent event) {
     // Show static image
     staticImageView.setOpacity(100);
+    System.out.println(foundTimeOfTheft);
     // On first find set found clue and tell player they have found the clue
     if (!foundTimeOfTheft) {
       txtaChat.appendText("You: Looks like the theft occurred at around 2 o'clock.");
+      foundTimeOfTheft = true;
     }
-    // after this check if you can guess and update the guessing button
-    foundTimeOfTheft = true;
-    if (SceneManager.getIfCanGuess()) {
-      btnGuess.setDisable(false);
-    }
+    context.playSound("ping-82822");
   }
 
   /**
@@ -65,7 +65,19 @@ public class SecurityCameraController extends GameRoomController {
    * @param event - event of this button pressed
    */
   @FXML
-  private void onBackPressed(ActionEvent event) {
+  private void onBackPressed() {
     SceneManager.switchRoot(AppUi.MAIN_ROOM);
+  }
+
+  /** when switched to disable button */
+  @Override
+  public void onSwitchTo() {
+    context = RoomController.getContext();
+    btnGuess.setDisable(true);
+
+    if (SceneManager.getIfCanGuess()) {
+      btnGuess.setDisable(false);
+    }
+    context.playSound("ping-82822");
   }
 }
