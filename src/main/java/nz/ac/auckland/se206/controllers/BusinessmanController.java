@@ -35,9 +35,27 @@ public class BusinessmanController extends ChatRoomController {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
+    // Update the label text
     timerLabel.setText(timeString + "\n" + "Remaining");
+
+    // Split the timeString to extract minutes and seconds
+    String[] timeParts = timeString.split(":");
+    int minutes = Integer.parseInt(timeParts[0]);
+    int seconds = Integer.parseInt(timeParts[1]);
+
+    // Check if there are 10 seconds or less remaining
+    if (minutes == 0 && seconds <= 10) {
+      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
+    } else {
+      timerLabel.setStyle(""); // Reset to default style
+    }
   }
 
+  /**
+   * Updates Businessman chatted for the talked to all 3 suspects check in scene manager.
+   *
+   * @param event event thrown when send message
+   */
   @Override
   @FXML
   protected void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {

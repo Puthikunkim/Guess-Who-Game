@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -8,44 +10,60 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="600.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HowToPlayController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="206.0" layoutY="398.0" stroke="WHITE" strokeType="INSIDE" width="188.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="193.0" layoutX="20.0" layoutY="186.0" stroke="WHITE" strokeType="INSIDE" width="557.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="134.0" layoutY="90.0" stroke="WHITE" strokeType="INSIDE" width="346.0" />
-      <Text fill="WHITE" layoutX="149.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" wrappingWidth="321.13671875">
+      <ImageView fitHeight="599.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/room_background.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000079" height="599.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="87.0" layoutX="206.0" layoutY="472.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="188.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="193.0" layoutX="20.0" layoutY="249.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="557.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="145.0" layoutX="19.0" layoutY="89.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="557.0" />
+      <Text fill="WHITE" layoutX="210.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="How To Play" wrappingWidth="174.91796875">
          <font>
-            <Font name="System Bold" size="53.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="159.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Interact with objects by clicking on them">
+      <Text fill="WHITE" layoutX="159.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Interact with objects by clicking on them">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="149.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Navigate through the game using the menu">
+      <Text fill="WHITE" layoutX="149.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Navigate through the game using the menu">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="132.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You have 5 minutes to figure out who the thief is">
+      <Text fill="WHITE" layoutX="131.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You have 5 minutes to figure out who the thief is">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="WHITE" layoutX="111.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You must chat will all 3 suspects and find at least 1 clue">
+      <Text fill="WHITE" layoutX="110.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You must chat will all 3 suspects and find at least 1 clue">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Button fx:id="continueButton" layoutX="224.0" layoutY="410.0" mnemonicParsing="false" onAction="#onContinuePressed" prefHeight="59.0" prefWidth="150.0" text="Press to continue" />
-      <Text fill="WHITE" layoutX="170.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Figure out who the thief of the vase is">
+      <Button fx:id="continueButton" layoutX="225.0" layoutY="486.0" mnemonicParsing="false" onAction="#onContinuePressed" prefHeight="59.0" prefWidth="150.0" text="Press to continue" />
+      <Text fill="WHITE" layoutX="62.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Objective: There are 3 suspects, figure out who the thief of the vase is" wrappingWidth="470.5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="237.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Setting: Museum">
+      <Text fill="WHITE" layoutX="233.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Setting: Museum" textAlignment="JUSTIFY" wrappingWidth="127.5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="42.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You will then have 1 minute to guess who the thief is and explain your guess">
+      <Text fill="WHITE" layoutX="43.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You will then have 1 minute to guess who the thief is and explain your guess">
          <font>
             <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="123.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Context: Someone has stolen a vase from the museum" wrappingWidth="374.0625">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="229.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Backstory" wrappingWidth="136.91796875">
+         <font>
+            <Font name="System Bold" size="28.0" />
          </font>
       </Text>
    </children>

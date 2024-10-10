@@ -13,58 +13,70 @@
 
 <Pane fx:id="room" focusTraversable="true" prefHeight="599.0" prefWidth="1007.0" style="-fx-background-color: #28462B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BusinessmanController">
    <children>
+      <ImageView fitHeight="636.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/businessman_room.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="599.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" width="599.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28452a00" height="599.0" layoutX="593.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" styleClass="box" width="414.0" />
       <Label fx:id="lblProfession" layoutX="781.0" layoutY="123.0" prefHeight="37.0" prefWidth="289.0" wrapText="true">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" width="157.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" width="139.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="63.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="82.0" layoutX="836.0" layoutY="48.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="157.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="250.0" layoutX="855.0" layoutY="160.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="67.0" layoutX="846.0" layoutY="425.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a6240" height="59.0" layoutX="845.0" layoutY="523.0" stroke="WHITE" strokeType="INSIDE" styleClass="button-rectangle" width="148.0" />
       <TextArea fx:id="txtaChat" editable="false" layoutX="617.0" layoutY="48.0" prefHeight="444.0" prefWidth="242.0" promptText="Suspect response:" wrapText="true">
          <font>
             <Font size="13.5" />
          </font></TextArea>
-      <TextField fx:id="txtInput" alignment="TOP_LEFT" layoutX="617.0" layoutY="523.0" prefHeight="63.0" prefWidth="242.0" promptText="Enter questions here:">
+      <TextField fx:id="txtInput" alignment="TOP_LEFT" layoutX="617.0" layoutY="523.0" prefHeight="59.0" prefWidth="242.0" promptText="Enter questions here:">
          <font>
             <Font size="13.5" />
          </font></TextField>
-      <Button fx:id="btnSend" layoutX="865.0" layoutY="536.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="37.0" prefWidth="119.0" text="Send" />
+      <Button fx:id="btnSend" layoutX="865.0" layoutY="530.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="37.0" prefWidth="119.0" text="Send" />
       <Button fx:id="btnCrimeScene" layoutX="865.0" layoutY="170.0" mnemonicParsing="false" onAction="#onCrimeSceneClick" prefHeight="45.0" prefWidth="119.0" text="Crime Scene" />
       <Button fx:id="btnJimmy" layoutX="865.0" layoutY="230.0" mnemonicParsing="false" onAction="#onJimmyClick" prefHeight="45.0" prefWidth="119.0" text="Jimmy" />
       <Button fx:id="btnGrandma" layoutX="865.0" layoutY="290.0" mnemonicParsing="false" onAction="#onGrandmaClick" prefHeight="45.0" prefWidth="119.0" text="Grandma" />
-      <Label fx:id="lblResponse" layoutX="617.0" layoutY="495.0" prefHeight="21.0" prefWidth="236.0" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblResponse" layoutX="617.0" layoutY="492.0" prefHeight="21.0" prefWidth="236.0" styleClass="response-label" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <Button fx:id="btnBusinessman" disable="true" layoutX="865.0" layoutY="350.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" text="Businessman" />
       <Button fx:id="btnGuess" layoutX="865.0" layoutY="435.0" mnemonicParsing="false" onAction="#onGuessClick" prefHeight="45.0" prefWidth="119.0" text="Make guess" />
-      <ImageView fitHeight="636.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/businessman_room.jpg" />
-         </image>
-      </ImageView>
       <Label fx:id="timerLabel" layoutX="870.0" layoutY="48.0" prefHeight="82.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblProfession1" layoutX="627.0" layoutY="7.0" prefHeight="37.0" prefWidth="222.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblProfession1" layoutX="617.0" layoutY="7.0" prefHeight="37.0" prefWidth="242.0" text="Find the thief of the vase" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
       <Label fx:id="lblProfession11" layoutX="897.0" layoutY="7.0" prefHeight="37.0" prefWidth="57.0" text="Menu" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Calibri Bold" size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
       <Ellipse layoutX="161.0" layoutY="575.0" opacity="0.36" radiusX="161.0" radiusY="295.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fitHeight="413.0" fitWidth="323.0" layoutX="-6.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/businessman.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="221.0" layoutX="628.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_extension.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="221.8" layoutX="627.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/notepad_1.jpg" />
          </image>
       </ImageView>
    </children>

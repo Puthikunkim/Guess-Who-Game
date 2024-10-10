@@ -1,22 +1,22 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller for the receipt puzzle scene */
 public class ReceiptController extends GameRoomController {
 
   public static boolean receiptInfoFound = false;
   @FXML private ImageView receiptImageView;
-
+  // All the recipt pieces (X x Y)
   @FXML private ImageView receiptPiece1x1;
   @FXML private ImageView receiptPiece1x2;
   @FXML private ImageView receiptPiece1x3;
@@ -27,28 +27,20 @@ public class ReceiptController extends GameRoomController {
   @FXML private ImageView receiptPiece3x2;
   @FXML private ImageView receiptPiece3x3;
 
+  // Store recipt pieces in a 2D array for easy comparison
   @FXML private ImageView[][] receiptPieces;
 
   @FXML private Button flipButton;
 
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
-
-  // chat-room
-  @FXML private Label timerLabel; //
-  @FXML private Button btnCrimeScene;
-  @FXML private Button btnJimmy;
-  @FXML private Button btnGrandma;
-  @FXML private Button btnBusinessman;
-  @FXML private Button btnGuess;
-  @FXML private TextArea txtaChat;
-
   private GameStateContext context;
 
   @FXML
+   /** Initialize the receipt peices from the FXML to a 2d array for easy comparison later. */
   public void initialize() {
     context = RoomController.getContext();
-    // Initialize the receipt pieces
+  // Initialize the receipt pieces, for easy comparison
     ImageView[][] tempReceiptPieces = {
       {receiptPiece1x1, receiptPiece1x2, receiptPiece1x3},
       {receiptPiece2x1, receiptPiece2x2, receiptPiece2x3},
@@ -63,14 +55,11 @@ public class ReceiptController extends GameRoomController {
   }
 
   /**
-   * Updates the timer label with the given time string.
+   * When starting drag initialize where the player has grabbed the object from compare to the
+   * centre of the object.
    *
-   * @param timeString the time string to display
+   * @param event - mouse event that stores position of the mouse cursor and object being dragged
    */
-  public void updateTimer(String timeString) {
-    timerLabel.setText(timeString + "\n" + "Remaining");
-  }
-
   @FXML
   public void onDragStart(MouseEvent event) {
     dragTarget = (ImageView) event.getTarget();
@@ -80,6 +69,12 @@ public class ReceiptController extends GameRoomController {
     dragMousePointOffset = new Point2D(offsetX, offsetY);
   }
 
+  /**
+   * Moves the dragged object by the same amount and distance as the mouse, this maintains the
+   * offset of when the player clicked the first time.
+   *
+   * @param event - mouse event that contains the new mouse position after moving
+   */
   @FXML
   public void onDragProgressed(MouseEvent event) {
     Scene currentScene = receiptImageView.getScene();
@@ -107,6 +102,10 @@ public class ReceiptController extends GameRoomController {
     checkPositions();
   }
 
+  /**
+   * Every time a piece is moved, check all positions and their neighbours to see if they are in a
+   * valid configuration.
+   */
   private void checkPositions() {
     // Check if each element in a row is next to each other
     for (int i = 0; i < 3; i++) {
@@ -116,7 +115,7 @@ public class ReceiptController extends GameRoomController {
         }
       }
     }
-
+    // Check if pieces are in the correct columns
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 2; j++) {
         if (!checkVertical(receiptPieces[j][i], receiptPieces[j + 1][i])) {
@@ -128,6 +127,13 @@ public class ReceiptController extends GameRoomController {
     onPuzzleSolve();
   }
 
+  /**
+   * Checks if the right piece is physically to the right of the left piece.
+   *
+   * @param receiptPieceLeft - The receipt piece to the left
+   * @param receiptPieceRight - The receipt piece to the right
+   * @return
+   */
   private boolean checkHorizontal(ImageView receiptPieceLeft, ImageView receiptPieceRight) {
 
     Point2D leftPiecePos =
@@ -148,6 +154,13 @@ public class ReceiptController extends GameRoomController {
     return true;
   }
 
+  /**
+   * Checks if the up piece is almost direclty above the down piece.
+   *
+   * @param receiptPieceUp - The upper receipt piece
+   * @param receiptPieceDown - The lower receipt piece
+   * @return
+   */
   private boolean checkVertical(ImageView receiptPieceUp, ImageView receiptPieceDown) {
     Point2D downPiecePos =
         receiptPieceDown.localToScene(receiptPieceDown.getX(), receiptPieceDown.getY());
@@ -167,18 +180,26 @@ public class ReceiptController extends GameRoomController {
     return true;
   }
 
+  /**
+   * When puzzle is solved we hide all the seperate pieces and show the image of the whole, also
+   * tell them they found a clue.
+   */
   private void onPuzzleSolve() {
     // put the pieces together once the puzzle is solved
     if (receiptInfoFound) {
       return;
     }
+    // Hide all pieces
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         receiptPieces[i][j].setDisable(true);
         receiptPieces[i][j].setOpacity(0);
       }
     }
+    // SHow the full image
     receiptImageView.setOpacity(100);
+
+    // Tell them they found a clue
     txtaChat.appendText(
         "You: Someone purchased a very expensive protective casing, I wonder what they need it"
             + " for...");
@@ -189,6 +210,11 @@ public class ReceiptController extends GameRoomController {
     context.playSound("ping-82822");
   }
 
+  /**
+   * Handles Back Button Press switching scenes to the crime scene.
+   *
+   * @param event - event of pressing this button
+   */
   @FXML
   private void onBackPressed() {
     context.playSound("button-4-214382");

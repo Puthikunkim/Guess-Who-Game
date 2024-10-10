@@ -8,6 +8,7 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** controller for the main menu, players can either exit or go to how to play menu */
 public class MainMenuController extends Controller {
   @FXML private Button playButton;
 
@@ -16,9 +17,9 @@ public class MainMenuController extends Controller {
   private GameStateContext context = RoomController.getContext();
 
   /**
-   * Moves to How to play screen when pressed
+   * Moves to How to play screen when pressed.
    *
-   * @param action
+   * @param event - event of this button pressed
    */
   @FXML
   private void onPlayPressed(ActionEvent action) {
@@ -27,13 +28,15 @@ public class MainMenuController extends Controller {
   }
 
   /**
-   * Exits entire game
+   * when pressing button you exit the game by closing th game window
    *
-   * @param action
+   * @param event - event of pressing this button
    */
   @FXML
+
   private void onExitPressed(ActionEvent action) {
     context.playSound("button-4-214382");
+
     Platform.exit();
   }
 }

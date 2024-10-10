@@ -44,7 +44,6 @@ public class RoomController extends GameRoomController {
   @FXML private Button btnBusinessman;
 
   @FXML private Label lblProfession;
-  @FXML private Label timerLabel;
 
   private boolean firstTime = true;
 
@@ -93,7 +92,7 @@ public class RoomController extends GameRoomController {
     firstTime = true;
   }
 
-  /** when switched to for the first time set state to gameStarted */
+  /** when switched to for the first time set state to gameStarted. */
   @Override
   public void onSwitchTo() {
     if (firstTime) {
@@ -118,7 +117,7 @@ public class RoomController extends GameRoomController {
     txtaChat.appendText("\n");
     txtaChat.appendText("- Guess who the thief of the vase is.");
     txtaChat.appendText("\n");
-    txtaChat.appendText("-------------------------------");
+    txtaChat.appendText("--------------------");
     txtaChat.appendText("\n");
     txtaChat.appendText("Clues Gathered:\n");
     if (SecurityCameraController.foundTimeOfTheft) {
@@ -135,15 +134,6 @@ public class RoomController extends GameRoomController {
     }
 
     txtaChat.appendText("\n\n");
-  }
-
-  /**
-   * Updates the timer label with the given time string.
-   *
-   * @param timeString the time string to display
-   */
-  public void updateTimer(String timeString) {
-    timerLabel.setText(timeString + "\n" + "Remaining");
   }
 
   /**

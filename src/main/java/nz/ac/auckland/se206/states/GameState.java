@@ -7,9 +7,12 @@ import javafx.scene.input.MouseEvent;
  * Interface representing the state of the game. Defines methods to handle user interactions such as
  * clicking on a rectangle and making a guess.
  */
-public interface GameState {
-  /** Handles logic for when switching to this GameState */
-  void onSwitchTo();
+public abstract class GameState {
+  protected int timerLength = 0;
+
+  /** Handles logic for when switching to this GameState. */
+  public void onSwitchTo() {}
+  ;
 
   /**
    * Handles the event when a rectangle is clicked.
@@ -18,18 +21,19 @@ public interface GameState {
    * @param rectangleId the ID of the clicked rectangle
    * @throws IOException if there is an I/O error
    */
-  void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException;
+  public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {}
+  ;
 
   /**
    * Handles the event when the guess button is clicked.
    *
    * @throws IOException if there is an I/O error
    */
-  void handleGuessClick() throws IOException;
+  public void handleGuessClick() throws IOException {}
 
-  /** Starts the timer for the game state. */
-  void startTimer();
+  public void timerExpired() {}
 
-  /** Stops the timer for the game state. */
-  void stopTimer();
+  public int getTimerLength() {
+    return timerLength;
+  }
 }

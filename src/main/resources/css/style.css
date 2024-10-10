@@ -1,0 +1,181 @@
+/* General */
+
+/* Border styling */
+.box {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.938), 15, 0.0, -4, 0); /* Shadow on the left */
+}
+
+/* Title styling */
+.title {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Shadow effect */
+}
+
+/* General Button Styles */
+.button {
+  -fx-background-color: linear-gradient(to bottom, #536878, #2a324b); /* Gradient for depth */
+  -fx-background-radius: 8px; /* Smooth rounded corners */
+  -fx-border-color: #ffffff; /* White border to make it pop */
+  -fx-border-width: 2px;
+  -fx-border-radius: 8px;
+  -fx-text-fill: white; /* White text */
+  -fx-font-size: 12px; /* Adjust font size for better readability */
+  -fx-font-weight: bold;
+  -fx-padding: 10 20; /* Spacing for a clean look */
+  -fx-cursor: hand; /* Change cursor to hand on hover */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0, 0, 4); /* Subtle shadow */
+}
+
+/* Hover Effect for Buttons */
+.button:hover {
+  -fx-background-color: linear-gradient(to bottom, #67809f, #2a324b); /* Slight color change */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 5); /* Stronger shadow */
+}
+
+/* Pressed Effect for Buttons */
+.button:pressed {
+  -fx-background-color: linear-gradient(to bottom, #3b4561, #2a324b); /* Darker shade when pressed */
+  -fx-effect: none; /* Remove shadow when pressed */
+  -fx-padding: 11 21 9 19; /* Adjust padding for pressed effect */
+}
+
+/* Style for Rectangle with a gradient background and shadow */
+.button-rectangle {
+  -fx-fill: linear-gradient(from 0% 0% to 0% 100%, #8a6240, #6a4e34); /* Gradient background */
+  -fx-stroke: white; /* Border color */
+  -fx-stroke-width: 2; /* Border width */
+  -fx-arc-height: 15; /* Rounded corners */
+  -fx-arc-width: 15; /* Rounded corners */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.0, 0, 10); /* Shadow effect */
+  -fx-padding: 5; /* Internal padding */
+  -fx-opacity: 0.9; /* Slight transparency */
+}
+
+/* Text Area Styling */
+.text-area {
+  -fx-background-color: #fffbe0; /* Notepad-like paper color */
+  -fx-padding: 10px;
+  -fx-font-family: "Courier New", monospace; /* Use a monospaced font like a notepad */
+  -fx-font-weight: bold; /* Make text bold */
+  -fx-border-color: #2a324b; /* Light grey border */
+  -fx-border-width: 10px;
+  -fx-border-radius: 0px;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5px;
+  -fx-control-inner-background: transparent;
+  -fx-font-size: 14px;
+  -fx-text-fill: #000000; /* Black text for readability */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Enhanced shadow effect */
+}
+
+.text-area .content {
+  -fx-background-color: transparent;
+}
+
+/* Scrollbar Styling */
+.text-area .scroll-pane .scroll-bar {
+  -fx-background-color: transparent; /* Transparent scrollbar background */
+}
+
+/* Scrollbar Track (background) */
+.text-area .scroll-pane .scroll-bar .track {
+  -fx-background-color: #E0E0E0; /* Light grey background for track */
+}
+
+/* Scrollbar Thumb (draggable part) */
+.text-area .scroll-pane .scroll-bar .thumb {
+  -fx-background-color: #888; /* Darker gray for the thumb */
+  -fx-background-radius: 5px; /* Rounded corners for a modern look */
+  -fx-padding: 5px; /* Padding for smooth appearance */
+}
+
+/* Scrollbar on hover effect */
+.text-area .scroll-pane .scroll-bar .thumb:hover {
+  -fx-background-color: #666; /* Darker gray on hover */
+}
+
+/* Scrollbar Buttons */
+.text-area .scroll-pane .scroll-bar .increment-button,
+.text-area .scroll-pane .scroll-bar .decrement-button {
+  -fx-background-color: transparent; /* Transparent buttons */
+  -fx-shape: ""; /* Remove the arrow icons */
+}
+
+
+/* TextField Styling (for user input) */
+.text-field {
+  -fx-background-color: #2a324b; /* Same background color as text area */
+  -fx-text-fill: white; /* White text for visibility */
+  -fx-font-size: 14px; /* Comfortable font size */
+  -fx-border-color: white; /* White border */
+  -fx-border-width: 2px; /* Make it stand out */
+  -fx-background-radius: 10px; /* Smooth rounded corners */
+  -fx-padding: 10px; /* Comfortable spacing */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10); /* Enhanced shadow effect */
+}
+
+/* Label Styling */
+.label {
+  -fx-text-fill: white; /* White text for contrast */
+  -fx-font-size: 19px; /* Larger font size for clarity */
+  -fx-font-weight: bold; /* Bold for emphasis */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.449), 4, 0, 0, 4); /* Subtle shadow to lift text */
+}
+
+/* Label Styling for Character Responses */
+.response-label {
+  -fx-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  -fx-text-fill: white; /* White text for contrast */
+  -fx-font-family: "System Bold"; /* Bold font */
+  -fx-font-size: 14.5px; /* Smaller font size */
+  -fx-background-radius: 10px; /* Rounded corners */
+  -fx-padding: 5px; /* Inner padding */
+}
+
+
+/* Security Room */
+
+/* Style for the dashboard rectangle */
+.security-dashboard {
+  -fx-fill: linear-gradient(to bottom, #3f3f3f, #8c8c8c);
+  -fx-stroke: #3A3D3F;
+  -fx-stroke-width: 2;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 1);
+  -fx-background-radius: 5;
+}
+
+/* Default style for security buttons */
+.security-button {
+  -fx-background-color: #3A3D3F; /* Dark background for a techy look */
+  -fx-text-fill: white; /* White text for contrast */
+  -fx-font-family: "Arial"; /* Modern font */
+  -fx-font-size: 14px; /* Font size */
+  -fx-font-weight: bold; /* Bold text */
+  -fx-padding: 10px; /* Internal padding */
+  -fx-border-color: #B0B3B6; /* Light border color */
+  -fx-border-width: 1; /* Border width */
+  -fx-background-radius: 5; /* Rounded corners */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 15, 0, 0, 4); /* Shadow effect */
+}
+
+/* Hover effect for buttons */
+.security-button:hover {
+  -fx-background-color: #505355; /* Slightly lighter on hover */
+  -fx-border-color: #FFFFFF; /* Change border color on hover */
+}
+
+/* Pressed effect for buttons */
+.security-button:pressed {
+  -fx-background-color: #1E2123; /* Darker when pressed */
+  -fx-border-color: #B0B3B6; /* Keep border color for consistency */
+  -fx-padding: 10px; /* Maintain padding */
+  -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0, 0, 2); /* Lighter shadow effect */
+  -fx-scale-x: 0.95; /* Slightly shrink the button horizontally */
+  -fx-scale-y: 0.95; /* Slightly shrink the button vertically */
+}
+
+/* Focused effect for buttons */
+.security-button:focused {
+  -fx-background-color: #3A3D3F; /* Reset to default background when focused */
+  -fx-border-color: #B0B3B6; /* Reset border color when focused */
+  -fx-effect: none; /* Remove shadow effect when focused */
+}

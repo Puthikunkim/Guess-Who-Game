@@ -8,7 +8,7 @@ import nz.ac.auckland.se206.GameStateContext;
  * The GameOver state of the game. Handles interactions after the game has ended, informing the
  * player that the game is over and no further actions can be taken.
  */
-public class GameOver implements GameState {
+public class GameOver extends GameState {
 
   private final GameStateContext context;
 
@@ -21,7 +21,7 @@ public class GameOver implements GameState {
     this.context = context;
   }
 
-  /** When Switched to disable everything and set GAME OVER */
+  /** When Switched to disable everything and set GAME OVER. */
   public void onSwitchTo() {}
 
   /**
@@ -37,7 +37,6 @@ public class GameOver implements GameState {
     if (rectangleId.equals("rectChest")) {
       return;
     }
-    context.playSound("Thief" + context.getPersonToGuess().getName());
   }
 
   /**
@@ -48,16 +47,4 @@ public class GameOver implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {}
-
-  /** Does nothing as the game is over and no further actions can be taken. */
-  @Override
-  public void startTimer() {
-    // Do nothing
-  }
-
-  /** Does nothing as the game is over and no further actions can be taken. */
-  @Override
-  public void stopTimer() {
-    // Do nothing
-  }
 }

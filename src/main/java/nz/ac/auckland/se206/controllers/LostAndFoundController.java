@@ -1,43 +1,39 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller for the lost and found scene, where the cufflink clue is found */
 public class LostAndFoundController extends GameRoomController {
 
   public static boolean foundCufflink = false;
 
+  //
   @FXML private ImageView thingToDrag;
   @FXML private ImageView cufflink;
   private ImageView dragTarget;
   private Point2D dragMousePointOffset;
   private GameStateContext context;
 
-  // chat-room
-  @FXML private Label timerLabel; //
-  @FXML private Button btnCrimeScene;
-  @FXML private Button btnJimmy;
-  @FXML private Button btnGrandma;
-  @FXML private Button btnBusinessman;
-  @FXML private Button btnGuess;
-  @FXML private TextArea txtaChat;
-
+  /** When initialzed set functions so that the cufflink interaction is more obvious. */
   @FXML
   public void initialize() {
+
     context = RoomController.getContext();
+
+    // On mouse hover on the vufflink chang its opacity and set the cursor to a closed hand
+
     cufflink.setOnMouseEntered(
         event -> {
-          cufflink.setCursor(Cursor.HAND);
+          cufflink.setCursor(Cursor.CLOSED_HAND);
           cufflink.setOpacity(0.5); // Change opacity or add any other visual effect
         });
 
@@ -54,14 +50,11 @@ public class LostAndFoundController extends GameRoomController {
   }
 
   /**
-   * Updates the timer label with the given time string.
+   * When starting drag initialize where the player has grabbed the object from compare to the
+   * centre of the object.
    *
-   * @param timeString the time string to display
+   * @param event - mouse event that stores position of the mouse cursor and object being dragged
    */
-  public void updateTimer(String timeString) {
-    timerLabel.setText(timeString + "\n" + "Remaining");
-  }
-
   @FXML
   public void onDragStart(MouseEvent event) {
     dragTarget = (ImageView) event.getTarget();
@@ -71,13 +64,21 @@ public class LostAndFoundController extends GameRoomController {
     dragMousePointOffset = new Point2D(offsetX, offsetY);
   }
 
+  /**
+   * Moves the dragged object by the same amount and distance as the mouse, this maintains the
+   * offset of when the player clicked the first time.
+   *
+   * @param event - mouse event that contains the new mouse position after moving
+   */
   @FXML
   public void onDragProgressed(MouseEvent event) {
-    Scene currentScene = thingToDrag.getScene();
 
+    Scene currentScene = thingToDrag.getScene();
+    // Get the current mouse position and remove the offset calculated earlier to get the new
+    // position of the object being dragged
     double newX = event.getSceneX() - dragMousePointOffset.getX();
     double newY = event.getSceneY() - dragMousePointOffset.getY();
-    // Clamp Value so cant drag images off screen
+    // Clamp Values so cant drag images off screen
     if (newX > 460 - dragTarget.getFitWidth()) {
       newX = 460 - dragTarget.getFitWidth();
     }
@@ -92,14 +93,20 @@ public class LostAndFoundController extends GameRoomController {
       newY = 160;
     }
 
+    // Switch from scene position to local position
     Point2D local = dragTarget.sceneToLocal(newX, newY);
 
     dragTarget.setX(local.getX());
     dragTarget.setY(local.getY());
   }
 
+  /**
+   * when cufflink is clicked hide cufflink and inform user that they have found a clue.
+   *
+   * @param event - event when cufflink is clicked
+   */
   @FXML
-  public void onCufflinkClick() {
+  public void onCufflinkClick(MouseEvent event) {
     // if cufflink is found append text into chat
     foundCufflink = true;
     txtaChat.appendText("You: Hmmm, seems like someone dropped their cufflink.");
@@ -113,7 +120,13 @@ public class LostAndFoundController extends GameRoomController {
     context.playSound("ping-82822");
   }
 
+  /**
+   * Goes back to crime scene.
+   *
+   * @param event - event of pressing this button
+   */
   @FXML
+
   private void onBackPressed() {
     context.playSound("button-4-214382");
     SceneManager.switchRoot(AppUi.MAIN_ROOM);

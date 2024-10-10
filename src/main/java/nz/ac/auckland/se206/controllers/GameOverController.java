@@ -8,28 +8,25 @@ import javafx.scene.control.Button;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 
+/** Controller for the game over scene, Handles Replay and Exit */
 public class GameOverController extends Controller {
   @FXML private Button playAgainBtn;
   @FXML private Button exitBtn;
   private GameStateContext context = RoomController.getContext();
 
   /**
-   * goes to Main Room and restarts game
+   * goes to Main Room and restarts game.
    *
-   * @param action
-   * @throws IOException
+   * @throws IOException if there is an I/O error
    */
   @FXML
+
   private void onPlayAgainPressed(ActionEvent action) throws IOException {
     context.playSound("button-4-214382");
     SceneManager.restart();
   }
 
-  /**
-   * exits game
-   *
-   * @param action
-   */
+  /** Handles exit button press closing the entire game. */
   @FXML
   private void onExitPressed(ActionEvent action) {
     context.playSound("button-4-214382");

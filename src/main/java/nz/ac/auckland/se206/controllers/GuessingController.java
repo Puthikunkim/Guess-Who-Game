@@ -46,15 +46,19 @@ public class GuessingController extends Controller {
   @FXML private Button btnEndGame;
   private GameStateContext context = RoomController.getContext();
 
+  private boolean guessingCorrect = false;
+
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML
   public void initialize() {
+    // Initial Scene Setup
     lblResponse.setVisible(false);
     btnEndGame.setDisable(true);
     btnSend.setDisable(true);
+    // Print out instructions
     txtaChat1.appendText("To Win You Must:");
     txtaChat1.appendText("\n\n");
     txtaChat1.appendText("Select the correct thief.");
@@ -100,18 +104,35 @@ public class GuessingController extends Controller {
    * @param timeString the time string to display
    */
   public void updateTimer(String timeString) {
+    // Update the label text
     timerLabel.setText(timeString + "\n" + "Remaining");
+
+    // Split the timeString to extract minutes and seconds
+    String[] timeParts = timeString.split(":");
+    int minutes = Integer.parseInt(timeParts[0]);
+    int seconds = Integer.parseInt(timeParts[1]);
+
+    // Check if there are 10 seconds or less remaining
+    if (minutes == 0 && seconds <= 10) {
+      timerLabel.setStyle("-fx-text-fill: red;"); // Change text color to red
+    } else {
+      timerLabel.setStyle(""); // Reset to default style
+    }
   }
 
   /** Handles the button click event for the businessman suspect. */
   @FXML
   private void onBusinessmanGuess() {
+    // Tell player to input reasoning
     txtaChat1.appendText("Game" + ": " + "Please enter the reason you chose this suspect" + "\n\n");
+    // Disable guessing buttons
     btnJimmy.setDisable(true);
     btnGrandma.setDisable(true);
     btnBusinessman.setDisable(true);
+    // Enable sending of reasoning
     btnSend.setDisable(false);
     lblGuess.setText("Guess is correct");
+
     Task<Void> backgroundTask =
         new Task<Void>() {
           @Override
@@ -124,6 +145,8 @@ public class GuessingController extends Controller {
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
     backgroundThread.start();
     context.playSound("CorrectGuess");
+
+    guessingCorrect = true;
   }
 
   /** Handles the button click event for the grandma suspect. */
@@ -278,7 +301,7 @@ public class GuessingController extends Controller {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  public void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     String message = txtInput.getText().trim();
     if (message.isEmpty() || btnSend.isDisabled()) {
       return;
@@ -317,5 +340,9 @@ public class GuessingController extends Controller {
     context.playSound("button-4-214382");
     SceneManager.switchRoot(SceneManager.AppUi.GAMEOVER_ROOM);
     context.setState(context.getGameOverState());
+  }
+
+  public boolean getGuessingCorrect() {
+    return guessingCorrect;
   }
 }
