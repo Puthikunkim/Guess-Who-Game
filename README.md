@@ -1,6 +1,30 @@
-# Sample JavaFX application using Proxy API
+# SOFTENG206 - Guess Who Game
+Project for SOFTENG 206 (Software Engineering Design 1) in Part II of Software Engineering at The University of Auckland.
 
-# SOFTENG206 Guess Who Alpha
+# Demo
+<img src="https://github.com/user-attachments/assets/e1bc6dd5-cdff-4a54-ad3b-752a7d46a7d6" width="400"/>
+<img src="https://github.com/user-attachments/assets/fcb5d5b3-4bb9-40cc-9dfa-31fe17adf67e" width="400"/>
+<img src="https://github.com/user-attachments/assets/c12e1558-28bf-4d88-baa1-e7c210a2381c" width="400"/>
+<img src="https://github.com/user-attachments/assets/656d2c61-89bc-45fb-84b3-2082cef093f9" width="400"/>
+<img src="https://github.com/user-attachments/assets/42d68e6f-8261-4986-b036-9d5e019b4bc4" width="400"/>
+<img src="https://github.com/user-attachments/assets/550cc456-6ecb-4b88-82ff-5074ac7fa999" width="400"/>
+<img src="https://github.com/user-attachments/assets/c60226c1-bf7d-4e12-b2c2-6223e03660b4" width="400"/>
+<img src="https://github.com/user-attachments/assets/5c69e7a7-3433-4da7-a74d-607e3006f4ef" width="400"/>
+<img src="https://github.com/user-attachments/assets/e409d355-83f6-4784-a5a6-cfe560880cd0" width="400"/>
+<img src="https://github.com/user-attachments/assets/d2e76fe7-1fea-4297-b02f-5c45b6e298c1" width="400"/>
+<img src="https://github.com/user-attachments/assets/c3cec142-6eb7-4df6-958c-f51f8967312b" width="400"/>
+
+# Developers:
+- Jerry Kim
+- Shazeel Ali
+- Jerry Zhang
+
+# Tech Stack:
+- Java
+- JavFX
+- CSS
+
+# Project Requirements
 
 ## To setup the API to access Chat Completions and TTS
 
@@ -11,15 +35,6 @@
   email: "UPI@aucklanduni.ac.nz"
   apiKey: "YOUR_KEY"
   ```
-
-  These are your credentials to invoke the APIs.
-
-  The token credits are charged as follows:
-
-  - 1 token credit per 1 character for Googlel "Standard" Text-to-Speech.
-  - 4 token credit per 1 character for Google "WaveNet" and "Neural2" Text-to-Speech.
-  - 1 token credit per 1 character for OpenAI Text-to-Text.
-  - 1 token credit per 1 token for OpenAI Chat Completions (as determined by OpenAI, charging both input and output tokens).
 
 ## To setup codestyle's API
 
@@ -44,10 +59,3 @@ these are your credentials to invoke gradestyle
 ## To run codestyle
 
 `./mvnw clean compile exec:java@style`
-
-## To run game
-Please note that we have disabled the tokens we provided. So, if you or anyone you share the project with needs to run your project, they will need an OpenAI access token. We have made this easy for you, as you can simply place the token in the config file (with your own email) and run it. It's using our endpoint, but we won't disable it (at least not anytime soon). You can be reassured we are not saving or snooping the token. But if you prefer not to go through our endpoint, you will need to (possibly substantially) refactor your code to call the OpenAI API directly. Some Java wrappers are available to use but still require refactoring to use those wrappers instead of ours. 
-
-Unfortunately, this same process won't work for the Google TTS voices. This means you must either change the code to use the OpenAI TTS voices or revert to the free built-in TTS.
-
-The final thing, is the code style tool that is runnable. You shouldn't have committed your config in the first place (remember, it was in the .gitignore, but we noticed some students still forcefully added it or saved to a different filename).  That, again, shouldn't be an issue, even if you did, as it just means someone can ping the code style tool to run and send the email report (but it will go to your email). Even if they see the report, they won't be able to click on any of the links as they aren't added to our repo (private in the SOFTENG 206 GitHub Organization). 
