@@ -25,6 +25,13 @@ Project for SOFTENG 206 (Software Engineering Design 1) in Part II of Software E
 - CSS
 
 # Project Requirements
+- Design your own guess who game with unique personalities for each suspect who could be a thief
+- Responses from suspects must be generated intelligently utilising OpenAI's API
+- Cleverly prompt engineer responses for each suspect
+- Include interactable clues with different solutions
+- User guesses must be graded by OpenAI's API
+- Incorporate text-to-speech for accessibility
+- Inclusion of randomness in game design for replayability
 
 ## To setup the API to access Chat Completions and TTS
 
